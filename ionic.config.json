@@ -1,0 +1,7 @@
+{
+  "name": "learning-experience",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
