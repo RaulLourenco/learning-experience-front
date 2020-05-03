@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: Tab1Page,
-  }
+  },
+  {
+    path: 'level-one',
+    loadChildren: () => import('../level-one/level-one.module').then( m => m.LevelOnePageModule)
+  },
 ];
 
 @NgModule({
