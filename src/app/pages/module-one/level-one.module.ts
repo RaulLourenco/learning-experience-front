@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModuleOnePageRoutingModule } from './module-one-routing.module';
+import { LevelOnePageRoutingModule } from './level-one-routing.module';
 
-import { ModuleOnePage } from './module-one.page';
+import { LevelOnePage } from './level-one.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ModuleOnePageRoutingModule
+    LevelOnePageRoutingModule
   ],
-  declarations: [ModuleOnePage]
+  declarations: [LevelOnePage]
 })
-export class ModuleOnePageModule {}
+export class LevelOnePageModule {}

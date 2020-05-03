@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { HomeComponent } from './home.component';
-import { MaterialModule } from '../../material.module';
+import { MaterialModule } from '../../../../material.module';
 
 @NgModule({
   imports: [ 

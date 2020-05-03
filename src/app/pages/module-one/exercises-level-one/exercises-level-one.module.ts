@@ -21,4 +21,4 @@ import { MaterialModule } from '../../../material.module';
     CUSTOM_ELEMENTS_SCHEMA
   ]
 })
-export class ExerciseOneModule {}
+export class ExerciseLevelOneModule {}
