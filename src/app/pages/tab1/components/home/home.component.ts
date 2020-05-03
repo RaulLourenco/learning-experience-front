@@ -10,14 +10,13 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private zone: NgZone,
   ) { }
 
   ngOnInit() {}
 
   goToExerciseOne = () => {
-    this.zone.run(() => this.router.navigate(["/exercise-one"]))
+    this.zone.run(() => this.router.navigate(["../level-one"]));
   }
 
 }
