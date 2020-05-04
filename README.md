@@ -1,8 +1,8 @@
 # Front-End do Projeto TEA
 
 Para começar a contribuir para o projeto, você deverá ter os seguintes softwares instalados em sua máquina:
-#### * Node
-#### * Ionic
+#### - Node
+#### - Ionic
 #### * Cordova
 #### * IDE (uma de sua preferência)
 
