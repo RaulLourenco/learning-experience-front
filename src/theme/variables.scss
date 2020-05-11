@@ -153,10 +153,10 @@
    */
 
   .ios body {
-    --ion-background-color: #000000;
+    --ion-background-color: #ffffff;
     --ion-background-color-rgb: 0,0,0;
 
-    --ion-text-color: #ffffff;
+    --ion-text-color: #000000;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-color-step-50: #0d0d0d;
@@ -181,7 +181,7 @@
 
     --ion-toolbar-background: #0d0d0d;
 
-    --ion-item-background: #000000;
+    --ion-item-background: #ffffff;
   }
 
 
@@ -191,7 +191,7 @@
    */
 
   .md body {
-    --ion-background-color: #121212;
+    --ion-background-color: #FFFFFF;
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #ffffff;
@@ -221,8 +221,128 @@
 
     --ion-item-background: #1e1e1e;
 
-    --ion-toolbar-background: #1f1f1f;
+    --ion-toolbar-background: #1C5A83;
 
-    --ion-tab-bar-background: #1f1f1f;
+    --ion-tab-bar-background: #1C5A83;
   }
 }
+
+//
+
+//New Mark BPC
+$colorBrandFirst: #0C26DE;
+$colorFirst100: #CACEFD;
+$colorFirst200: #7F8DFA;
+$colorFirst300: #3040DB;
+$colorFirst400: #101ABF;	
+$colorBrandSecond: #F26F39;
+$colorSecond100: #F9E8E6;
+$colorSecond200: #F7AA8B;
+$colorSecond300: #D84D07;
+$colorSecond400: #B23900;	
+$colorBrandThird: #3BBA7D;
+$colorThird100:	#E4F5EC;
+$colorThird200:	#94D6B1;
+$colorThird300:	#008D4F;
+$colorThird400:	#005C2E;	
+$colorNeutral100: #FFFFFF;
+$colorNeutral200: #F6F6F6;
+$colorNeutral300: #9DA8A8;
+$colorNeutral400: #333333;
+$colorNeutral500: #111111;
+$colorNeutral600: #394444;
+$colorSupportError: #F44040;	
+$colorSupportAffirmation: #B2DF31;
+$colorSupportBanner: #B2DF31;
+$colorSubtitleText: #5B5B5B;
+
+
+//Fonts
+$typeSizeXXS: 10px;
+$typeSizeXS: 12px;
+$typeSizeSM: 14px;
+$typeSizeMD: 16px;
+$typeSizeLG: 20px;
+$typeSizeXL: 24px;
+$typeSizeXXL: 28px;
+
+//Line-Height
+$lineheightsizeXXS: 14;
+$lineheightsizeXS: 16;
+$lineheightsizeSM: 18;
+$lineheightsizeMD: 20;
+$lineheightsizeLG: 24;
+$lineheightsizeXL: 28;
+$lineheightsizeXXL: 32;
+
+//Margins
+$marginNone: 0;
+$marginInlineXXS: 4px;
+$marginInlineXS: 8px;
+$marginInlineSM: 16px;
+$marginInlineMD: 20px;
+$marginInlineLG: 24px;
+$marginInlineXL: 28px;
+$marginInlineXXL: 32px;
+$marginStackXXS: 4px;
+$marginStackXS: 8px;
+$marginStackSM: 16px;
+$marginStackMD: 20px;
+$marginStackLG: 24px;
+$marginStackXL: 28px;
+$marginStackXXL: 32px;
+
+//Paddings
+$paddingNone: 0;
+$paddingXXS: 4px;
+$paddingXS: 8px;
+$paddingSM: 16px;
+$paddingMD: 20px;
+$paddingLG: 24px;
+$paddingXL: 28px;
+$paddingXXL: 32px;
+
+//Shadow
+$shadowElevation-1dp:(0 -4px 8px $colorNeutral100);
+$shadowElevation1dp:(0 2px 4px $colorNeutral100);
+$shadowElevation2dp:0 4px 8px $colorNeutral300;
+$shadowElevation3dp:(0 8px 16px $colorNeutral100);
+$shadowElevation4dp:(0 16px 24px $colorNeutral100);
+
+//Borders
+$borderRadiusNone: 0;
+$borderRadiusDefault: 4px;
+$borderRadiusCircle: 65px;
+$borderRadiusPill: 35px;
+$borderWidthNone: none;
+$borderWidthThick: 1px;
+$borderColorBrandFirst: $colorBrandFirst;
+$borderColorBrandSecond: $colorBrandSecond;
+$borderColorNeutral100: $colorNeutral100;
+
+//Opacity
+$opacityLighter: 0.08;
+$opacityLighter: 0.16;
+$opacityMedium: 0.32;
+$opacityDark: 0.64;
+$opacityDarker: 0.8;
+
+//Old mark BPC [Need remove]
+$color-brand-primary-lightest: #C9D300;
+$color-brand-primary-light: #3BBA7CF2;
+$color-brand-primary-medium: #009180;
+$color-brand-primary-darkest: #006254;
+$color-secondary-highlight-light: #FBDEB3;
+$color-secondary-highlight-medium: #EF8914;
+$color-secondary-highlight-darkest: #F26F39;
+$color-secondary-highlight-dark: #E26B10;
+$color-secondary-highlight-darkest: #DD5132;
+$color-tertiary-light: #B1DDD8;
+$color-support-attention: #F44040;
+$color-support-attention-medium: #E30000;
+$color-support-confirmation: #C9D300;
+$color-neutral-lightest: #FFFFFF;
+$color-neutral-light: #F6F6F6;
+$color-neutral-medium: #9DA8A8;
+$color-neutral-dark: #333333;
+$color-neutral-darkest: #111111;
