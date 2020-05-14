@@ -1,0 +1,63 @@
+<ion-content>
+
+  <ion-row>
+    <ion-col class="home-greetings-col">
+      <p class="home-greetings">Relatórios</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="home-intro-col">
+      <p class="home-intro">Abaixo você encontrará os relatórios do seu desempenho na aplicação.</p>
+    </ion-col>
+  </ion-row>
+
+  <!-- Bar -->
+
+  <ion-row>
+    <ion-col class="home-greetings-col">
+      <p class="home-greetings">Desempenho</p>
+    </ion-col>
+  </ion-row>
+
+  <canvas baseChart
+  [datasets]="barChartData"
+  [labels]="barChartLabels"
+  [options]="barChartOptions"
+  [plugins]="barChartPlugins"
+  [legend]="barChartLegend"
+  [chartType]="barChartType">
+</canvas>
+
+  <br>
+  <br>
+
+  <!-- Doughnut -->
+
+  <ion-row>
+    <ion-col class="home-greetings-col">
+      <p class="home-greetings">Vitórias</p>
+    </ion-col>
+  </ion-row>
+
+  <canvas baseChart
+  [data]="doughnutChartData"
+  [labels]="doughnutChartLabels"
+  [chartType]="doughnutChartType">
+</canvas>
+
+<!-- <br>
+<br> -->
+
+<!-- Line -->
+
+<!-- <canvas baseChart width="400" height="400"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                [plugins]="lineChartPlugins">
+</canvas> -->
+
+</ion-content>
