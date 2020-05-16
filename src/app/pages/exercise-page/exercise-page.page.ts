@@ -16,7 +16,7 @@ export class ExercisePagePage implements OnInit {
   }
 
   public closeExercise(){
-    this.router.navigateByUrl('/tabs/tab1');
+    this.router.navigateByUrl('/home/tabs/tab1');
   }
 
 }

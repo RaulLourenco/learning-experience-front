@@ -1,0 +1,65 @@
+$main-color: #1C5A83;
+$grey-color:#999999;
+$black-color: #000000;
+
+.logo-image{
+    display: block;
+    margin: 0 auto;
+}
+
+.home-icon{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.title-col{
+    padding: 24px 0;
+}
+
+.title{
+    text-align: center;
+    font-size: 18px;
+    color: $main-color;
+}
+
+.item-text-form{
+    --border-color: #999999;
+    padding-right: 16px;
+    padding-bottom: 24px;
+}
+
+.label-form{
+    color:$grey-color;
+}
+
+.login-button{
+    margin-top: 24px;
+}
+
+ion-button{
+    --background:#1C5A83;
+}
+
+.checkbox-col{
+    margin-left: 16px;
+}
+
+.checkbox{
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.label-pwd-col{
+    padding-top: 10px;
+    margin-left: 16px;
+}
+.label-pwd{
+    color: $black-color;
+}
+.label-forgot-pwd-col{
+    padding: 16px 16px;
+}
+
+.label-forgot-pwd{
+    text-align: center;
+}
