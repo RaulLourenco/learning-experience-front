@@ -1,3 +1,5 @@
+$white-color: #ffffff;
+
 .main{
     --background: var(--ion-color-maincolor);
    
@@ -5,6 +7,6 @@
 
 .title{
     text-align: center;
-    color: #ffffff;
+    color: $white-color;
     border: 1px solid #1C5A83;
 }
