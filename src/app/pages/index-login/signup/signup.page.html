@@ -1,9 +1,67 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
 
-<ion-content>
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" (click)="backToIndex()" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col class="home-icon">
+        <img class="logo-image" src="../../../../../assets/images/logo_tat.svg" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="title-col">
+        <p class="title"><b>TEAcher`s Assistant Tools</b></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form class="form" [formGroup]="userForm" 
+  (ngSubmit)="onSignup(userForm.value.name, 
+                       userForm.value.user, 
+                       userForm.value.password,
+                       userForm.value.repeatPassword)">
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Nome
+      </ion-label>
+      <ion-input formControlName="name" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        E-mail
+      </ion-label>
+      <ion-input formControlName="user" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Senha
+      </ion-label>
+      <ion-input formControlName="password" type="password">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Insira a senha novamente
+      </ion-label>
+      <ion-input formControlName="repeatPassword" type="password">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="signup-button" [disabled]="false">
+      Cadastrar
+    </ion-button>
+
+  </form>
 </ion-content>
