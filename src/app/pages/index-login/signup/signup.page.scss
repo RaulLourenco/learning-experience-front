@@ -1,0 +1,55 @@
+$main-color: #1C5A83;
+$grey-color:#999999;
+$black-color: #000000;
+$white-color: #ffffff;
+
+.header-page{
+    padding: 0;
+}
+
+.icon-close{
+    font-size: 30px;
+}
+
+.button-close{
+    background-color: $white-color;
+}
+
+.logo-image{
+    display: block;
+    margin: 0 auto;
+}
+
+.home-icon{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.title-col{
+    padding: 24px 0;
+}
+
+.title{
+    text-align: center;
+    font-size: 18px;
+    color: $main-color;
+}
+
+.item-text-form{
+    --border-color: #999999;
+    padding-right: 16px;
+}
+
+.label-form{
+    color:$grey-color;
+}
+
+.signup-button{
+    margin-top: 32px;
+    padding-left: 16px;
+    padding-right: 14px;
+}
+
+ion-button{
+    --background:#1C5A83;
+}

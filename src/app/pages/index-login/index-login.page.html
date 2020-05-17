@@ -1,0 +1,42 @@
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="home-icon">
+        <img class="logo-image" src="../../../../../assets/images/logo_tat.svg" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="title-col">
+        <p class="title"><b>TEAcher`s Assistant Tools</b></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row>
+    <ion-col class="introduction-col">
+      <p class="introduction">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="moveToLogin()" expand="block" class="login-button" [disabled]="false">
+        Login
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="moveToSignup()" expand="block" class="signup-button" [disabled]="false">
+        Cadastrar-se
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

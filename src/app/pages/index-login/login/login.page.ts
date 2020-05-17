@@ -10,12 +10,15 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
 
-  userForm: FormGroup;
+  public userForm: FormGroup;
+  public buttonText: string;
 
   constructor(private alertController: AlertController,
     private loadingController: LoadingController,
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router) { 
+      this.buttonText = 'Voltar'
+    }
 
   ngOnInit() {
     this.initializeForm();
@@ -47,8 +50,8 @@ export class LoginPage implements OnInit {
     return await alertPresent.present();
   }
 
-  public goBack() {
-    this.router.navigate(['/login']);
+  public backToIndex(){
+    this.router.navigateByUrl('/index-login');
   }
 
   initializeForm() {

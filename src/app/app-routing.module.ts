@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'index-login', pathMatch: 'full'},
+  {
+    path: 'index-login',
+    loadChildren: () => import('./pages/index-login/index-login.module').then( m => m.IndexLoginPageModule)
+  },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/index-login/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'home',
@@ -14,8 +18,10 @@ const routes: Routes = [
   {
     path: 'exercise-page',
     loadChildren: () => import('./pages/exercise-page/exercise-page.module').then( m => m.ExercisePagePageModule)
+  },  {
+    path: 'onboarding',
+    loadChildren: () => import('./pages/onboarding/onboarding.module').then( m => m.OnboardingPageModule)
   },
-
 
 ];
 @NgModule({
