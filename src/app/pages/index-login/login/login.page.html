@@ -1,5 +1,14 @@
 <ion-content class="ion-padding">
 
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" (click)="backToIndex()" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+
   <ion-grid>
     <ion-row>
       <ion-col class="home-icon">
@@ -44,10 +53,6 @@
 
     <ion-button expand="block" type="submit" class="login-button" [disabled]="false">
       Entrar
-    </ion-button>
-
-    <ion-button expand="block" type="submit" class="signup-button" [disabled]="false">
-      Cadastrar-se
     </ion-button>
 
     <ion-row class="label-forgot-pwd-col">
