@@ -1,0 +1,42 @@
+<ion-content class="content-body">
+
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col class="greetings-col">
+        <p class="greetings">Seja bem vindo(a)!</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="first-steps-icon">
+        <img class="first-steps-image" src="../../../../../assets/images/onboarding_1.svg" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="introduction-col">
+        <p class="introduction">
+          Este aplicativo foi desenvolvido para auxiliar o trabalho de educadores na alfabetização de crianças
+          portadoras do Transtorno do Espectro do Autismo (TEA).
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <div class="dots">
+      <span class="dot-slide-active"></span>
+      <div class="divider"></div>
+      <span class="dot-slide"></span>
+      <div class="divider"></div>
+      <span class="dot-slide"></span>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" class="next-page" (click)="toFirstSteps()">Avançar</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

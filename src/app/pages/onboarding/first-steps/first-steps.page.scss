@@ -1,0 +1,85 @@
+$grey-color: #999999;
+$lighgrey-color: #f0f0f0;
+$orange-color: #F26F39;
+$white-color: #ffffff;
+$main-color: #1C5A83;
+
+.content-body{
+    --background: #1C5A83;
+}
+
+.header-page{
+    padding: 0;
+}
+
+.icon-close{
+    font-size: 30px;
+    color: $white-color;
+}
+
+.button-close{
+    background-color: $main-color;
+}
+
+.greetings-col{
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.greetings{
+    text-align: center;
+    font-size: 24px;
+    color: $white-color;
+}
+
+.first-steps-image{
+    display: block;
+    margin: 0 auto;
+}
+
+.first-steps-icon{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.introduction-col{
+    padding: 40px 16px;
+}
+
+.introduction{
+    text-align: center;
+    color: $white-color;
+}
+
+.dots{
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 48px;
+}
+
+.divider{
+    display: inline-block;
+    width: 10px;
+}
+
+.dot-slide{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: $grey-color;
+    display: inline-block;
+}
+
+.dot-slide-active{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: $orange-color;
+    display: inline-block;
+}
+
+.next-page{
+    margin-top: 15%;
+    border-radius: 20px;
+    --background: #F26F39;
+}

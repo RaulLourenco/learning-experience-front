@@ -1,0 +1,50 @@
+<ion-content class="content-body">
+
+  <ion-grid>
+
+    <ion-row class="header-page">
+      <ion-col size="2">
+        <button class="button-close" (click)="backToOnboarding()" icon-only>
+          <ion-icon class="icon-close" name="chevron-back-outline"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="greetings-col">
+        <p class="greetings">Definição</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="first-steps-icon">
+        <img class="first-steps-image" src="../../../../../assets/images/onboarding_2.svg" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="introduction-col">
+        <p class="introduction">
+          Seu intuíto é ser um ferramenta facilitadora para o educador, e ao mesmo tempo, um bom lugar para aprender
+          para cada um de seus pacientes.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <div class="dots">
+      <span class="dot-slide"></span>
+      <div class="divider"></div>
+      <span class="dot-slide-active"></span>
+      <div class="divider"></div>
+      <span class="dot-slide"></span>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" class="next-page" (click)="toObservation()">Avançar</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

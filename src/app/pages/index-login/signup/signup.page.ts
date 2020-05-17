@@ -13,6 +13,11 @@ export class SignupPage implements OnInit {
   public userForm: FormGroup;
   public buttonText: string;
 
+  public name: string;
+  public email: string;
+  public password: string;
+  public repeatPassword: string;
+
   constructor(private alertController: AlertController,
     private loadingController: LoadingController,
     private formBuilder: FormBuilder,
@@ -22,9 +27,14 @@ export class SignupPage implements OnInit {
     this.initializeForm();
   }
 
-  private async onSignup(cpf, password) {
-    if (cpf == '123' && password == '123') {
-      this.router.navigateByUrl('home/tabs/tab1');
+  private async onSignup(name, email, password, repeatPassword) {
+    this.name = name;
+    this.email = email;
+    this.password = password; 
+    this.repeatPassword = repeatPassword;
+
+    if (name == '123' && password == '123') {
+      this.router.navigateByUrl('/onboarding');
     } else {
       return 'loucura bicho';
     }
