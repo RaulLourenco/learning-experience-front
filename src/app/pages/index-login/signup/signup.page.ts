@@ -27,7 +27,7 @@ export class SignupPage implements OnInit {
     this.initializeForm();
   }
 
-  private async onSignup(name, email, password, repeatPassword) {
+  public async onSignup(name, email, password, repeatPassword) {
     this.name = name;
     this.email = email;
     this.password = password; 

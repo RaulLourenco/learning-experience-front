@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
     this.initializeForm();
   }
 
-  private async onSign(cpf, password) {
+  public async onSign(cpf, password) {
     if (password == '123') {
       this.router.navigateByUrl('home/tabs/tab1');
     } else {
