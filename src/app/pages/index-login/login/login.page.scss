@@ -38,7 +38,7 @@ $white-color: #ffffff;
 .item-text-form{
     --border-color: #999999;
     padding-right: 16px;
-    padding-bottom: 24px;
+    margin-bottom: 24px;
 }
 
 .label-form{
@@ -59,9 +59,10 @@ ion-button{
     margin-left: 16px;
 }
 
-.checkbox{
-    border: 1px solid black;
-    border-radius: 20px;
+.checkbox:checked{
+    // border: 1px solid black;
+    --background: red;
+    // border-radius: 20px;
 }
 
 .label-pwd-col{
