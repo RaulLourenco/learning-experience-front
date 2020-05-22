@@ -57,4 +57,8 @@ export class AuthService {
     return this.authSubject.asObservable();
   }
 
+  getToken(){
+    this.storage.get('ACCESS_TOKEN');
+  }
+
 }
