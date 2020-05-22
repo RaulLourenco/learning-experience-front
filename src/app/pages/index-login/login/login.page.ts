@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular'
 import { FormBuilder, Validators, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router';
+import { AuthService } from '../../../auth/auth.service';
+import { User } from '../../../auth/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -9,27 +11,30 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-
+  public user: User;
   public userForm: FormGroup;
   public buttonText: string;
 
   constructor(private alertController: AlertController,
-    private loadingController: LoadingController,
-    private formBuilder: FormBuilder,
-    private router: Router) { 
-      this.buttonText = 'Voltar'
-    }
+              private loadingController: LoadingController, 
+              private formBuilder: FormBuilder, 
+              private router: Router,
+              private authService: AuthService) {
+    this.buttonText = 'Voltar';
+  }
 
   ngOnInit() {
     this.initializeForm();
   }
 
-  private async onSign(cpf, password) {
-    if (password == '123') {
-      this.router.navigateByUrl('home/tabs/tab1');
-    } else {
-      return 'loucura bicho';
-    }
+  private async onSign(email, password) {
+    const user: User = {
+      email: email,
+      password: password
+    };
+    this.authService.login(user).subscribe( (res) => {
+      console.log(res);
+    });
   }
 
   async presentLoading() {
@@ -50,7 +55,7 @@ export class LoginPage implements OnInit {
     return await alertPresent.present();
   }
 
-  public backToIndex(){
+  public backToIndex() {
     this.router.navigateByUrl('/index-login');
   }
 
