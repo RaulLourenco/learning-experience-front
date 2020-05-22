@@ -32,7 +32,9 @@ export class LoginPage implements OnInit {
       email: email,
       password: password
     };
-    this.authService.login(user).subscribe( (res) => {
+    const userObject = {user};
+    
+    this.authService.login(userObject.user).subscribe( (res) => {
       console.log(res);
     });
   }
