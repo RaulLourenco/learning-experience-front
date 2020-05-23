@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.page.html',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientListPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  closePatientList() {
+    this.router.navigateByUrl('home/tabs/tab3');
+  }
+
+  updatePatient() {
+    return console.log('ATUALIZANDO O PACIENTE');
   }
 
 }

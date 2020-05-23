@@ -57,7 +57,13 @@ export class AuthService {
   }
 
   async getToken() {
-    return await this.storage.get('ACCESS_TOKEN');
+    let token;
+    await this.storage.get('ACCESS_TOKEN').then(res => {
+      token = res;
+    }).catch(e => {
+      return e;
+    });
+    return token;
   }
 
 }

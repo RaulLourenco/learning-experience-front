@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { urls } from '../../../util/urlConfig';
+import { AuthService } from '../../../auth/auth.service';
+import { Advisor } from 'src/app/interface/advisor';
 @Component({
   selector: 'app-teacher-list',
   templateUrl: './teacher-list.page.html',
@@ -7,9 +11,19 @@ import { Router } from '@angular/router';
 })
 export class TeacherListPage implements OnInit {
 
-  constructor(private router: Router) { }
+  public token: string;
+  public advisorList = [];
+  public advisor: Advisor = {
+    name: '',
+    profession: '',
+    education: '',
+    specialization: ''
+  };
+
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
+    this.getAllAdvisor();
   }
 
   closeTeacherList() {
@@ -18,5 +32,36 @@ export class TeacherListPage implements OnInit {
 
   updateTeacher() {
     return console.log('ATUALIZANDO O ORIENTADOR');
+  }
+
+  // async getTokenResolved() {
+  //   await this.authService.getToken().then(res => {
+  //     this.token = res;
+  //   }).catch(e => {
+  //     console.log(e);
+  //   });
+  //   return this.token;
+  // }
+
+  public async getAllAdvisor() {
+    let token;
+    await this.authService.getToken().then(res => {
+      token = res;
+    });
+    await this.http.get(urls.URL_GETALLADVISOR, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).subscribe(res => {
+      console.log(res);
+      this.advisorList.push(res);
+      this.advisorList = this.advisorList[0];
+      this.advisorList.forEach(element => {
+        this.advisor.name = element.name;
+        this.advisor.profession = element.profession;
+        this.advisor.education = element.education;
+        this.advisor.specialization = element.specialization;
+      });
+    });
   }
 }
