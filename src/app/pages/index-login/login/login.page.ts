@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 import { User } from '../../../auth/user';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,15 +14,14 @@ export class LoginPage implements OnInit {
 
   public user: User;
   public userForm: FormGroup;
-  public buttonText: string;
 
-  constructor(private alertController: AlertController,
-              private loadingController: LoadingController, 
-              private formBuilder: FormBuilder, 
-              private router: Router,
-              private authService: AuthService) {
-    this.buttonText = 'Voltar';
-  }
+  constructor(
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private http: HttpClient) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -29,12 +29,21 @@ export class LoginPage implements OnInit {
 
   private async onSign(email, password) {
     const user: User = {
-      email: email,
-      password: password
+      email,
+      password
     };
 
-    this.authService.login(user).subscribe( (res) => {
-      console.log(res);
+    this.authService.login(user).subscribe((res) => {
+      console.log('token: ', res.token);
+      console.log('expire in: ', res.tokenExpiresIn);
+
+      const getAll = this.http.get('https://learningexperieceapi.azurewebsites.net/api/v1/Advisor/GetAll', {
+        headers: {
+          Authorization: 'Bearer ' + res.token
+        }
+      }).subscribe(res => {
+        console.log('ESTE EH O GETALL: ', res);
+      });
     });
   }
 
@@ -49,9 +58,9 @@ export class LoginPage implements OnInit {
     return await this.loadingController.dismiss();
   }
 
-  async presentAlert(message) {
+  async presentAlert(message: string) {
     const alertPresent = await this.alertController.create({
-      message: message
+      message
     });
     return await alertPresent.present();
   }

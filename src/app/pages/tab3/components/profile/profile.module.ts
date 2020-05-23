@@ -6,13 +6,15 @@ import { IonicModule } from '@ionic/angular';
 
 import { ProfileComponent } from './profile.component';
 import { MaterialModule } from '../../../../material.module';
+import { ListModule } from '../../../list/list.module';
 
 @NgModule({
-  imports: [ 
-    CommonModule, 
-    FormsModule, 
+  imports: [
+    CommonModule,
+    FormsModule,
     IonicModule,
-    MaterialModule
+    MaterialModule,
+    ListModule
   ],
   declarations: [
     ProfileComponent

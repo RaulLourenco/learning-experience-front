@@ -22,6 +22,14 @@ const routes: Routes = [
     path: 'onboarding',
     loadChildren: () => import('./pages/onboarding/onboarding.module').then( m => m.OnboardingPageModule)
   },
+  {
+    path: 'teacher-list',
+    loadChildren: () => import('./pages/list/teacher-list/teacher-list.module').then( m => m.TeacherListPageModule)
+  },
+  {
+    path: 'patient-list',
+    loadChildren: () => import('./pages/list/patient-list/patient-list.module').then( m => m.PatientListPageModule)
+  },
 
 ];
 @NgModule({

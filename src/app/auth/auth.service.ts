@@ -16,7 +16,7 @@ export class AuthService {
   AUTH_SERVER_ADDRESS = urls.URL_API;
   authSubject = new BehaviorSubject(false);
 
-  constructor(private  httpClient: HttpClient, private  storage: Storage) { }
+  constructor(private httpClient: HttpClient, private storage: Storage) { }
 
   register(user: User): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/Auth`, user, {
@@ -24,10 +24,10 @@ export class AuthService {
         'Content-Type': 'application/json'
       }
     }).pipe(
-      tap(async (res: AuthResponse ) => {
-        if (res.user) {
-          await this.storage.set('ACCESS_TOKEN', res.user.access_token);
-          await this.storage.set('EXPIRES_IN', res.user.expires_in);
+      tap(async (res: AuthResponse) => {
+        if (res) {
+          await this.storage.set('ACCESS_TOKEN', res.token);
+          await this.storage.set('EXPIRES_IN', res.tokenExpiresIn);
           this.authSubject.next(true);
         }
       })
@@ -37,10 +37,9 @@ export class AuthService {
   login(user: User): Observable<AuthResponse> {
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/Auth`, user).pipe(
       tap(async (res: AuthResponse) => {
-
-        if (res.user) {
-          await this.storage.set('ACCESS_TOKEN', res.user.access_token);
-          await this.storage.set('EXPIRES_IN', res.user.expires_in);
+        if (res) {
+          await this.storage.set('ACCESS_TOKEN', res.token);
+          await this.storage.set('EXPIRES_IN', res.tokenExpiresIn);
           this.authSubject.next(true);
         }
       })
@@ -57,8 +56,8 @@ export class AuthService {
     return this.authSubject.asObservable();
   }
 
-  getToken(){
-    this.storage.get('ACCESS_TOKEN');
+  async getToken() {
+    return await this.storage.get('ACCESS_TOKEN');
   }
 
 }
