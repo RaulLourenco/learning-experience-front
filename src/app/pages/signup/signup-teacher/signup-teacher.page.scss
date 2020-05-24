@@ -1,0 +1,71 @@
+$white-color: #ffffff;
+$black-color: #000000;
+$main-color: #1C5A83;
+$green-color: #228B22;
+$card-content-color: #0079BE;
+$grey-color:#999999;
+
+.header-page{
+    padding: 16px 0;
+}
+
+.icon-close{
+    padding-left: 10px;
+    font-size: 30px;
+}
+
+.button-close, .settings-button{
+    background-color: $white-color;
+}
+
+.teacher-list-title{
+    padding-top: 6px;
+    padding-left: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.avatar-icon{
+    display: block;
+    margin: 0 auto;
+    height: 150px;
+    width: 150px;
+}
+
+.item-text-form{
+    --border-color: #999999;
+    padding-right: 16px;
+}
+
+.label-form{
+    color:$grey-color;
+}
+
+.p-label-form{
+    color:$grey-color;
+    padding-top: 24px;
+    padding-left: 16px;
+}
+
+.textarea-col{
+    padding-top: 40px;
+    padding-right: 16px;
+    padding-left: 0 !important;
+}
+
+.textarea-lbl{
+    color: $grey-color;
+}
+
+.signup-button{
+    padding: 0 16px;
+    background-color: $white-color;
+    color: $white-color;
+    position: fixed;
+    bottom: 16px;
+    width: 100%;
+}
+
+ion-button{
+    --background:#1C5A83;
+}
