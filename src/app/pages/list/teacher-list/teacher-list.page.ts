@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { urls } from '../../../util/urlConfig';
@@ -19,8 +19,9 @@ export class TeacherListPage implements OnInit {
     education: '',
     specialization: ''
   };
+  public addHtml;
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService, private elementRef: ElementRef) { }
 
   ngOnInit() {
     this.getAllAdvisor();
@@ -56,6 +57,7 @@ export class TeacherListPage implements OnInit {
       console.log(res);
       this.advisorList.push(res);
       this.advisorList = this.advisorList[0];
+      // this.arrayVerify(this.advisorList);
       this.advisorList.forEach(element => {
         this.advisor.name = element.name;
         this.advisor.profession = element.profession;
@@ -64,4 +66,14 @@ export class TeacherListPage implements OnInit {
       });
     });
   }
+
+  // arrayVerify(array) {
+  //   if (array.length === 0) {
+  //     console.log('ESTE CARA ESTA RETORNANDO NULL');
+  //   }
+  // }
+
+  // changeTemplate(type) {
+
+  // }
 }

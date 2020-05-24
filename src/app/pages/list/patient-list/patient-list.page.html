@@ -10,143 +10,62 @@
 
   <p class="patient-list-title">Lista de Pacientes</p>
 
-  <ion-card class="exercise-card">
-    <ion-row class="card-header">
-      <ion-col size="3">
-        <ion-avatar>
-          <img class="avatar-icon" src="../../../../../assets/images/avatar.png" />
-        </ion-avatar>
-      </ion-col>
-      <ion-col class="lbl-patient-name-col">
-        <ion-label class="lbl-patient-name">Dr. Mendonza</ion-label>
-      </ion-col>
-    </ion-row>
+  <div *ngIf="patientList.length == 0">
+    <img class="no-patients-exclamation" src="../../../../../assets/images/exclamacao.png" />
+    <p class="no-patients-text"><b>Ops!</b> Parece que você não possui nenhum paciente cadastrado. 
+      Você pode adicionar a qualquer momento clicando no botão no final desta tela.
+    </p>
+  </div>
 
-    <ion-card-content class="card-content">
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Profissão</p>
-          <p class="p-subtitle-card-content">Psiquiatra</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Escolaridade</p>
-          <p class="p-subtitle-card-content">Doutor em Psiquiatria Infantil</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Especializacao</p>
-          <p class="p-subtitle-card-content">Comportamento Autista</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-    <div class="card-footer">
-      <ion-row>
-        <ion-col size="2">
-          <button class="settings-button" (click)="updatePatient()" icon-only>
-            <ion-icon class="icon-settings" name="options-outline"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-card>
+  <div *ngFor="let patient of patientList">
 
-  <ion-card class="exercise-card">
-    <ion-row class="card-header">
-      <ion-col size="3">
-        <ion-avatar>
-          <img class="avatar-icon" src="../../../../../assets/images/avatar.png" />
-        </ion-avatar>
-      </ion-col>
-      <ion-col class="lbl-patient-name-col">
-        <ion-label class="lbl-patient-name">Lucas Valero</ion-label>
-      </ion-col>
-    </ion-row>
+    <ion-card class="exercise-card">
+      <ion-row class="card-header">
+        <ion-col size="3">
+          <ion-avatar>
+            <img class="avatar-icon" src="../../../../../assets/images/avatar.png" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col class="lbl-patient-name-col">
+          <ion-label class="lbl-patient-name">{{patient.name}}</ion-label>
+        </ion-col>
+      </ion-row>
 
-    <ion-card-content class="card-content">
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Profissão</p>
-          <p class="p-subtitle-card-content">Psiquiatra</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Escolaridade</p>
-          <p class="p-subtitle-card-content">Doutor em Psiquiatria Infantil</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Especializacao</p>
-          <p class="p-subtitle-card-content">Comportamento Autista</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-    <div class="card-footer">
-      <ion-row>
-        <ion-col size="2">
-          <button class="settings-button" (click)="updatePatient()" icon-only>
-            <ion-icon class="icon-settings" name="options-outline"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-card>
+      <ion-card-content class="card-content">
+        <ion-row>
+          <ion-col>
+            <p class="p-title-card-content">Idade</p>
+            <p class="p-subtitle-card-content">{{patient.age}}</p>
+            <ion-item style="height: 1px"></ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="p-title-card-content">Grau de Autismo</p>
+            <p class="p-subtitle-card-content">{{patient.diseaseLevel}}</p>
+            <ion-item style="height: 1px"></ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="p-title-card-content">Problema com cores</p>
+            <p class="p-subtitle-card-content">{{patient.colorIssue}}</p>
+            <ion-item style="height: 1px"></ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+      <div class="card-footer">
+        <ion-row>
+          <ion-col size="2">
+            <button class="settings-button" (click)="updatePatient()" icon-only>
+              <ion-icon class="icon-settings" name="options-outline"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
 
-  <ion-card class="exercise-card">
-    <ion-row class="card-header">
-      <ion-col size="3">
-        <ion-avatar>
-          <img class="avatar-icon" src="../../../../../assets/images/avatar.png" />
-        </ion-avatar>
-      </ion-col>
-      <ion-col class="lbl-patient-name-col">
-        <ion-label class="lbl-patient-name">Lucas Valero</ion-label>
-      </ion-col>
-    </ion-row>
-
-    <ion-card-content class="card-content">
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Profissão</p>
-          <p class="p-subtitle-card-content">Psiquiatra</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Escolaridade</p>
-          <p class="p-subtitle-card-content">Doutor em Psiquiatria Infantil</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <p class="p-title-card-content">Especializacao</p>
-          <p class="p-subtitle-card-content">Comportamento Autista</p>
-          <ion-item style="height: 1px"></ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-    <div class="card-footer">
-      <ion-row>
-        <ion-col size="2">
-          <button class="settings-button" (click)="updatePatient()" icon-only>
-            <ion-icon class="icon-settings" name="options-outline"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-card>
+  </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addPatient()" class="fab-button-add" fill="clear">

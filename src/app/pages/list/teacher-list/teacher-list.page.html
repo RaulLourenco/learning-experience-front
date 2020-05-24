@@ -10,6 +10,13 @@
 
   <p class="teacher-list-title">Lista de Orientadores</p>
 
+  <div *ngIf="advisorList.length == 0">
+    <img class="no-advisors-exclamation" src="../../../../../assets/images/exclamacao.png" />
+    <p class="no-advirsors-text"><b>Ops!</b> Parece que você não possui nenhum orientador cadastrado. 
+      Você pode adicionar a qualquer momento clicando no botão no final desta tela.
+    </p>
+  </div>
+
   <div *ngFor="let advisor of advisorList">
 
     <ion-card class="exercise-card">
