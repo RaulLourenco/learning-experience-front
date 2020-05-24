@@ -55,4 +55,8 @@ export class PatientListPage implements OnInit {
       });
     });
   }
+
+  signupPatient() {
+    this.router.navigateByUrl('/signup-patient');
+  }
 }
