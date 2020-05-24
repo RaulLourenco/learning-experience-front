@@ -1,4 +1,6 @@
 export interface AuthResponse {
-    token: string,
-    tokenExpiresIn: number
+    id: string;
+    token: string;
+    tokenExpiresIn: number;
+    status: number;
 }

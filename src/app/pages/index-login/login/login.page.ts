@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular'
-import { FormBuilder, Validators, FormGroup } from '@angular/forms'
+import { AlertController, LoadingController } from '@ionic/angular';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 import { User } from '../../../auth/user';
@@ -32,9 +32,10 @@ export class LoginPage implements OnInit {
     };
     this.presentLoading();
     this.authService.login(user).subscribe((res) => {
+      console.log(res);
       console.log('token: ', res.token);
       console.log('expire in: ', res.tokenExpiresIn);
-      if (res) {
+      if (res.status === 200) {
         this.dismissLoading();
         this.router.navigateByUrl('home/tabs/tab1');
       } else {
