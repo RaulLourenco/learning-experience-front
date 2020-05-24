@@ -20,16 +20,16 @@
   </ion-row>
 
 
-  <ion-row class="menu-options">
+  <ion-row class="menu-options" (click)="moveToSignupPatient()"> 
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="people-outline"></ion-icon>
       </ion-col>
 
       <ion-col>
-        <ion-label class="item-title">Adicionar Paciente</ion-label>
+        <ion-label class="item-title">Cadastrar Paciente</ion-label>
         <br>
-        <ion-label class="item-subtitle">Cadastrar paciente</ion-label>
+        <ion-label class="item-subtitle">Adicione um paciente</ion-label>
       </ion-col>
 
       <ion-col size="2">
@@ -38,16 +38,16 @@
     </ion-item>
   </ion-row>
 
-  <ion-row class="menu-options-items">
+  <ion-row class="menu-options-items" (click)="moveToSignupTeacher()">
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="person-add-outline"></ion-icon>
       </ion-col>
 
       <ion-col>
-        <ion-label class="item-title">Adicionar Orientador</ion-label>
+        <ion-label class="item-title">Cadastrar Orientador</ion-label>
         <br>
-        <ion-label class="item-subtitle">Cadastrar um orientador</ion-label>
+        <ion-label class="item-subtitle">Adicione um orientador</ion-label>
       </ion-col>
 
       <ion-col size="2">
@@ -91,24 +91,6 @@
       </ion-col>
     </ion-item>
   </ion-row>
-
-  <!-- <ion-row class="menu-options-items">
-    <ion-item class="menu-items">
-      <ion-col class="icon-items-col" size="1">
-        <ion-icon class="icon-items" name="podium-outline"></ion-icon>
-      </ion-col>
-
-      <ion-col>
-        <ion-label class="item-title">Relatório de Desempenho</ion-label>
-        <br>
-        <ion-label class="item-subtitle">Visualizar relatórios</ion-label>
-      </ion-col>
-
-      <ion-col size="2">
-        <ion-icon class="icon-forward-items" name="chevron-forward-outline"></ion-icon>
-      </ion-col>
-    </ion-item>
-  </ion-row> -->
 
   <ion-row class="menu-options-items">
     <ion-item class="menu-items">

@@ -71,6 +71,7 @@ ion-button{
 }
 .label-pwd{
     color: $black-color;
+    margin-top: -5px;
 }
 .label-forgot-pwd-col{
     padding: 16px 18px;
@@ -78,4 +79,8 @@ ion-button{
 
 .label-forgot-pwd{
     text-align: center;
+}
+
+ion-checkbox{
+    --background-checked: #1C5A83;
 }

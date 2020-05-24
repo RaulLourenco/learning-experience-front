@@ -76,4 +76,7 @@ export class TeacherListPage implements OnInit {
   // changeTemplate(type) {
 
   // }
+  signupTeacher() {
+    this.router.navigateByUrl('/signup-teacher');
+  }
 }
