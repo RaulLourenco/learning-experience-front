@@ -20,7 +20,7 @@
   </ion-row>
 
 
-  <ion-row class="menu-options">
+  <ion-row class="menu-options" (click)="moveToSignupPatient()"> 
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="people-outline"></ion-icon>
@@ -38,7 +38,7 @@
     </ion-item>
   </ion-row>
 
-  <ion-row class="menu-options-items">
+  <ion-row class="menu-options-items" (click)="moveToSignupTeacher()">
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="person-add-outline"></ion-icon>
@@ -91,24 +91,6 @@
       </ion-col>
     </ion-item>
   </ion-row>
-
-  <!-- <ion-row class="menu-options-items">
-    <ion-item class="menu-items">
-      <ion-col class="icon-items-col" size="1">
-        <ion-icon class="icon-items" name="podium-outline"></ion-icon>
-      </ion-col>
-
-      <ion-col>
-        <ion-label class="item-title">Relatório de Desempenho</ion-label>
-        <br>
-        <ion-label class="item-subtitle">Visualizar relatórios</ion-label>
-      </ion-col>
-
-      <ion-col size="2">
-        <ion-icon class="icon-forward-items" name="chevron-forward-outline"></ion-icon>
-      </ion-col>
-    </ion-item>
-  </ion-row> -->
 
   <ion-row class="menu-options-items">
     <ion-item class="menu-items">

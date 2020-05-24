@@ -1,0 +1,77 @@
+<ion-content>
+
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" (click)="closePatientSignup()" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col>
+      <p class="patient-list-title">Cadastro de Pacientes</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12">
+      <ion-avatar class="avatar-icon">
+        <img src="../../../../../assets/images/avatar.png" />
+      </ion-avatar>
+    </ion-col>
+  </ion-row>
+
+  <ion-item class="item-text-form">
+    <ion-label class="label-form" position="floating">
+      Nome do aluno(a)
+    </ion-label>
+    <ion-input type="text">
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="item-text-form">
+    <ion-label class="label-form" position="floating">
+      Idade
+    </ion-label>
+    <ion-input type="text">
+    </ion-input>
+  </ion-item>
+
+  <p class="p-label-form">
+    Grau de autismo
+  </p>
+
+  <ion-list>
+    <ion-row *ngFor="let entry of diseaseLevel">
+      <ion-checkbox [(ngModel)]="entry.isChecked" class="checkbox-disease"></ion-checkbox>
+      <ion-label class="checkbox-lbl">{{entry.val}}</ion-label>
+    </ion-row>
+  </ion-list>
+
+  <p class="p-label-form">
+    Problema com Cores
+  </p>
+
+  <ion-list>
+    <ion-row>
+      <ion-col size="3" class="colorIssue-col">
+        <ion-checkbox class="colorIssue-checkbox"></ion-checkbox>
+        <div class="colorIssue-lbl"><span>Sim</span></div>
+      </ion-col>
+      <ion-col size="3" class="colorIssue-col">
+        <ion-checkbox class="colorIssue-checkbox" checked="true"></ion-checkbox>
+        <div class="colorIssue-lbl"><span>Não</span></div>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-row>
+    <ion-col class="textarea-col">
+      <ion-item>
+        <ion-label class="textarea-lbl" position="stacked">Summary</ion-label>
+        <ion-textarea clearOnEdit="true" placeholder="Digite alguma observação..."></ion-textarea>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-button class="signup-button" expand="block" fill="solid">Cadastrar</ion-button>
+
+</ion-content>

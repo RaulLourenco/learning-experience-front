@@ -18,7 +18,8 @@ const routes: Routes = [
   {
     path: 'exercise-page',
     loadChildren: () => import('./pages/exercise-page/exercise-page.module').then( m => m.ExercisePagePageModule)
-  },  {
+  },
+  {
     path: 'onboarding',
     loadChildren: () => import('./pages/onboarding/onboarding.module').then( m => m.OnboardingPageModule)
   },
@@ -30,6 +31,14 @@ const routes: Routes = [
     path: 'patient-list',
     loadChildren: () => import('./pages/list/patient-list/patient-list.module').then( m => m.PatientListPageModule)
   },
+  {
+    path: 'signup-patient',
+    loadChildren: () => import('./pages/signup/signup-patient/signup-patient.module').then( m => m.SignupPatientPageModule)
+  },  {
+    path: 'signup-teacher',
+    loadChildren: () => import('./pages/signup/signup-teacher/signup-teacher.module').then( m => m.SignupTeacherPageModule)
+  },
+
 
 ];
 @NgModule({

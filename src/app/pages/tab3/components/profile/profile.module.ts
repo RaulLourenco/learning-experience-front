@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProfileComponent } from './profile.component';
 import { MaterialModule } from '../../../../material.module';
 import { ListModule } from '../../../list/list.module';
+import { SignupTeacherAndPatientModule } from 'src/app/pages/signup/signup.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ListModule } from '../../../list/list.module';
     FormsModule,
     IonicModule,
     MaterialModule,
-    ListModule
+    ListModule,
+    SignupTeacherAndPatientModule
   ],
   declarations: [
     ProfileComponent

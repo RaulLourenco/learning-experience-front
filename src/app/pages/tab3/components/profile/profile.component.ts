@@ -15,8 +15,16 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('/teacher-list');
   }
 
-  moveToPatientList(){
+  moveToPatientList() {
     this.router.navigateByUrl('/patient-list');
+  }
+
+  moveToSignupPatient() {
+    this.router.navigateByUrl('/signup-patient');
+  }
+
+  moveToSignupTeacher() {
+    this.router.navigateByUrl('/signup-teacher');
   }
 
 }
