@@ -29,7 +29,7 @@ export class ExerciseFourPage implements OnInit {
   public verifyAnswer = (i: number) => {
     if (this.levelFour[i].answer === true) {
       alert("Parabéns! Você acertou todas as respostas.")
-      // this.zone.run(() => this.router.navigate(['/exercise-three']))
+      this.zone.run(() => this.router.navigate(['/home/exercises-levels']))
     } else {
       alert("Ops! Tente novamente!");
   }

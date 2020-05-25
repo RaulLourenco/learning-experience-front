@@ -13,7 +13,7 @@ export class ObservationPage implements OnInit {
   }
 
   public toHome(){
-    this.router.navigateByUrl('/home/tabs/tab1');
+    this.router.navigateByUrl('/home/exercises-levels');
   }
 
   public backToFirstSteps(){
