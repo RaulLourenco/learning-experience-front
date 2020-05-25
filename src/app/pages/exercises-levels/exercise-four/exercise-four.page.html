@@ -1,0 +1,38 @@
+<ion-content>
+
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" (click)="closeExercise()" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col class="progress-bar-col">
+      <div class="progress-bar"></div>
+    </ion-col>
+  </ion-row>
+
+  <ion-card class="example-card">
+    <img class="example-image" src="../../../../../assets/images/flower.jpg" />
+    <ion-card-content class="example-text">
+      Carro
+    </ion-card-content>
+  </ion-card>
+
+  <p class="exercise-label">Qual destas imagens é a correta?</p>
+
+  <ion-row>
+    <ion-col size="6" *ngFor="let level of levelTwo; let i = index">
+      <ion-card class="comparison-card">
+        <button class="button-answer" (click)="verifyAnswer(index)">
+        <img class="comparison-image" src={{level.image}} />
+        <ion-card-content class="comparison-text">
+          {{level.object}}
+        </ion-card-content>
+      </button>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-button class="button-next" expand="block" fill="solid">Verificar</ion-button> -->
+
+</ion-content>

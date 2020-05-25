@@ -6,40 +6,13 @@ import { Observable, of as observableOf } from 'rxjs';
 export class ExercisesMock {
 
   private levelOne: Exercises[] = [
-    { object: 'Flores', answer: false },
-    { object: 'Maçã', answer: false },
-    { object: 'Carro', answer: true },
-    { object: 'Cavalo', answer: false },
-  ];
-  private levelTwo: Exercises[] = [
-    { object: 'Flores', answer: true },
-    { object: 'Maçã', answer: false },
-    { object: 'Carro', answer: false },
-    { object: 'Cavalo', answer: false },
-  ];
-  private levelThree: Exercises[] = [
-    { object: 'Flores', answer: false },
-    { object: 'Maçã', answer: false },
-    { object: 'Carro', answer: false },
-    { object: 'Cavalo', answer: true },
-  ];
-  private levelFour: Exercises[] = [
-    { object: 'Flores', answer: false },
-    { object: 'Maçã', answer: true },
-    { object: 'Carro', answer: false },
-    { object: 'Cavalo', answer: false },
+    { object: 'Flor', image: '../../../../../assets/images/flower.jpg', answer: false },
+    { object: 'Maçã', image: '../../../../../assets/images/apples.jpg', answer: false },
+    { object: 'Carro', image: '../../../../../assets/images/car.jpg', answer: true },
+    { object: 'Cavalo', image: '../../../../../assets/images/horse.jpg', answer: false },
   ];
 
   getLevelOne(): Observable<Exercises[]> {
     return observableOf(this.levelOne);
-  }
-  getLevelTwo(): Observable<Exercises[]> {
-    return observableOf(this.levelTwo);
-  }
-  getLevelThree(): Observable<Exercises[]> {
-    return observableOf(this.levelThree);
-  }
-  getLevelFour(): Observable<Exercises[]> {
-    return observableOf(this.levelFour);
   }
 }

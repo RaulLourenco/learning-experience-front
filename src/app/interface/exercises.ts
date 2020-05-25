@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 
 export interface Exercises {
   object: string,
+  image: string,
   answer: boolean,
 }
 

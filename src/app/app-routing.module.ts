@@ -13,11 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'exercise-page',
-    loadChildren: () => import('./pages/exercise-page/exercise-page.module').then( m => m.ExercisePagePageModule)
+    loadChildren: () => import('./pages/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'onboarding',
@@ -39,6 +35,23 @@ const routes: Routes = [
     path: 'signup-teacher',
     loadChildren: () => import('./pages/signup/signup-teacher/signup-teacher.module').then( m => m.SignupTeacherPageModule)
   },
+  {
+    path: 'exercise-one',
+    loadChildren: () => import('./pages/exercises-levels/exercise-one/exercise-one.module').then( m => m.ExerciseOnePageModule)
+  },
+  {
+    path: 'exercise-two',
+    loadChildren: () => import('./pages/exercises-levels/exercise-two/exercise-two.module').then( m => m.ExerciseTwoPageModule)
+  },
+  {
+    path: 'exercise-three',
+    loadChildren: () => import('./pages/exercises-levels/exercise-three/exercise-three.module').then( m => m.ExerciseThreePageModule)
+  },
+  {
+    path: 'exercise-four',
+    loadChildren: () => import('./pages/exercises-levels/exercise-four/exercise-four.module').then( m => m.ExerciseFourPageModule)
+  }
+
 
 
 ];

@@ -19,6 +19,6 @@ export class SignupPatientPage implements OnInit {
   }
 
   closePatientSignup() {
-    this.router.navigateByUrl('home/tab3');
+    this.router.navigateByUrl('home/profile');
   }
 }

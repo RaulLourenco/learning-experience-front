@@ -1,0 +1,103 @@
+$white-color: #ffffff;
+$black-color: #000000;
+$main-color: #1c5a83;
+$green-color: #228b22;
+
+.header-page {
+    padding: 16px 0;
+}
+
+.icon-close {
+    padding-left: 10px;
+    font-size: 30px;
+}
+
+.button-close {
+    background-color: $white-color;
+}
+
+.progress-bar-col {
+    padding-top: 12px;
+    padding-right: 16px;
+}
+
+.progress-bar {
+    --progress: 20;
+    height: 20px;
+    padding: 5px;
+    background-color: $white-color;
+    display: flex;
+    border-radius: 4px;
+}
+
+.progress-bar::before {
+    content: "";
+    width: calc(var(--progress) * 1%);
+    background-color: $main-color;
+}
+
+.example-card {
+    border-radius: 6px;
+    padding: 8px;
+    margin: 24px 50px;
+}
+
+.example-image {
+    height: 90px;
+    display: block;
+    margin: 0 auto;
+}
+
+.example-text {
+    font-size: 24px;
+    color: $black-color;
+    text-align: center;
+    padding: 0;
+}
+
+.exercise-label {
+    padding: 20px 0 10px 16px;
+    font-size: 20px;
+    color: $black-color;
+}
+
+.comparison-card {
+    border-radius: 6px;
+}
+
+.comparison-image {
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 16px;
+}
+
+.comparison-text {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: $black-color;
+    text-align: center;
+}
+
+.button-next {
+    padding: 0 16px;
+    background-color: $white-color;
+    color: $white-color;
+    position: fixed;
+    bottom: 16px;
+    width: 100%;
+}
+
+ion-button {
+    --background: #1c5a83;
+}
+
+.button-answer {
+    background: none;
+    width: 100%;
+    border: none;
+    &:active {
+        border-style: outset;
+    }
+}
