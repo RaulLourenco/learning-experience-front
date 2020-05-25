@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ExercisePagePageRoutingModule } from './exercise-page-routing.module';
+import { ExerciseOnePageRoutingModule } from './exercise-one-routing.module';
 
-import { ExercisePagePage } from './exercise-page.page';
+import { ExerciseOnePage } from './exercise-one.page';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -15,9 +15,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ExercisePagePageRoutingModule,
+    ExerciseOnePageRoutingModule,
     SharedModule
   ],
-  declarations: [ExercisePagePage]
+  declarations: [ExerciseOnePage]
 })
 export class ExercisePagePageModule {}

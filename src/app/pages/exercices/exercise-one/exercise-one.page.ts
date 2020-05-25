@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-exercise-page',
-  templateUrl: './exercise-page.page.html',
-  styleUrls: ['./exercise-page.page.scss'],
+  selector: 'app-exercise-one',
+  templateUrl: './exercise-one.page.html',
+  styleUrls: ['./exercise-one.page.scss'],
 })
-export class ExercisePagePage implements OnInit {
+export class ExerciseOnePage implements OnInit {
 
 
 

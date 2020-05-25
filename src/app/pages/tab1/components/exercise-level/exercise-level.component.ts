@@ -12,7 +12,7 @@ export class ExerciseLevelComponent implements OnInit {
   ngOnInit() {}
 
   public toExercisePage(){
-    this.router.navigateByUrl('/exercise-page');
+    this.router.navigateByUrl('/exercise-one');
   }
 
 }
