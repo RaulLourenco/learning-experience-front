@@ -21,13 +21,13 @@ export class ExerciseTwoPage implements OnInit {
 
   public levelTwo: Exercises[] = [
     { object: 'Flor', image: '../../../../../assets/images/flower.jpg', answer: true },
-    { object: 'Maçã', image: '../../../../../assets/images/apples.jpg', answer: false },
+    { object: 'Maçãs', image: '../../../../../assets/images/apples.jpg', answer: false },
     { object: 'Carro', image: '../../../../../assets/images/car.jpg', answer: false },
     { object: 'Cavalo', image: '../../../../../assets/images/horse.jpg', answer: false },
   ];
 
-  public verifyAnswer = (index: number) => {
-    if (this.levelTwo[index].answer === true) {
+  public verifyAnswer = (i: number) => {
+    if (this.levelTwo[i].answer === true) {
       this.zone.run(() => this.router.navigate(['/exercise-three']))
     } else {
       alert("Ops! Tente novamente!");

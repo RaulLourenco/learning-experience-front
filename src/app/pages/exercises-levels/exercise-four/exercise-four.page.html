@@ -12,18 +12,18 @@
   </ion-row>
 
   <ion-card class="example-card">
-    <img class="example-image" src="../../../../../assets/images/flower.jpg" />
+    <img class="example-image" src="../../../../../assets/images/horse.jpg" />
     <ion-card-content class="example-text">
-      Carro
+      Cavalo
     </ion-card-content>
   </ion-card>
 
   <p class="exercise-label">Qual destas imagens é a correta?</p>
 
   <ion-row>
-    <ion-col size="6" *ngFor="let level of levelTwo; let i = index">
+    <ion-col size="6" *ngFor="let level of levelFour; let i = index">
       <ion-card class="comparison-card">
-        <button class="button-answer" (click)="verifyAnswer(index)">
+        <button class="button-answer" (click)="verifyAnswer(i)">
         <img class="comparison-image" src={{level.image}} />
         <ion-card-content class="comparison-text">
           {{level.object}}
