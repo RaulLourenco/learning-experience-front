@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, from } from 'rxjs';
 
 import { Storage } from '@ionic/storage';
 import { User } from './user';
 import { AuthResponse } from './auth-response';
 import { urls } from '..//util/urlConfig';
+import { HTTP, HTTPResponse } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
   AUTH_SERVER_ADDRESS = urls.URL_API;
   authSubject = new BehaviorSubject(false);
 
-  constructor(private httpClient: HttpClient, private storage: Storage) { }
+  constructor(private httpClient: HttpClient, private storage: Storage, private _http: HTTP) { }
 
   register(user: User): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/Auth`, user, {
@@ -35,6 +36,22 @@ export class AuthService {
   }
 
   login(user: User): Observable<AuthResponse> {
+    // this._http.setDataSerializer('json');
+    // const observable = from(this._http.post(`${this.AUTH_SERVER_ADDRESS}/Auth`, user, {
+    //   'Content-Type': 'application/json'
+    // }))
+    //   .pipe(
+    //     tap(async (res) => {
+    //       if (res) {
+    //         const response = JSON.parse(res.data);
+    //         console.log('response: ', response);
+    //         await this.storage.set('ACCESS_TOKEN', response.token);
+    //         await this.storage.set('EXPIRE_IN', response.tokenExpiresIn);
+    //         await this.storage.set('USER_ID', response.id);
+    //         this.authSubject.next(true);
+    //       }
+    //     }));
+    // return observable;
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/Auth`, user).pipe(
       tap(async (res: AuthResponse) => {
         if (res) {

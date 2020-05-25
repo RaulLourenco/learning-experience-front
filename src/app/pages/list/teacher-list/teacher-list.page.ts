@@ -28,7 +28,7 @@ export class TeacherListPage implements OnInit {
   }
 
   closeTeacherList() {
-    this.router.navigateByUrl('home/tabs/tab3');
+    this.router.navigateByUrl('home/tab3');
   }
 
   updateTeacher() {

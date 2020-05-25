@@ -1,3 +1,4 @@
+$black-color: #000000;
 
 .user-profile{
     height: 100px;
@@ -20,11 +21,13 @@ ion-avatar{
 .name{
     font-weight: bold;
     font-size: 16px;
+    color: $black-color;
 }
 
 .edit-profile{
     margin-top: 30px;
     font-size: 14px;
+    color: $black-color;
 }
 
 .icon-forward{
@@ -44,11 +47,13 @@ ion-avatar{
     font-weight: bold;
     font-size: 16px;
     margin-bottom: -16px;
+    color: $black-color;
 }
 
 .item-subtitle{
     font-weight: normal;
     font-size: 14px;
+    color: $black-color;
 }
 
 .icon-items-col{
@@ -58,6 +63,7 @@ ion-avatar{
 .icon-items{
     font-size: 20px;
     padding: 0;
+    color: $black-color;
 }
 
 .menu-items{
@@ -67,6 +73,7 @@ ion-avatar{
 .icon-forward-items{
     font-size: 20px;
     margin: 18px 0 16px 30px;
+    color: $black-color;
 }
 
 .menu-settings-items{
@@ -77,15 +84,18 @@ ion-avatar{
     font-weight: bold;
     opacity: 0.5;
     font-size: 16px;
+    color: $black-color;
 }
 
 .icon-settings-items{
     opacity: 0.5;
+    color: $black-color;
 }
 
 .icon-settings-forward{
     font-size: 20px;
     opacity: 0.5;
+    color: $black-color;
 }
 
 .icon-settings-col{

@@ -13,6 +13,6 @@ export class SignupTeacherPage implements OnInit {
   }
 
   closeTeacherSignup() {
-    this.router.navigateByUrl('home/tabs/tab3');
+    this.router.navigateByUrl('home/tab3');
   }
 }

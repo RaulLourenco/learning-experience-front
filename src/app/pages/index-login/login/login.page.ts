@@ -32,12 +32,9 @@ export class LoginPage implements OnInit {
     };
     this.presentLoading();
     this.authService.login(user).subscribe((res) => {
-      console.log(res);
-      console.log('token: ', res.token);
-      console.log('expire in: ', res.tokenExpiresIn);
       if (res.status === 200) {
         this.dismissLoading();
-        this.router.navigateByUrl('home/tabs/tab1');
+        this.router.navigateByUrl('home/tab1');
       } else {
         this.dismissLoading();
         this.presentAlert('Senha incorreta!');
