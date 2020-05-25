@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Exercises } from 'src/app/interface/exercises';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-exercise-four',
   templateUrl: './exercise-four.page.html',
@@ -12,7 +13,8 @@ export class ExerciseFourPage implements OnInit {
 
   constructor(
     private router: Router,
-    private zone: NgZone
+    private zone: NgZone,
+    private alertController: AlertController,
   ) {
   }
 
@@ -28,15 +30,22 @@ export class ExerciseFourPage implements OnInit {
 
   public verifyAnswer = (i: number) => {
     if (this.levelFour[i].answer === true) {
-      alert("Parabéns! Você acertou todas as respostas.")
+      this.presentAlert("Parabéns! Você acertou todas as respostas.")
       this.zone.run(() => this.router.navigate(['/home/exercises-levels']))
     } else {
-      alert("Ops! Tente novamente!");
+      this.presentAlert("Ops! Tente novamente!");
   }
 }
 
   public closeExercise(){
     this.zone.run(() => this.router.navigate(['/home/exercises-levels']));
+  }
+
+  async presentAlert(message: string) {
+    const alertPresent = await this.alertController.create({
+      message
+    });
+    return await alertPresent.present();
   }
 
 }
