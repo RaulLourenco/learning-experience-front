@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
     this.authService.login(user).subscribe((res) => {
       if (res.status === 200) {
         this.dismissLoading();
-        this.router.navigateByUrl('home/tabs/tab1');
+        this.router.navigateByUrl('home/tab1');
       } else {
         this.dismissLoading();
         this.presentAlert('Senha incorreta!');

@@ -1,3 +1,5 @@
+$black-color: #000000;
+
 .home-greetings-col{
     padding: 24px 16px 0 16px;
     margin-bottom: 8px;
@@ -6,6 +8,7 @@
 .home-greetings{
     font-weight: bold;
     font-size: 24px;
+    color: $black-color;
 }
 
 .home-intro-col{
@@ -15,6 +18,7 @@
 
 .home-intro{
     font-size: 18px;
+    color: $black-color;
 }
 
 .exercise-card{
@@ -24,4 +28,12 @@
 
 .exercise-card-item{
     width: 90%;
+}
+
+.icon-book{
+    color: $black-color;
+}
+
+.title-label{
+    color: $black-color;
 }

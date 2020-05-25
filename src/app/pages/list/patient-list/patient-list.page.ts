@@ -27,7 +27,7 @@ export class PatientListPage implements OnInit {
   }
 
   closePatientList() {
-    this.router.navigateByUrl('home/tabs/tab3');
+    this.router.navigateByUrl('home/tab3');
   }
 
   updatePatient() {
