@@ -1,5 +1,5 @@
 export enum DiseaseLevel {
-    Baixo = 0,
-    Médio = 1,
+    Leve = 0,
+    Moderado = 1,
     Alto = 2
 }

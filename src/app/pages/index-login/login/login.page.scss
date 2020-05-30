@@ -39,6 +39,9 @@ $white-color: #ffffff;
     --border-color: #999999;
     padding-right: 16px;
     margin-bottom: 24px;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .label-form{
@@ -59,14 +62,7 @@ ion-button{
     margin-left: 16px;
 }
 
-.checkbox:checked{
-    // border: 1px solid black;
-    --background: red;
-    // border-radius: 20px;
-}
-
 .label-pwd-col{
-    padding-top: 10px;
     margin-left: 16px;
 }
 .label-pwd{
@@ -83,7 +79,9 @@ ion-button{
 
 ion-checkbox{
     --background-checked: #1C5A83;
+    border: 1px solid #000000;
 }
+
 
 ion-input{
     color: black;

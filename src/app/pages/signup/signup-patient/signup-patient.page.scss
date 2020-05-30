@@ -6,7 +6,7 @@ $card-content-color: #0079BE;
 $grey-color:#999999;
 
 .header-page{
-    padding: 16px 0;
+    padding-top: 16px;
 }
 
 .icon-close{
@@ -18,11 +18,8 @@ $grey-color:#999999;
     background-color: $white-color;
 }
 
-.patient-list-title{
-    padding-top: 6px;
-    padding-left: 16px;
-    font-size: 22px;
-    font-weight: bold;
+.avatar-col{
+    margin-top: -20px;
 }
 
 .avatar-icon{
@@ -35,6 +32,10 @@ $grey-color:#999999;
 .item-text-form{
     --border-color: #999999;
     padding-right: 16px;
+    padding-left: 16px;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .label-form{
@@ -44,11 +45,11 @@ $grey-color:#999999;
 .p-label-form{
     color:$grey-color;
     padding-top: 24px;
-    padding-left: 16px;
+    padding-left: 32px;
 }
 
 .checkbox-disease{
-    margin: 12px 6px 0px 16px;
+    margin: 12px 6px 0px 32px;
 }
 
 .checkbox-lbl{
@@ -57,20 +58,31 @@ $grey-color:#999999;
     color:$grey-color;
 }
 
-.colorIssue-checkbox{
-    margin: 10px 16px;
-}
-
 .colorIssue-lbl{
-    margin-top: -37px;
-    margin-left: 50px;
     color: $grey-color;
 }
 
+.colorIssue-checkbox{
+    margin-right: 16px;
+}
+
+.colorIssue-item{
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .textarea-col{
-    padding-top: 10px;
     padding-right: 16px;
     padding-left: 0 !important;
+}
+
+.textarea-item{
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .textarea-lbl{
@@ -79,10 +91,9 @@ $grey-color:#999999;
 
 .signup-button{
     padding: 0 16px;
+    margin-top: 16px;
     background-color: $white-color;
     color: $white-color;
-    position: fixed;
-    bottom: 16px;
     width: 100%;
 }
 
@@ -92,4 +103,13 @@ ion-button{
 
 ion-checkbox{
     --background-checked: #1C5A83;
+    border: 1px solid #000000;
+}
+
+ion-input{
+    color: $black-color;
+}
+
+ion-textarea{
+    color: $black-color;
 }
