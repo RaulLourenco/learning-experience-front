@@ -16,11 +16,19 @@
     </ion-col>
   </ion-row>
 
+  <form class="form" 
+        [formGroup]="advisorForm" 
+        (ngSubmit)="onSignup(advisorForm.value.name, 
+                            advisorForm.value.profession,
+                            advisorForm.value.education,
+                            advisorForm.value.specialization,
+                            advisorForm.value.comment)">
+
   <ion-item class="item-text-form">
     <ion-label class="label-form" position="floating">
       Nome do Orientador(a)
     </ion-label>
-    <ion-input type="text">
+    <ion-input formControlName="name" type="text">
     </ion-input>
   </ion-item>
 
@@ -28,7 +36,7 @@
     <ion-label class="label-form" position="floating">
       Profissão
     </ion-label>
-    <ion-input type="text">
+    <ion-input formControlName="profession" type="text">
     </ion-input>
   </ion-item>
 
@@ -36,7 +44,7 @@
     <ion-label class="label-form" position="floating">
       Escolaridade
     </ion-label>
-    <ion-input type="text">
+    <ion-input formControlName="education" type="text">
     </ion-input>
   </ion-item>
 
@@ -44,20 +52,22 @@
     <ion-label class="label-form" position="floating">
       Grau de especialização
     </ion-label>
-    <ion-input type="text">
+    <ion-input formControlName="specialization" type="text">
     </ion-input>
   </ion-item>
 
 
   <ion-row>
     <ion-col class="textarea-col">
-      <ion-item>
+      <ion-item class="textarea-item">
         <ion-label class="textarea-lbl" position="stacked">Comentário</ion-label>
-        <ion-textarea clearOnEdit="true" placeholder="Digite um comentário..."></ion-textarea>
+        <ion-textarea formControlName="comment" clearOnEdit="true" placeholder="Digite um comentário..."></ion-textarea>
       </ion-item>
     </ion-col>
   </ion-row>
 
-  <ion-button class="signup-button" expand="block" fill="solid">Cadastrar</ion-button>
+  <ion-button class="signup-button" type="submit" expand="block" fill="solid">Cadastrar</ion-button>
+
+</form>
 
 </ion-content>

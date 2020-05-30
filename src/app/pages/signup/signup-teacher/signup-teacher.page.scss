@@ -35,6 +35,10 @@ $grey-color:#999999;
 .item-text-form{
     --border-color: #999999;
     padding-right: 16px;
+    padding-left: 16px;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .label-form{
@@ -49,8 +53,15 @@ $grey-color:#999999;
 
 .textarea-col{
     padding-top: 40px;
-    padding-right: 16px;
     padding-left: 0 !important;
+}
+
+.textarea-item{
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .textarea-lbl{
@@ -68,4 +79,12 @@ $grey-color:#999999;
 
 ion-button{
     --background:#1C5A83;
+}
+
+ion-input{
+    color: $black-color;
+}
+
+ion-textarea{
+    color: $black-color;
 }

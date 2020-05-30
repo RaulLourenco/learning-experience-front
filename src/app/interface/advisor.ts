@@ -3,4 +3,5 @@ export interface Advisor {
     profession: string;
     education: string;
     specialization: string;
+    comment: string;
 }

@@ -17,7 +17,8 @@ export class TeacherListPage implements OnInit {
     name: '',
     profession: '',
     education: '',
-    specialization: ''
+    specialization: '',
+    comment: ''
   };
   public addHtml;
 
@@ -34,15 +35,6 @@ export class TeacherListPage implements OnInit {
   updateTeacher() {
     return console.log('ATUALIZANDO O ORIENTADOR');
   }
-
-  // async getTokenResolved() {
-  //   await this.authService.getToken().then(res => {
-  //     this.token = res;
-  //   }).catch(e => {
-  //     console.log(e);
-  //   });
-  //   return this.token;
-  // }
 
   public async getAllAdvisor() {
     let token;
@@ -67,15 +59,6 @@ export class TeacherListPage implements OnInit {
     });
   }
 
-  // arrayVerify(array) {
-  //   if (array.length === 0) {
-  //     console.log('ESTE CARA ESTA RETORNANDO NULL');
-  //   }
-  // }
-
-  // changeTemplate(type) {
-
-  // }
   signupTeacher() {
     this.router.navigateByUrl('/signup-teacher');
   }

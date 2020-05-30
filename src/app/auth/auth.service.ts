@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private storage: Storage, private _http: HTTP) { }
 
-  register(user: User): Observable<AuthResponse> {
+  register(user): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/Auth`, user, {
       headers: {
         'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export class AuthService {
     );
   }
 
-  login(user: User): Observable<AuthResponse> {
+  login(user): Observable<AuthResponse> {
     // this._http.setDataSerializer('json');
     // const observable = from(this._http.post(`${this.AUTH_SERVER_ADDRESS}/Auth`, user, {
     //   'Content-Type': 'application/json'
