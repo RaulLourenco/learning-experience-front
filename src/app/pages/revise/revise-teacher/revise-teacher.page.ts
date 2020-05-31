@@ -38,17 +38,25 @@ export class ReviseTeacherPage implements OnInit {
     this.getAdvisorById();
   }
 
-  private async onChange(name, profession, education, specialization, comment) {
+
+  private async onChange( name, profession, education, specialization, comment) {
     this.presentLoading();
+    await this.route.params.subscribe(params => {
+      this.advisorId = params.id;
+    });
+    const id = this.advisorId;
     const advisor: Advisor = {
+      id,
       name,
       profession,
       education,
       specialization,
       comment
     };
+    
     this.advisorForm.reset();
     let token;
+
     await this.authService.getToken().then(res => {
       token = res;
     });
@@ -61,7 +69,7 @@ export class ReviseTeacherPage implements OnInit {
       if (res.statusCode == 200) {
         this.dismissLoading();
         this.presentAlert('Atualizado com sucesso!');
-        this.router.navigate(['/teacher-list']);
+        this.router.navigateByUrl('/home/profile');
       } else {
         this.dismissLoading();
         this.presentAlert('Erro ao atualizar. Tente novamente!');
@@ -114,7 +122,7 @@ export class ReviseTeacherPage implements OnInit {
   }
 
   closeReviseTeacher() {
-    this.router.navigate(['/teacher-list']);
+    this.router.navigateByUrl('/teacher-list');
   }
 
   initializeForm() {

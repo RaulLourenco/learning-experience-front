@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { urls } from '../../../util/urlConfig';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { SignupResponse } from 'src/app/interface/signup-response';
 import { Patient } from 'src/app/interface/patient';
 @Component({
@@ -27,8 +27,16 @@ export class RevisePatientPage implements OnInit {
     { title: 'Sim', value: true, isItemCheck: false}
   ];
 
+  public patientId: string;
   public diseaseLevelValue: number;
   public colorIssueValue: boolean;
+  public patient: Patient = {
+    name: '',
+    age: 0,
+    diseaseLevel: 0,
+    colorIssue: false,
+    observation: '',
+  };
 
 
   constructor(private router: Router,
@@ -41,6 +49,33 @@ export class RevisePatientPage implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.getPatientById();
+  }
+
+  private async getPatientById() {
+    let token;
+    await this.route.params.subscribe(params => {
+      this.patientId = params.id;
+    });
+    await this.authService.getToken().then(res => {
+      token = res;
+    });
+    await this.http.get(urls.URL_GETPATIENTBYID, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      },
+      params: new HttpParams().set('patientId', this.patientId)
+    }).subscribe((res: Patient) => {
+      console.log('reviseResponse: ', res);
+      this.patient.name = res.name;
+      this.patient.age = res.age;
+      this.patient.diseaseLevel = res.diseaseLevel;
+      this.patient.colorIssue = res.colorIssue;
+      this.patient.observation = res.observation;
+    });
+    console.log('this.patient', this.patient);
+    console.log('this.papatientId embaixo do get:', this.patient);
+    return this.patient;
   }
 
   async presentLoading() {

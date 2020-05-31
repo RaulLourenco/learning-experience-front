@@ -5,6 +5,7 @@ import { urls } from '../../../util/urlConfig';
 import { AuthService } from '../../../auth/auth.service';
 import { Advisor } from 'src/app/interface/advisor';
 import { AlertController, LoadingController } from '@ionic/angular';
+
 @Component({
   selector: 'app-teacher-list',
   templateUrl: './teacher-list.page.html',
@@ -38,6 +39,7 @@ export class TeacherListPage implements OnInit {
 
   updateTeacher(advisor) {
     this.router.navigate(['/revise-teacher', advisor.id]);
+
   }
 
   public async getAllAdvisor() {
