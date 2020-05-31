@@ -1,0 +1,115 @@
+$white-color: #ffffff;
+$black-color: #000000;
+$main-color: #1C5A83;
+$green-color: #228B22;
+$card-content-color: #0079BE;
+$grey-color:#999999;
+
+.header-page{
+    padding-top: 16px;
+}
+
+.icon-close{
+    padding-left: 10px;
+    font-size: 30px;
+}
+
+.button-close, .settings-button{
+    background-color: $white-color;
+}
+
+.avatar-col{
+    margin-top: -20px;
+}
+
+.avatar-icon{
+    display: block;
+    margin: 0 auto;
+    height: 150px;
+    width: 150px;
+}
+
+.item-text-form{
+    --border-color: #999999;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.label-form{
+    color:$grey-color;
+}
+
+.p-label-form{
+    color:$grey-color;
+    padding-top: 24px;
+    padding-left: 32px;
+}
+
+.checkbox-disease{
+    margin: 12px 6px 0px 32px;
+}
+
+.checkbox-lbl{
+    margin-left: 6px;
+    margin-top: 14px;
+    color:$grey-color;
+}
+
+.colorIssue-lbl{
+    color: $grey-color;
+}
+
+.colorIssue-checkbox{
+    margin-right: 16px;
+}
+
+.colorIssue-item{
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textarea-col{
+    padding-right: 16px;
+    padding-left: 0 !important;
+}
+
+.textarea-item{
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textarea-lbl{
+    color: $grey-color;
+}
+
+.signup-button{
+    padding: 0 16px;
+    margin-top: 16px;
+    background-color: $white-color;
+    color: $white-color;
+    width: 100%;
+}
+
+ion-button{
+    --background:#1C5A83;
+}
+
+ion-checkbox{
+    --background-checked: #1C5A83;
+    border: 1px solid #000000;
+}
+
+ion-input{
+    color: $black-color;
+}
+
+ion-textarea{
+    color: $black-color;
+}

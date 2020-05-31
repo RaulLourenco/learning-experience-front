@@ -32,8 +32,8 @@ export class PatientListPage implements OnInit {
     this.router.navigateByUrl('home/profile');
   }
 
-  updatePatient() {
-    return console.log('ATUALIZANDO O PACIENTE');
+  updatePatient(patient) {
+    this.router.navigate(['/revise-patient', patient.id]);
   }
 
   public async getAllPatient() {

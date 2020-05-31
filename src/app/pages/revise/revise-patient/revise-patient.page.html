@@ -1,0 +1,79 @@
+<ion-content>
+
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" (click)="closeRevisePatient()" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <form class="form" [formGroup]="patientForm" (ngSubmit)="onSignup(patientForm.value.name, 
+                              patientForm.value.age,
+                              patientForm.value.diseaseLevel,
+                              patientForm.value.colorIssue,
+                              patientForm.value.observation)">
+
+    <ion-row>
+      <ion-col size="12" class="avatar-col">
+        <ion-avatar class="avatar-icon">
+          <img src="../../../../../assets/images/avatar.png" />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Nome do paciente
+      </ion-label>
+      <ion-input formControlName="name" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Idade
+      </ion-label>
+      <ion-input formControlName="age" type="number">
+      </ion-input>
+    </ion-item>
+
+    <p class="p-label-form">
+      Grau de autismo
+    </p>
+
+    <ion-list>
+      <ion-row *ngFor="let entry of diseaseLevel">
+        <ion-checkbox formControlName="diseaseLevel" (click)="checkboxDiseaseLevel(entry)" [(ngModel)]="entry.isChecked" class="checkbox-disease">
+        </ion-checkbox>
+        <ion-label class="checkbox-lbl">{{entry.title}}</ion-label>
+      </ion-row>
+    </ion-list>
+
+    <p class="p-label-form">
+      Problema com Cores
+    </p>
+
+    <ion-list>
+    <ion-row *ngFor="let issue of colorIssue">
+      <ion-checkbox formControlName="colorIssue"  (click)="checkboxColorIssue(issue)" [(ngModel)]="issue.isItemCheck" class="checkbox-disease"></ion-checkbox>
+      <ion-label class="checkbox-lbl">{{issue.title}}</ion-label>
+    </ion-row>
+  </ion-list>
+
+
+    <ion-row>
+      <ion-col class="textarea-col">
+        <ion-item class="textarea-item">
+          <ion-label class="textarea-lbl" position="stacked">Observação</ion-label>
+          <ion-textarea formControlName="observation" clearOnEdit="true" placeholder="Digite alguma observação...">
+          </ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-button type="submit" class="signup-button" fill="solid">Cadastrar</ion-button>
+
+  </form>
+
+</ion-content>

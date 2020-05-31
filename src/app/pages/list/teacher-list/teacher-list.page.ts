@@ -20,7 +20,6 @@ export class TeacherListPage implements OnInit {
     specialization: '',
     comment: ''
   };
-  public addHtml;
 
   constructor(private router: Router, private http: HttpClient, private authService: AuthService, private elementRef: ElementRef) { }
 
@@ -32,8 +31,8 @@ export class TeacherListPage implements OnInit {
     this.router.navigateByUrl('home/profile');
   }
 
-  updateTeacher() {
-    return console.log('ATUALIZANDO O ORIENTADOR');
+  updateTeacher(advisor) {
+    this.router.navigate(['/revise-teacher', advisor.id]);
   }
 
   public async getAllAdvisor() {
@@ -46,10 +45,9 @@ export class TeacherListPage implements OnInit {
         Authorization: 'Bearer ' + token
       }
     }).subscribe(res => {
-      console.log(res);
+      console.log('este eh o res: ', res);
       this.advisorList.push(res);
       this.advisorList = this.advisorList[0];
-      // this.arrayVerify(this.advisorList);
       this.advisorList.forEach(element => {
         this.advisor.name = element.name;
         this.advisor.profession = element.profession;

@@ -36,6 +36,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/signup/signup-teacher/signup-teacher.module').then( m => m.SignupTeacherPageModule)
   },
   {
+    path: 'revise-teacher/:id',
+    loadChildren: () => import('./pages/revise/revise-teacher/revise-teacher.module').then( m => m.ReviseTeacherPageModule)
+  },
+  {
+    path: 'revise-patient/:id',
+    loadChildren: () => import('./pages/revise/revise-patient/revise-patient.module').then( m => m.RevisePatientPageModule)
+  },
+  {
     path: 'exercise-one',
     loadChildren: () => import('./pages/exercises-levels/exercise-one/exercise-one.module').then( m => m.ExerciseOnePageModule)
   },
