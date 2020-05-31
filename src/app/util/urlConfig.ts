@@ -6,5 +6,6 @@ export const urls = {
     URL_GETUSERBYID: `${urlAPI}/User/GetUserById`,
     URL_SIGNUPADVISOR: `${urlAPI}/Advisor/RegisterAdvisor`,
     URL_SIGNUPPATIENT: `${urlAPI}/Patient/RegisterPatient`,
-    URL_GETADVISORBYID: `${urlAPI}/Advisor/GetAdvisorById`
+    URL_GETADVISORBYID: `${urlAPI}/Advisor/GetAdvisorById`,
+    URL_UPDATEADVISOR: `${urlAPI}/Advisor/UpdateAdvisor`
 };

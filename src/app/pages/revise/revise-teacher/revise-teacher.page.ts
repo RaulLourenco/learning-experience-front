@@ -52,19 +52,19 @@ export class ReviseTeacherPage implements OnInit {
     await this.authService.getToken().then(res => {
       token = res;
     });
-    await this.http.post(urls.URL_SIGNUPADVISOR, advisor, {
+    await this.http.post(urls.URL_UPDATEADVISOR, advisor, {
       headers: {
         Authorization: 'Bearer ' + token
       }
     }).subscribe((res: ReviseResponse) => {
-      console.log('res: ', res);
+      console.log('res do atualizar: ', res);
       if (res.statusCode == 200) {
         this.dismissLoading();
-        this.presentAlert('Cadastrado com sucesso!');
+        this.presentAlert('Atualizado com sucesso!');
         this.router.navigate(['/teacher-list']);
       } else {
         this.dismissLoading();
-        this.presentAlert('Erro ao cadastrar. Tente novamente!');
+        this.presentAlert('Erro ao atualizar. Tente novamente!');
       }
     });
   }
