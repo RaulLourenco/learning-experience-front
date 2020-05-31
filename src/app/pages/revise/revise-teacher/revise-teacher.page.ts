@@ -113,7 +113,7 @@ export class ReviseTeacherPage implements OnInit {
     return await alertPresent.present();
   }
 
-  closeTeacherSignup() {
+  closeReviseTeacher() {
     this.router.navigate(['/teacher-list']);
   }
 
