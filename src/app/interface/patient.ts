@@ -3,6 +3,6 @@ export interface Patient {
     name: string;
     age: number;
     diseaseLevel: number;
-    colorIssue: boolean;
+    colorsIssue: boolean;
     observation: string;
 }

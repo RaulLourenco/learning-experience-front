@@ -11,7 +11,7 @@
   <form class="form" [formGroup]="patientForm" (ngSubmit)="onSignup(patientForm.value.name, 
                               patientForm.value.age,
                               patientForm.value.diseaseLevel,
-                              patientForm.value.colorIssue,
+                              patientForm.value.colorsIssue,
                               patientForm.value.observation)">
 
     <ion-row>
@@ -55,8 +55,8 @@
     </p>
 
     <ion-list>
-    <ion-row *ngFor="let issue of colorIssue">
-      <ion-checkbox formControlName="colorIssue"  (click)="checkboxColorIssue(issue)" [(ngModel)]="issue.isItemCheck" class="checkbox-disease"></ion-checkbox>
+    <ion-row *ngFor="let issue of colorsIssue">
+      <ion-checkbox formControlName="colorsIssue"  (click)="checkboxColorsIssue(issue)" [(ngModel)]="issue.isItemCheck" class="checkbox-disease"></ion-checkbox>
       <ion-label class="checkbox-lbl">{{issue.title}}</ion-label>
     </ion-row>
   </ion-list>

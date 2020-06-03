@@ -22,13 +22,13 @@ export class SignupPatientPage implements OnInit {
     { title: 'Alto', value: 2, isChecked: false }
   ];
 
-  public colorIssue = [
+  public colorsIssue = [
     { title: 'Não', value: false , isItemCheck: true},
     { title: 'Sim', value: true, isItemCheck: false}
   ];
 
   public diseaseLevelValue: number;
-  public colorIssueValue: boolean;
+  public colorsIssueValue: boolean;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -41,25 +41,26 @@ export class SignupPatientPage implements OnInit {
     this.initializeForm();
   }
 
-  checkboxColorIssue(event) {
-    this.colorIssueValue = event.value;
+  checkboxColorsIssue(event) {
+    debugger;
+    this.colorsIssueValue = event.value;
   }
 
   checkboxDiseaseLevel(event) {
     this.diseaseLevelValue = event.value;
   }
 
-  private async onSignup(name, age, diseaseLevel, colorIssue, observation) {
+  private async onSignup(name, age, diseaseLevel, colorsIssue, observation) {
     this.presentLoading();
 
     diseaseLevel = this.diseaseLevelValue;
-    colorIssue = this.colorIssueValue;
+    colorsIssue = this.colorsIssueValue;
 
     const patient: Patient = {
       name,
       age,
       diseaseLevel,
-      colorIssue,
+      colorsIssue,
       observation
     };
 
@@ -112,7 +113,7 @@ export class SignupPatientPage implements OnInit {
       name: ['', Validators.required],
       age: ['', Validators.required],
       diseaseLevel: ['', Validators.required],
-      colorIssue: ['', Validators.required],
+      colorsIssue: ['', Validators.required],
       observation: ['', Validators.required]
     });
   }

@@ -22,19 +22,20 @@ export class RevisePatientPage implements OnInit {
     { title: 'Alto', value: 2, isChecked: false }
   ];
 
-  public colorIssue = [
+  public colorsIssue = [
     { title: 'Não', value: false , isItemCheck: true},
     { title: 'Sim', value: true, isItemCheck: false}
   ];
 
+  public selectedRadioGroup: any;
   public patientId: string;
   public diseaseLevelValue: number;
-  public colorIssueValue: boolean;
+  public colorsIssueValue: boolean;
   public patient: Patient = {
     name: '',
     age: 0,
     diseaseLevel: 0,
-    colorIssue: false,
+    colorsIssue: false,
     observation: '',
   };
 
@@ -52,6 +53,19 @@ export class RevisePatientPage implements OnInit {
     this.getPatientById();
   }
 
+  checkboxColorsIssue(event) {
+    this.colorsIssueValue = event.value;
+  }
+
+  checkboxDiseaseLevel(event) {
+    this.diseaseLevelValue = event.value;
+  }
+
+  radioGroupChange(event) {
+    console.log("radioGroupChange",event.detail);
+    this.selectedRadioGroup = event.detail;
+    }
+
   private async getPatientById() {
     let token;
     await this.route.params.subscribe(params => {
@@ -66,13 +80,34 @@ export class RevisePatientPage implements OnInit {
       },
       params: new HttpParams().set('patientId', this.patientId)
     }).subscribe((res: Patient) => {
+      // debugger;
       console.log('reviseResponse: ', res);
       this.patient.name = res.name;
       this.patient.age = res.age;
       this.patient.diseaseLevel = res.diseaseLevel;
-      this.patient.colorIssue = res.colorIssue;
+      this.patient.colorsIssue = res.colorsIssue;
       this.patient.observation = res.observation;
+  
+      this.diseaseLevel.forEach((diseaseLevelCheck, index) => {
+        if(diseaseLevelCheck.value == this.patient.diseaseLevel) {
+          this.diseaseLevelValue = this.patient.diseaseLevel;
+          this.diseaseLevel[index].isChecked = true;
+          console.log("Esse é o diseaseLevel do array true: " + JSON.stringify(diseaseLevelCheck));
+      } else {
+        console.log("Esse é o diseaseLevel do array false: " + JSON.stringify(diseaseLevelCheck));
+        diseaseLevelCheck.isChecked = false;
+      }});
+  
+      this.colorsIssue.forEach((colorsIssueValueCheck, index) => {
+        if(colorsIssueValueCheck.value == this.patient.colorsIssue) {
+          this.colorsIssueValue = this.patient.colorsIssue;
+          this.colorsIssue[index].isItemCheck = true;
+          console.log("Esse é o colorsIssue do array true: " + JSON.stringify(colorsIssueValueCheck));
+      } else {
+        console.log("Esse é o colorsIssue do array false: " + JSON.stringify(colorsIssueValueCheck));
+      }});
     });
+
     console.log('this.patient', this.patient);
     console.log('this.papatientId embaixo do get:', this.patient);
     return this.patient;
@@ -105,7 +140,7 @@ export class RevisePatientPage implements OnInit {
       name: ['', Validators.required],
       age: ['', Validators.required],
       diseaseLevel: ['', Validators.required],
-      colorIssue: ['', Validators.required],
+      colorsIssue: ['', Validators.required],
       observation: ['', Validators.required]
     });
   }

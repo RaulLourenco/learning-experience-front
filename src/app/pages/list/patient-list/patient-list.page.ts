@@ -20,7 +20,7 @@ export class PatientListPage implements OnInit {
     name: '',
     age: 0,
     diseaseLevel: 0,
-    colorIssue: false,
+    colorsIssue: false,
     observation: ''
   };
 
@@ -53,7 +53,7 @@ export class PatientListPage implements OnInit {
         this.patient.name = element.name;
         this.patient.age = element.age;
         this.patient.diseaseLevel = element.diseaseLevel;
-        this.patient.colorIssue = element.colorIssue;
+        this.patient.colorsIssue = element.colorsIssue;
       });
     });
   }

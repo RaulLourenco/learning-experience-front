@@ -42,14 +42,14 @@
         <ion-row>
           <ion-col>
             <p class="p-title-card-content">Grau de Autismo</p>
-            <p class="p-subtitle-card-content">{{patient.diseaseLevel === 3 ? 'Alto' : patient.diseaseLevel === 2 ? 'Moderado' : 'Baixo'}}</p>
+            <p class="p-subtitle-card-content">{{patient.diseaseLevel === 2 ? 'Alto' : patient.diseaseLevel === 1 ? 'Moderado' : 'Baixo'}}</p>
             <ion-item style="height: 1px"></ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <p class="p-title-card-content">Problema com cores</p>
-            <p class="p-subtitle-card-content">{{patient.colorIssue === true ? 'Sim' : 'Não'}}</p>
+            <p class="p-subtitle-card-content">{{patient.colorsIssue === true ? 'Sim' : 'Não'}}</p>
             <ion-item style="height: 1px"></ion-item>
           </ion-col>
         </ion-row>
