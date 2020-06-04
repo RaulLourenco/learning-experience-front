@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular'
-import { FormBuilder, Validators, FormGroup } from '@angular/forms'
+import { AlertController, LoadingController } from '@ionic/angular';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../auth/auth.service';
+import { SignupResponse } from 'src/app/interface/signup-response';
+import { UserSignup } from 'src/app/interface/user-signup';
 
 @Component({
   selector: 'app-signup',
@@ -11,33 +14,41 @@ import { Router } from '@angular/router';
 export class SignupPage implements OnInit {
 
   public userForm: FormGroup;
-  public buttonText: string;
-
-  public name: string;
-  public email: string;
-  public password: string;
-  public repeatPassword: string;
+  public user: UserSignup = {
+    name: '',
+    email: '',
+    password: '',
+    repeatPassword: ''
+  };
 
   constructor(private alertController: AlertController,
-    private loadingController: LoadingController,
-    private formBuilder: FormBuilder,
-    private router: Router) { }
+              private loadingController: LoadingController,
+              private formBuilder: FormBuilder,
+              private router: Router,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.initializeForm();
   }
 
   private async onSignup(name, email, password, repeatPassword) {
-    this.name = name;
-    this.email = email;
-    this.password = password; 
-    this.repeatPassword = repeatPassword;
-
-    if (name == '123' && password == '123') {
-      this.router.navigateByUrl('/onboarding');
-    } else {
-      return 'loucura bicho';
-    }
+    this.presentLoading();
+    this.user = {
+      name,
+      email,
+      password,
+      repeatPassword
+    };
+    this.authService.register(this.user).subscribe( (res: SignupResponse) => {
+      if (res.statusCode === 200) {
+        this.dismissLoading();
+        this.router.navigate(['/onboarding']);
+        console.log('esta eh a resposta do registro: ', res);
+      } else {
+        this.dismissLoading();
+        console.log('Erro!');
+      }
+    });
   }
 
   async presentLoading() {
@@ -53,19 +64,19 @@ export class SignupPage implements OnInit {
 
   async presentAlert(message) {
     const alertPresent = await this.alertController.create({
-      message: message
+      message
     });
     return await alertPresent.present();
   }
 
-  public backToIndex(){
+  public backToIndex() {
     this.router.navigateByUrl('/index-login');
   }
 
   initializeForm() {
     this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
-      user: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
       repeatPassword: ['', Validators.required]
     });

@@ -23,7 +23,7 @@
 
   <form class="form" [formGroup]="userForm" 
   (ngSubmit)="onSignup(userForm.value.name, 
-                       userForm.value.user, 
+                       userForm.value.email, 
                        userForm.value.password,
                        userForm.value.repeatPassword)">
 
@@ -39,7 +39,7 @@
       <ion-label class="label-form" position="floating">
         E-mail
       </ion-label>
-      <ion-input formControlName="user" type="text">
+      <ion-input formControlName="email" type="text">
       </ion-input>
     </ion-item>
 

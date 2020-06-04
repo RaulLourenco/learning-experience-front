@@ -3,7 +3,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
-import { User } from '../../../auth/user';
+import { User } from '../../../interface/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
