@@ -8,7 +8,7 @@
     </ion-col>
   </ion-row>
 
-  <form class="form" [formGroup]="patientForm" (ngSubmit)="onSignup(patientForm.value.name, 
+  <form class="form" [formGroup]="patientForm" (ngSubmit)="onChange(patientForm.value.name, 
                               patientForm.value.age,
                               patientForm.value.diseaseLevel,
                               patientForm.value.colorsIssue,
@@ -41,11 +41,11 @@
     <ion-list>
       <ion-radio-group allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)">
         <ion-list-header>
-          <ion-label value="p-label-form">Grau de autismo</ion-label>
+          <ion-label class="p-label-form">Grau de autismo</ion-label>
         </ion-list-header>
-        <ion-item *ngFor="let entry of diseaseLevel, let i = index">
-          <ion-label>{{ entry.title }}</ion-label>
-          <ion-radio slot="start" value="{{entry.title}}"></ion-radio>
+        <ion-item *ngFor="let entry of diseaseLevel, let i = index" lines="none" class="ion-radio-item">
+          <ion-label class="radio-label">{{ entry.title }}</ion-label>
+          <ion-radio slot="start" formControlName="diseaseLevel" value="{{entry.title}}"></ion-radio>
       </ion-item>
       </ion-radio-group>
     </ion-list>
@@ -53,29 +53,20 @@
     <ion-list>
       <ion-radio-group  allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)">
         <ion-list-header>
-          <ion-label value="p-label-form">Problema com Cores </ion-label>
+          <ion-label class="p-label-form">Problema com Cores </ion-label>
         </ion-list-header>
-        <ion-item *ngFor="let issue of colorsIssue, let i = index">
-          <ion-label>{{ issue.title }}</ion-label>
-          <ion-radio slot="start" value="{{issue.title}}"></ion-radio>
+        <ion-item *ngFor="let issue of colorsIssue, let i = index" lines="none" class="ion-radio-item">
+          <ion-label class="radio-label">{{ issue.title }}</ion-label>
+          <ion-radio slot="start" formControlName="colorsIssue" value="{{issue.title}}"></ion-radio>
       </ion-item>
       </ion-radio-group>
     </ion-list>
-
-
-    <ion-list>
-    <ion-row *ngFor="let issue of colorsIssue">
-      <ion-checkbox formControlName="colorsIssue"  (click)="checkboxColorsIssue(issue)" [(ngModel)]="issue.isItemCheck" class="checkbox-disease"></ion-checkbox>
-      <ion-label class="checkbox-lbl">{{issue.title}}</ion-label>
-    </ion-row>
-  </ion-list>
-
 
     <ion-row>
       <ion-col class="textarea-col">
         <ion-item class="textarea-item">
           <ion-label class="textarea-lbl" position="stacked">Observação</ion-label>
-          <ion-textarea formControlName="observation" clearOnEdit="true" placeholder="Digite alguma observação...">
+          <ion-textarea formControlName="observation" clearOnEdit="true" placeholder="Digite alguma observação..." value="{{patient.observation}}">
           </ion-textarea>
         </ion-item>
       </ion-col>

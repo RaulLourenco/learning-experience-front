@@ -44,8 +44,18 @@ $grey-color:#999999;
 
 .p-label-form{
     color:$grey-color;
-    padding-top: 24px;
-    padding-left: 36px;
+    padding-left: 24px;
+    color: $grey-color;
+    font-size: 16px;
+}
+
+.radio-label{
+    color: $grey-color;
+}
+
+.ion-radio-item{
+    padding-left: 24px;
+    margin-top: -10px;
 }
 
 .checkbox-disease{

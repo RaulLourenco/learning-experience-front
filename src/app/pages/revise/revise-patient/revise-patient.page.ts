@@ -61,8 +61,18 @@ export class RevisePatientPage implements OnInit {
     this.diseaseLevelValue = event.value;
   }
 
+  private async onChange(name, age, diseaseLevel, colorsIssue, observation) {
+    this.patient = {
+      name,
+      age,
+      diseaseLevel,
+      colorsIssue,
+      observation
+    };
+  }
+
   radioGroupChange(event) {
-    console.log("radioGroupChange",event.detail);
+    console.log('radioGroupChange', event.detail);
     this.selectedRadioGroup = event.detail;
     }
 
@@ -74,41 +84,37 @@ export class RevisePatientPage implements OnInit {
     await this.authService.getToken().then(res => {
       token = res;
     });
+    console.log('this.patient', this.patient);
     await this.http.get(urls.URL_GETPATIENTBYID, {
       headers: {
         Authorization: 'Bearer ' + token
       },
       params: new HttpParams().set('patientId', this.patientId)
     }).subscribe((res: Patient) => {
-      // debugger;
       console.log('reviseResponse: ', res);
       this.patient.name = res.name;
       this.patient.age = res.age;
       this.patient.diseaseLevel = res.diseaseLevel;
       this.patient.colorsIssue = res.colorsIssue;
       this.patient.observation = res.observation;
-  
       this.diseaseLevel.forEach((diseaseLevelCheck, index) => {
-        if(diseaseLevelCheck.value == this.patient.diseaseLevel) {
+        if (diseaseLevelCheck.value === this.patient.diseaseLevel) {
           this.diseaseLevelValue = this.patient.diseaseLevel;
           this.diseaseLevel[index].isChecked = true;
-          console.log("Esse é o diseaseLevel do array true: " + JSON.stringify(diseaseLevelCheck));
+          console.log('Esse é o diseaseLevel do array true: ' + JSON.stringify(diseaseLevelCheck));
       } else {
-        console.log("Esse é o diseaseLevel do array false: " + JSON.stringify(diseaseLevelCheck));
+        console.log('Esse é o diseaseLevel do array false: ' + JSON.stringify(diseaseLevelCheck));
         diseaseLevelCheck.isChecked = false;
       }});
-  
       this.colorsIssue.forEach((colorsIssueValueCheck, index) => {
-        if(colorsIssueValueCheck.value == this.patient.colorsIssue) {
+        if (colorsIssueValueCheck.value === this.patient.colorsIssue) {
           this.colorsIssueValue = this.patient.colorsIssue;
           this.colorsIssue[index].isItemCheck = true;
-          console.log("Esse é o colorsIssue do array true: " + JSON.stringify(colorsIssueValueCheck));
+          console.log('Esse é o colorsIssue do array true: ' + JSON.stringify(colorsIssueValueCheck));
       } else {
-        console.log("Esse é o colorsIssue do array false: " + JSON.stringify(colorsIssueValueCheck));
+        console.log('Esse é o colorsIssue do array false: ' + JSON.stringify(colorsIssueValueCheck));
       }});
     });
-
-    console.log('this.patient', this.patient);
     console.log('this.papatientId embaixo do get:', this.patient);
     return this.patient;
   }
