@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angular';
 import { urls } from '../../../util/urlConfig';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SignupResponse } from 'src/app/interface/signup-response';
 import { Patient } from 'src/app/interface/patient';
 @Component({
   selector: 'app-revise-patient',
@@ -14,8 +13,11 @@ import { Patient } from 'src/app/interface/patient';
 })
 export class RevisePatientPage implements OnInit {
 
-  public patientForm: FormGroup;
+  @ViewChild('radioGroup', {static: false}) radioGroup: IonRadioGroup
+  @ViewChild('radioGroup2', {static: false}) radioGroup2: IonRadioGroup
 
+  public patientForm: FormGroup;
+  
   public diseaseLevel = [
     { title: 'Leve',  value: 0, isChecked: true},
     { title: 'Moderado', value: 1, isChecked: false },
@@ -27,10 +29,9 @@ export class RevisePatientPage implements OnInit {
     { title: 'Sim', value: true, isItemCheck: false}
   ];
 
-  public selectedRadioGroup: any;
   public patientId: string;
-  public diseaseLevelValue: number;
-  public colorsIssueValue: boolean;
+  public diseaseLevelValue: any;
+  public colorsIssueValue: any;
   public patient: Patient = {
     name: '',
     age: 0,
@@ -63,7 +64,16 @@ export class RevisePatientPage implements OnInit {
 
   radioGroupChange(event) {
     console.log("radioGroupChange",event.detail);
-    this.selectedRadioGroup = event.detail;
+    this.diseaseLevelValue = event.detail;
+    }
+
+    radioGroupChange2(event) {
+      console.log("radioGroupChange2",event.detail);
+      this.colorsIssueValue = event.detail;
+      }
+
+    selectTwo(){
+      this.radioGroup.value = 'Moderado';
     }
 
   private async getPatientById() {
@@ -90,6 +100,8 @@ export class RevisePatientPage implements OnInit {
   
       this.diseaseLevel.forEach((diseaseLevelCheck, index) => {
         if(diseaseLevelCheck.value == this.patient.diseaseLevel) {
+          var diseaseLevelString = this.patient.diseaseLevel === 3 ? 'Alto' : this.patient.diseaseLevel === 2 ? 'Moderado' : 'Leve';
+          this.radioGroup.value = diseaseLevelString;
           this.diseaseLevelValue = this.patient.diseaseLevel;
           this.diseaseLevel[index].isChecked = true;
           console.log("Esse é o diseaseLevel do array true: " + JSON.stringify(diseaseLevelCheck));
@@ -100,7 +112,9 @@ export class RevisePatientPage implements OnInit {
   
       this.colorsIssue.forEach((colorsIssueValueCheck, index) => {
         if(colorsIssueValueCheck.value == this.patient.colorsIssue) {
-          this.colorsIssueValue = this.patient.colorsIssue;
+          this.radioGroup2.value =  this.patient.colorsIssue ? 'Sim' : 'Não';
+          //this.patient.colorsIssue === true ? 'Sim' : 'Não';
+          //this.colorsIssueValue = this.patient.colorsIssue;
           this.colorsIssue[index].isItemCheck = true;
           console.log("Esse é o colorsIssue do array true: " + JSON.stringify(colorsIssueValueCheck));
       } else {

@@ -39,7 +39,7 @@
     </ion-item>
 
     <ion-list>
-      <ion-radio-group allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)">
+      <ion-radio-group allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)" #radioGroup>
         <ion-list-header>
           <ion-label value="p-label-form">Grau de autismo</ion-label>
         </ion-list-header>
@@ -50,8 +50,9 @@
       </ion-radio-group>
     </ion-list>
 
+    
     <ion-list>
-      <ion-radio-group  allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)">
+      <ion-radio-group  allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange2($event)" #radioGroup2>
         <ion-list-header>
           <ion-label value="p-label-form">Problema com Cores </ion-label>
         </ion-list-header>
@@ -61,16 +62,7 @@
       </ion-item>
       </ion-radio-group>
     </ion-list>
-
-
-    <ion-list>
-    <ion-row *ngFor="let issue of colorsIssue">
-      <ion-checkbox formControlName="colorsIssue"  (click)="checkboxColorsIssue(issue)" [(ngModel)]="issue.isItemCheck" class="checkbox-disease"></ion-checkbox>
-      <ion-label class="checkbox-lbl">{{issue.title}}</ion-label>
-    </ion-row>
-  </ion-list>
-
-
+  
     <ion-row>
       <ion-col class="textarea-col">
         <ion-item class="textarea-item">
