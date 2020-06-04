@@ -11,5 +11,6 @@ export const urls = {
     URL_GETADVISORBYID: `${urlAPI}/Advisor/GetAdvisorById`,
     URL_GETPATIENTBYID: `${urlAPI}/Patient/GetPatientById`,
     URL_UPDATEADVISOR: `${urlAPI}/Advisor/UpdateAdvisor`,
+    URL_UPDATEPATIENT: `${urlAPI}/Patient/UpdatePatient`,
     URL_REGISTERUSER: `${urlAPI}/Auth/RegisterLogin`
 };

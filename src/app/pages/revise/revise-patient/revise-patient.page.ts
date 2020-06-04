@@ -6,6 +6,7 @@ import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angula
 import { urls } from '../../../util/urlConfig';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Patient } from 'src/app/interface/patient';
+import { ReviseResponse } from 'src/app/interface/revise-response';
 @Component({
   selector: 'app-revise-patient',
   templateUrl: './revise-patient.page.html',
@@ -32,6 +33,7 @@ export class RevisePatientPage implements OnInit {
   public diseaseLevelValue: any;
   public colorsIssueValue: any;
   public patient: Patient = {
+    id: '',
     name: '',
     age: 0,
     diseaseLevel: 0,
@@ -53,22 +55,43 @@ export class RevisePatientPage implements OnInit {
     this.getPatientById();
   }
 
-  checkboxColorsIssue(event) {
-    this.colorsIssueValue = event.value;
-  }
-
-  checkboxDiseaseLevel(event) {
-    this.diseaseLevelValue = event.value;
-  }
-
   private async onChange(name, age, diseaseLevel, colorsIssue, observation) {
+    this.presentLoading();
+    await this.route.params.subscribe(params => {
+      this.patientId = params.id;
+    });
+    const id = this.patientId;
     this.patient = {
+      id,
       name,
       age,
       diseaseLevel,
       colorsIssue,
       observation
     };
+    this.patient.diseaseLevel = diseaseLevel === 'Alto' ? 2 : diseaseLevel === 'Moderado' ? 1 : 0;
+    console.log('este eh o diseaseLevel: ', this.patient.diseaseLevel);
+    this.patient.colorsIssue = colorsIssue === 'Sim' ? true : false;
+    console.log('este eh o colorIssue: ', this.patient.colorsIssue);
+    let token;
+    await this.authService.getToken().then(res => {
+      token = res;
+    });
+    await this.http.post(urls.URL_UPDATEPATIENT, this.patient, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).subscribe((res: ReviseResponse) => {
+      console.log('res do atualizar: ', res);
+      if (res.statusCode === 200) {
+        this.dismissLoading();
+        this.presentAlert('Atualizado com sucesso!');
+        this.router.navigateByUrl('/home/profile');
+      } else {
+        this.dismissLoading();
+        this.presentAlert('Erro ao atualizar. Tente novamente!');
+      }
+    });
   }
 
   diseaseLevelRadioGroupChange(event) {
@@ -100,13 +123,13 @@ export class RevisePatientPage implements OnInit {
       this.patient.diseaseLevel = res.diseaseLevel;
       this.patient.colorsIssue = res.colorsIssue;
       this.patient.observation = res.observation;
-      this.diseaseLevel.forEach( diseaseLevelCheck => {
+      this.diseaseLevel.forEach(diseaseLevelCheck => {
         if (diseaseLevelCheck.value === this.patient.diseaseLevel) {
           const diseaseLevelString = this.patient.diseaseLevel === 2 ? 'Alto' : this.patient.diseaseLevel === 1 ? 'Moderado' : 'Leve';
           this.diseaseLevelRadioGroup.value = diseaseLevelString;
         }
       });
-      this.colorsIssue.forEach( colorsIssueValueCheck => {
+      this.colorsIssue.forEach(colorsIssueValueCheck => {
         if (colorsIssueValueCheck.value === this.patient.colorsIssue) {
           const colorsIssueString = this.patient.colorsIssue ? 'Sim' : 'Não';
           this.colorsIssueRadioGroup.value = colorsIssueString;
