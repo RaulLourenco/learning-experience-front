@@ -39,7 +39,7 @@
     </ion-item>
 
     <ion-list>
-      <ion-radio-group allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)">
+      <ion-radio-group allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)" #radioGroup>
         <ion-list-header>
           <ion-label class="p-label-form">Grau de autismo</ion-label>
         </ion-list-header>
@@ -50,8 +50,9 @@
       </ion-radio-group>
     </ion-list>
 
+    
     <ion-list>
-      <ion-radio-group  allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange($event)">
+      <ion-radio-group  allow-empty-selection = "true" name="radio-group" (ionChange)="radioGroupChange2($event)" #radioGroup2>
         <ion-list-header>
           <ion-label class="p-label-form">Problema com Cores </ion-label>
         </ion-list-header>
@@ -61,7 +62,6 @@
       </ion-item>
       </ion-radio-group>
     </ion-list>
-
     <ion-row>
       <ion-col class="textarea-col">
         <ion-item class="textarea-item">
