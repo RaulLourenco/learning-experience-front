@@ -58,22 +58,8 @@ $grey-color:#999999;
     margin-top: -10px;
 }
 
-.checkbox-disease{
-    margin: 12px 6px 0px 40px;
-}
-
-.checkbox-lbl{
-    margin-left: 6px;
-    margin-top: 14px;
-    color:$grey-color;
-}
-
 .colorsIssue-lbl{
     color: $grey-color;
-}
-
-.colorsIssue-checkbox{
-    margin-right: 16px;
 }
 
 .colorsIssue-item{
@@ -109,11 +95,6 @@ $grey-color:#999999;
 
 ion-button{
     --background:#1C5A83;
-}
-
-ion-checkbox{
-    --background-checked: #1C5A83;
-    border: 1px solid #000000;
 }
 
 ion-input{

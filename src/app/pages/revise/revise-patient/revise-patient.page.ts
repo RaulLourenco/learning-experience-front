@@ -32,6 +32,10 @@ export class RevisePatientPage implements OnInit {
   public patientId: string;
   public diseaseLevelValue: any;
   public colorsIssueValue: any;
+
+  public diseaseLevelValueChanged: number;
+  public colorsIssueValueChanged: boolean;
+
   public patient: Patient = {
     id: '',
     name: '',
@@ -61,6 +65,8 @@ export class RevisePatientPage implements OnInit {
       this.patientId = params.id;
     });
     const id = this.patientId;
+    diseaseLevel = this.diseaseLevelValueChanged;
+    colorsIssue = this.colorsIssueValueChanged;
     this.patient = {
       id,
       name,
@@ -69,10 +75,6 @@ export class RevisePatientPage implements OnInit {
       colorsIssue,
       observation
     };
-    this.patient.diseaseLevel = diseaseLevel === 'Alto' ? 2 : diseaseLevel === 'Moderado' ? 1 : 0;
-    console.log('este eh o diseaseLevel: ', this.patient.diseaseLevel);
-    this.patient.colorsIssue = colorsIssue === 'Sim' ? true : false;
-    console.log('este eh o colorIssue: ', this.patient.colorsIssue);
     let token;
     await this.authService.getToken().then(res => {
       token = res;
@@ -86,12 +88,20 @@ export class RevisePatientPage implements OnInit {
       if (res.statusCode === 200) {
         this.dismissLoading();
         this.presentAlert('Atualizado com sucesso!');
-        this.router.navigateByUrl('/home/profile');
+        this.router.navigate(['/home/profile']);
       } else {
         this.dismissLoading();
         this.presentAlert('Erro ao atualizar. Tente novamente!');
       }
     });
+  }
+
+  radioColorsCheck(event) {
+    this.colorsIssueValueChanged = event.value;
+  }
+
+  radioDiseaseCheck(event) {
+    this.diseaseLevelValueChanged = event.value;
   }
 
   diseaseLevelRadioGroupChange(event) {

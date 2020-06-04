@@ -45,7 +45,7 @@
         </ion-list-header>
         <ion-item *ngFor="let entry of diseaseLevel, let i = index" lines="none" class="ion-radio-item">
           <ion-label class="radio-label">{{ entry.title }}</ion-label>
-          <ion-radio slot="start" formControlName="diseaseLevel" value="{{entry.title}}"></ion-radio>
+          <ion-radio (click)="radioDiseaseCheck(entry)" slot="start" formControlName="diseaseLevel" value="{{entry.title}}"></ion-radio>
       </ion-item>
       </ion-radio-group>
     </ion-list>
@@ -58,10 +58,11 @@
         </ion-list-header>
         <ion-item *ngFor="let issue of colorsIssue, let i = index" lines="none" class="ion-radio-item">
           <ion-label class="radio-label">{{ issue.title }}</ion-label>
-          <ion-radio slot="start" formControlName="colorsIssue" value="{{issue.title}}"></ion-radio>
+          <ion-radio (click)="radioColorsCheck(issue)" slot="start" formControlName="colorsIssue" value="{{issue.title}}"></ion-radio>
       </ion-item>
       </ion-radio-group>
     </ion-list>
+    
     <ion-row>
       <ion-col class="textarea-col">
         <ion-item class="textarea-item">
