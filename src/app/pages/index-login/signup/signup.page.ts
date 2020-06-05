@@ -39,8 +39,8 @@ export class SignupPage implements OnInit {
       password,
       repeatPassword
     };
-    this.authService.register(this.user).subscribe( (res) => {
-      if (res.status === 200) {
+    this.authService.register(this.user).subscribe( (res: SignupResponse) => {
+      if (res.statusCode === 200) {
         this.dismissLoading();
         this.router.navigate(['/onboarding']);
         console.log('esta eh a resposta do registro: ', res);
