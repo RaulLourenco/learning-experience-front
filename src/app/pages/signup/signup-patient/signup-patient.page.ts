@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angular';
 import { urls } from '../../../util/urlConfig';
 import { HttpClient } from '@angular/common/http';
 import { SignupResponse } from 'src/app/interface/signup-response';
@@ -13,6 +13,9 @@ import { Patient } from 'src/app/interface/patient';
   styleUrls: ['./signup-patient.page.scss'],
 })
 export class SignupPatientPage implements OnInit {
+
+  @ViewChild('diseaseLevelRadioGroup', { static: false }) diseaseLevelRadioGroup: IonRadioGroup;
+  @ViewChild('colorsIssueRadioGroup', { static: false }) colorsIssueRadioGroup: IonRadioGroup;
 
   public patientForm: FormGroup;
 
@@ -41,18 +44,20 @@ export class SignupPatientPage implements OnInit {
     this.initializeForm();
   }
 
-  checkboxColorsIssue(event) {
+  radioboxColorsIssue(event) {
     debugger;
     this.colorsIssueValue = event.value;
   }
 
-  checkboxDiseaseLevel(event) {
+  radioDiseaseLevel(event) {
+    debugger;
     this.diseaseLevelValue = event.value;
   }
 
   private async onSignup(name, age, diseaseLevel, colorsIssue, observation) {
     this.presentLoading();
 
+    debugger;
     diseaseLevel = this.diseaseLevelValue;
     colorsIssue = this.colorsIssueValue;
 
