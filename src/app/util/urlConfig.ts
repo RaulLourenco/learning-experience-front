@@ -1,4 +1,4 @@
-//const urlAPI = 'http://localhost:5000/api/v1';
+//const urlAPI = 'http://localhost:50706/api/v1';
 const urlAPI = 'https://learningexperieceapi.azurewebsites.net/api/v1';
 export const urls = {
     URL_API: `${urlAPI}`,

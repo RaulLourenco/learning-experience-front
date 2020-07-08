@@ -20,6 +20,19 @@ export class AuthService {
   constructor(private httpClient: HttpClient, private storage: Storage, private _http: HTTP) { }
 
   register(user: UserSignup) {
+    // this._http.setDataSerializer('json');
+    // const observable = from(this._http.post(`${urls.URL_REGISTERUSER}`, user, {
+    //   'Content-Type': 'application/json'
+    // }))
+    //   .pipe(
+    //     tap(async (res) => {
+    //       if (res) {
+    //         const response = JSON.parse(res.data);
+    //         console.log('response: ', response);
+    //         this.authSubject.next(true);
+    //       }
+    //     }));
+    // return observable;
     return this.httpClient.post(`${urls.URL_REGISTERUSER}`, user, {
       headers: {
         'Content-Type': 'application/json'
@@ -33,9 +46,9 @@ export class AuthService {
     );
   }
 
-  login(user: User): Observable<AuthResponse> {
+  login(user: User) {
     // this._http.setDataSerializer('json');
-    // const observable = from(this._http.post(`${this.AUTH_SERVER_ADDRESS}/Auth`, user, {
+    // const observable = from(this._http.post(`${urls.URL_LOGINUSER}`, user, {
     //   'Content-Type': 'application/json'
     // }))
     //   .pipe(

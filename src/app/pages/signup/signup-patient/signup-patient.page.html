@@ -39,27 +39,30 @@
       </ion-input>
     </ion-item>
 
-    <p class="p-label-form">
-      Grau de autismo
-    </p>
 
-    <ion-list>
-      <ion-row *ngFor="let entry of diseaseLevel">
-        <ion-checkbox formControlName="diseaseLevel" (click)="checkboxDiseaseLevel(entry)" [(ngModel)]="entry.isChecked" class="checkbox-disease">
-        </ion-checkbox>
-        <ion-label class="checkbox-lbl">{{entry.title}}</ion-label>
-      </ion-row>
-    </ion-list>
+  <ion-list>
+    <ion-radio-group allow-empty-selection = "true" name="radio-group" #diseaseLevelRadioGroup>
+      <ion-list-header>
+        <ion-label class="p-label-form">Grau de autismo</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let entry of diseaseLevel, let i = index" lines="none" class="ion-radio-item">
+        <ion-label class="radio-label">{{ entry.title }}</ion-label>
+        <ion-radio (click)="radioDiseaseLevel(entry)" slot="start" formControlName="diseaseLevel" value="{{entry.title}}"></ion-radio>
+    </ion-item>
+    </ion-radio-group>
+  </ion-list>
 
-    <p class="p-label-form">
-      Problema com Cores
-    </p>
-
-    <ion-list>
-    <ion-row *ngFor="let issue of colorsIssue">
-      <ion-checkbox formControlName="colorsIssue"  (click)="checkboxColorsIssue(issue)" [(ngModel)]="issue.isItemCheck" class="checkbox-disease"></ion-checkbox>
-      <ion-label class="checkbox-lbl">{{issue.title}}</ion-label>
-    </ion-row>
+  
+  <ion-list>
+    <ion-radio-group  allow-empty-selection = "true" name="radio-group" #colorsIssueRadioGroup>
+      <ion-list-header>
+        <ion-label class="p-label-form">Problema com Cores </ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let issue of colorsIssue, let i = index" lines="none" class="ion-radio-item">
+        <ion-label class="radio-label">{{ issue.title }}</ion-label>
+        <ion-radio (click)="radioboxColorsIssue(issue)" slot="start" formControlName="colorsIssue" value="{{issue.title}}"></ion-radio>
+    </ion-item>
+    </ion-radio-group>
   </ion-list>
 
 
