@@ -1,103 +1,100 @@
 $black-color: #000000;
 
-.user-profile{
-    height: 100px;
+.margin-row {
+	margin-bottom: 32px;
+	& .avatar-icon {
+		margin: 16px 16px 0 16px;
+		padding: 0;
+	}
 }
 
-.avatar-icon{
-    margin: 16px 16px 40px 16px;
-    padding: 0;
+ion-avatar {
+	width: 70px;
+	height: 70px;
 }
 
-ion-avatar{
-    width: 70px;
-    height: 70px;
+.profile-options {
+	margin: 30px 40px 0 16px;
+	& .name {
+		font-weight: bold;
+		font-size: 16px;
+		color: $black-color;
+	}
+	& .edit-profile {
+		margin-top: 30px;
+		font-size: 14px;
+		color: $black-color;
+	}
 }
 
-.profile-options{
-    margin: 30px 40px 0 16px;
+.icon-forward {
+	margin: 34px 8px 8px 16px;
+	font-size: 20px;
 }
 
-.name{
-    font-weight: bold;
-    font-size: 16px;
-    color: $black-color;
+.menu-options {
+	padding: 0 16px 0 16px;
 }
 
-.edit-profile{
-    margin-top: 30px;
-    font-size: 14px;
-    color: $black-color;
+.menu-items {
+	width: 100%;
 }
 
-.icon-forward{
-    margin: 34px 8px 8px 16px;
-    font-size: 20px;
+.menu-options-items {
+	margin: 6px 16px 6px 6px;
 }
 
-.menu-options{
-    margin: 20px 16px 0 6px;
+.item-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: -16px;
+	color: $black-color;
 }
 
-.menu-options-items{
-    margin: 6px 16px 6px 6px;
+.item-subtitle {
+	font-weight: normal;
+	font-size: 14px;
+	color: $black-color;
 }
 
-.item-title{
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: -16px;
-    color: $black-color;
+.icon-items-col {
+	margin-right: 4px;
 }
 
-.item-subtitle{
-    font-weight: normal;
-    font-size: 14px;
-    color: $black-color;
+.icon-items {
+	font-size: 20px;
+	padding: 0;
+	color: $black-color;
 }
 
-.icon-items-col{
-    margin-right: 4px;
+.icon-forward-items {
+	font-size: 20px;
+	margin: 18px 0 16px 30px;
+	color: $black-color;
 }
 
-.icon-items{
-    font-size: 20px;
-    padding: 0;
-    color: $black-color;
+.menu-settings-items {
+	margin: 24px 16px 0 0;
 }
 
-.menu-items{
-    width: 100%;
+.settings-text {
+	font-weight: bold;
+	opacity: 0.5;
+	font-size: 16px;
+	color: $black-color;
 }
 
-.icon-forward-items{
-    font-size: 20px;
-    margin: 18px 0 16px 30px;
-    color: $black-color;
+.icon-settings-items {
+	opacity: 0.5;
+	color: $black-color;
 }
 
-.menu-settings-items{
-    margin: 24px 16px 0 0;
+.icon-settings-forward {
+	font-size: 20px;
+	opacity: 0.5;
+	color: $black-color;
 }
 
-.settings-text{
-    font-weight: bold;
-    opacity: 0.5;
-    font-size: 16px;
-    color: $black-color;
-}
-
-.icon-settings-items{
-    opacity: 0.5;
-    color: $black-color;
-}
-
-.icon-settings-forward{
-    font-size: 20px;
-    opacity: 0.5;
-    color: $black-color;
-}
-
-.icon-settings-col{
-    margin-right: -30px;
+.icon-settings-col {
+	margin-right: -30px;
 }

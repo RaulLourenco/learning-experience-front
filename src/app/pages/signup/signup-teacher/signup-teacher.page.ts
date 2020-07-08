@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { Advisor } from '../../../interface/advisor';
+import { Advisor } from '../../../model/advisor';
 import { urls } from '../../../util/urlConfig';
 import { HttpClient } from '@angular/common/http';
-import { SignupResponse } from 'src/app/interface/signup-response';
+import { SignupResponse } from 'src/app/model/signup-response';
 @Component({
   selector: 'app-signup-teacher',
   templateUrl: './signup-teacher.page.html',

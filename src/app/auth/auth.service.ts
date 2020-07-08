@@ -7,8 +7,8 @@ import { Storage } from '@ionic/storage';
 import { AuthResponse } from './auth-response';
 import { urls } from '..//util/urlConfig';
 import { HTTP, HTTPResponse } from '@ionic-native/http/ngx';
-import { UserSignup } from '../interface/user-signup';
-import { User } from '../interface/user';
+import { UserSignup } from '../model/user-signup';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'

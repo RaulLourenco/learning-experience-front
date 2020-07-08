@@ -3,8 +3,8 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
-import { SignupResponse } from 'src/app/interface/signup-response';
-import { UserSignup } from 'src/app/interface/user-signup';
+import { SignupResponse } from 'src/app/model/signup-response';
+import { UserSignup } from 'src/app/model/user-signup';
 
 @Component({
   selector: 'app-signup',

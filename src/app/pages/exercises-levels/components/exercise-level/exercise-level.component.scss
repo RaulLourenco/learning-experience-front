@@ -1,39 +1,39 @@
 $black-color: #000000;
+$white-color: #ffffff;
 
-.home-greetings-col{
+.home-greetings-col {
     padding: 24px 16px 0 16px;
     margin-bottom: 8px;
+    & .home-greetings {
+        font-weight: bold;
+        font-size: 20px;
+        color: $black-color;
+    }
 }
 
-.home-greetings{
-    font-weight: bold;
-    font-size: 24px;
-    color: $black-color;
-}
-
-.home-intro-col{
+.home-intro-col {
     padding: 0 16px;
     margin-bottom: 24px;
+    & .home-intro {
+        font-size: 16px;
+        color: $black-color;
+    }
 }
 
-.home-intro{
-    font-size: 18px;
-    color: $black-color;
-}
+.container-cards {
+    display: flex;
+    justify-content: center;
+    & .exercise-card {
+        border-radius: 4px;
+        background-color: #f26f39;
+        width: 50%;
+        color: $white-color;
+        & .icon-book {
+            color: $black-color;
+        }
 
-.exercise-card{
-    border-radius: 4px;
-    border: 1px solid black;
-}
-
-.exercise-card-item{
-    width: 90%;
-}
-
-.icon-book{
-    color: $black-color;
-}
-
-.title-label{
-    color: $black-color;
+        & .title-label {
+            color: $black-color;
+        }
+    }
 }

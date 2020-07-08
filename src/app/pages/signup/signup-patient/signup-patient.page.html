@@ -8,11 +8,12 @@
     </ion-col>
   </ion-row>
 
-  <form class="form" [formGroup]="patientForm" (ngSubmit)="onSignup(patientForm.value.name, 
-                              patientForm.value.age,
-                              patientForm.value.diseaseLevel,
-                              patientForm.value.colorsIssue,
-                              patientForm.value.observation)">
+  <form class="form" [formGroup]="patientForm" 
+    (ngSubmit)="onSignup(patientForm.value.name, 
+    patientForm.value.age,
+    patientForm.value.diseaseLevel,
+    patientForm.value.colorsIssue,
+    patientForm.value.observation)">
 
     <ion-row>
       <ion-col size="12" class="avatar-col">

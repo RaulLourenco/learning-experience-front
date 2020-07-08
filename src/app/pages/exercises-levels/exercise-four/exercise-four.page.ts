@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { Exercises } from 'src/app/interface/exercises';
+import { Exercises } from 'src/app/model/exercises';
 import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-exercise-four',

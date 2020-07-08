@@ -5,8 +5,8 @@ import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angular';
 import { urls } from '../../../util/urlConfig';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Patient } from 'src/app/interface/patient';
-import { ReviseResponse } from 'src/app/interface/revise-response';
+import { Patient } from 'src/app/model/patient';
+import { ReviseResponse } from 'src/app/model/revise-response';
 @Component({
   selector: 'app-revise-patient',
   templateUrl: './revise-patient.page.html',

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { urls } from '../../../util/urlConfig';
 import { AuthService } from '../../../auth/auth.service';
-import { Advisor } from 'src/app/interface/advisor';
+import { Advisor } from 'src/app/model/advisor';
 import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({

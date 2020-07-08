@@ -5,8 +5,8 @@ import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { urls } from '../../../util/urlConfig';
 import { HttpClient } from '@angular/common/http';
-import { SignupResponse } from 'src/app/interface/signup-response';
-import { Patient } from 'src/app/interface/patient';
+import { SignupResponse } from 'src/app/model/signup-response';
+import { Patient } from 'src/app/model/patient';
 @Component({
   selector: 'app-signup-patient',
   templateUrl: './signup-patient.page.html',
@@ -30,19 +30,20 @@ export class SignupPatientPage implements OnInit {
   public diseaseLevelValue: number;
   public colorsIssueValue: boolean;
 
-  constructor(private router: Router,
-              private formBuilder: FormBuilder,
-              private alertController: AlertController,
-              private loadingController: LoadingController,
-              private authService: AuthService,
-              private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private authService: AuthService,
+    private http: HttpClient
+    ) { }
 
   ngOnInit() {
     this.initializeForm();
   }
 
   checkboxColorsIssue(event) {
-    debugger;
     this.colorsIssueValue = event.value;
   }
 

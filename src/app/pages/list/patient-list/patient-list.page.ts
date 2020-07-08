@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/auth.service';
 import { urls } from '../../../util/urlConfig';
-import { Patient } from '../../../interface/patient';
+import { Patient } from '../../../model/patient';
 import { DiseaseLevel } from '../../../enum/diseaseLevel';
 @Component({
   selector: 'app-patient-list',

@@ -3,10 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { Advisor } from '../../../interface/advisor';
+import { Advisor } from '../../../model/advisor';
 import { urls } from '../../../util/urlConfig';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ReviseResponse } from 'src/app/interface/revise-response';
+import { ReviseResponse } from 'src/app/model/revise-response';
 import { VirtualTimeScheduler } from 'rxjs';
 @Component({
   selector: 'app-revise-teacher',

@@ -1,115 +1,112 @@
 $white-color: #ffffff;
 $black-color: #000000;
-$main-color: #1C5A83;
-$green-color: #228B22;
-$card-content-color: #0079BE;
-$grey-color:#999999;
+$main-color: #1c5a83;
+$green-color: #228b22;
+$card-content-color: #0079be;
+$grey-color: #999999;
 
-.header-page{
-    padding-top: 16px;
+.header-page {
+	padding-top: 16px;
+	& .button-close,
+	.settings-button {
+		background-color: $white-color;
+	}
+	& .icon-close {
+		padding-left: 10px;
+		font-size: 30px;
+	}
 }
 
-.icon-close{
-    padding-left: 10px;
-    font-size: 30px;
+.avatar-col {
+	margin-top: -20px;
+	& .avatar-icon {
+		display: block;
+		margin: 0 auto;
+		height: 150px;
+		width: 150px;
+	}
 }
 
-.button-close, .settings-button{
-    background-color: $white-color;
+.item-text-form {
+	--border-color: #999999;
+	padding-right: 16px;
+	padding-left: 16px;
+	max-width: 90% !important;
+	margin-left: auto;
+	margin-right: auto;
+	& .label-form {
+		color: $grey-color;
+	}
 }
 
-.avatar-col{
-    margin-top: -20px;
+.p-label-form {
+	color: $grey-color;
+	padding-top: 24px;
+	padding-left: 36px;
 }
 
-.avatar-icon{
-    display: block;
-    margin: 0 auto;
-    height: 150px;
-    width: 150px;
+.checkbox-disease {
+	margin: 12px 6px 0px 40px;
 }
 
-.item-text-form{
-    --border-color: #999999;
-    padding-right: 16px;
-    padding-left: 16px;
-    max-width: 90% !important;
-    margin-left: auto;
-    margin-right: auto;
+.checkbox-lbl {
+	margin-left: 6px;
+	margin-top: 14px;
+	color: $grey-color;
 }
 
-.label-form{
-    color:$grey-color;
+.colorsIssue-lbl {
+	color: $grey-color;
 }
 
-.p-label-form{
-    color:$grey-color;
-    padding-top: 24px;
-    padding-left: 36px;
+.colorsIssue-checkbox {
+	margin-right: 16px;
 }
 
-.checkbox-disease{
-    margin: 12px 6px 0px 40px;
+.colorsIssue-item {
+	max-width: 90% !important;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.checkbox-lbl{
-    margin-left: 6px;
-    margin-top: 14px;
-    color:$grey-color;
+.textarea-col {
+	padding-right: 16px;
+	padding-left: 0 !important;
 }
 
-.colorsIssue-lbl{
-    color: $grey-color;
+.textarea-item {
+	padding-left: 16px;
+	padding-right: 16px;
+	max-width: 90% !important;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.colorsIssue-checkbox{
-    margin-right: 16px;
+.textarea-lbl {
+	color: $grey-color;
 }
 
-.colorsIssue-item{
-    max-width: 90% !important;
-    margin-left: auto;
-    margin-right: auto;
+.signup-button {
+	padding: 0 16px;
+	margin-top: 16px;
+	background-color: $white-color;
+	color: $white-color;
+	width: 100%;
 }
 
-.textarea-col{
-    padding-right: 16px;
-    padding-left: 0 !important;
+ion-button {
+	--background: #1c5a83;
 }
 
-.textarea-item{
-    padding-left: 16px;
-    padding-right: 16px;
-    max-width: 90% !important;
-    margin-left: auto;
-    margin-right: auto;
+ion-checkbox {
+	--background-checked: #1c5a83;
+	border: 1px solid #000000;
 }
 
-.textarea-lbl{
-    color: $grey-color;
+ion-input {
+	color: $black-color;
 }
 
-.signup-button{
-    padding: 0 16px;
-    margin-top: 16px;
-    background-color: $white-color;
-    color: $white-color;
-    width: 100%;
-}
-
-ion-button{
-    --background:#1C5A83;
-}
-
-ion-checkbox{
-    --background-checked: #1C5A83;
-    border: 1px solid #000000;
-}
-
-ion-input{
-    color: $black-color;
-}
-
-ion-textarea{
-    color: $black-color;
+ion-textarea {
+	color: $black-color;
 }

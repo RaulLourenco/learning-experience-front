@@ -1,10 +1,10 @@
 <ion-content>
 
-  <ion-row class="user-profile">
+  <ion-row class="margin-row">
 
     <ion-col size="3">
-      <ion-avatar>
-        <img class="avatar-icon" src="../../../../../assets/images/avatar.png" />
+      <ion-avatar class="avatar-icon">
+        <img src="../../../../../assets/images/avatar.png" />
       </ion-avatar>
     </ion-col>
 
@@ -38,7 +38,7 @@
     </ion-item>
   </ion-row>
 
-  <ion-row class="menu-options-items" (click)="moveToSignupTeacher()">
+  <ion-row class="menu-options" (click)="moveToSignupTeacher()">
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="person-add-outline"></ion-icon>
@@ -56,7 +56,7 @@
     </ion-item>
   </ion-row>
 
-  <ion-row class="menu-options-items" (click)="moveToPatientList()">
+  <ion-row class="menu-options" (click)="moveToPatientList()">
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="document-text-outline"></ion-icon>
@@ -74,7 +74,7 @@
     </ion-item>
   </ion-row>
 
-  <ion-row class="menu-options-items" (click)="moveToTeacherList()">
+  <ion-row class="menu-options" (click)="moveToTeacherList()">
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="file-tray-full-outline"></ion-icon>
@@ -92,7 +92,7 @@
     </ion-item>
   </ion-row>
 
-  <ion-row class="menu-options-items">
+  <ion-row class="menu-options">
     <ion-item class="menu-items">
       <ion-col class="icon-items-col" size="1">
         <ion-icon class="icon-items" name="hardware-chip-outline"></ion-icon>
@@ -111,8 +111,9 @@
   </ion-row>
 
   <div class="menu-settings-items">
-    <ion-row>
-      <ion-item class="menu-items">
+
+      <div class="menu-items">
+        <ion-item>
         <ion-col class="icon-items-col" size="1">
           <ion-icon class="icon-settings-items" name="help-outline"></ion-icon>
         </ion-col>
@@ -125,9 +126,8 @@
           <ion-icon class="icon-settings-forward" name="chevron-forward-outline"></ion-icon>
         </ion-col>
       </ion-item>
-    </ion-row>
+      </div>
 
-    <ion-row>
       <ion-item class="menu-items">
         <ion-col class="icon-items-col" size="1">
           <ion-icon class="icon-settings-items" name="cog-outline"></ion-icon>
@@ -141,7 +141,6 @@
           <ion-icon class="icon-settings-forward" name="chevron-forward-outline"></ion-icon>
         </ion-col>
       </ion-item>
-    </ion-row>
   </div>
 
 
