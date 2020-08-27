@@ -51,14 +51,12 @@ export class SignupPatientPage implements OnInit {
   }
 
   radioDiseaseLevel(event) {
-    debugger;
     this.diseaseLevelValue = event.value;
   }
 
   private async onSignup(name, age, diseaseLevel, colorsIssue, observation) {
     this.presentLoading();
 
-    debugger;
     diseaseLevel = this.diseaseLevelValue;
     colorsIssue = this.colorsIssueValue;
 

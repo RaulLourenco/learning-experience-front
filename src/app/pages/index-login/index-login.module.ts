@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { IndexLoginPageRoutingModule } from './index-login-routing.module';
 
 import { IndexLoginPage } from './index-login.page';
-
+import { LottieModule } from '../../components/lottie.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IndexLoginPageRoutingModule
+    IndexLoginPageRoutingModule,
+    LottieModule
   ],
   declarations: [IndexLoginPage]
 })
