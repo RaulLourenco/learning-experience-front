@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 export interface Exercises {
   object: string,
   image: string,
-  answer: boolean,
+  match: boolean,
 }
 
 export abstract class ExercisesData {

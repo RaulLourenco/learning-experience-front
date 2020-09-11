@@ -28,10 +28,10 @@ export class ExerciseOnePage implements OnInit {
   }
 
   public levelOne: Exercises[] = [
-    { object: '', image: '', answer: false },
-    { object: '', image: '', answer: false },
-    { object: '', image: '', answer: false },
-    { object: '', image: '', answer: false },
+    { object: '', image: '', match: false },
+    { object: '', image: '', match: false },
+    { object: '', image: '', match: false },
+    { object: '', image: '', match: false },
   ];
 
   public levelOneMainImage = {
@@ -40,8 +40,8 @@ export class ExerciseOnePage implements OnInit {
   };
 
   public verifyAnswer = (i: number) => {
-      if (this.levelOne[i].answer === true) {
-        this.zone.run(() => this.router.navigate(['/exercise-two']))
+      if (this.levelOne[i].match === true) {
+        this.getLevelContent();
       } else {
         this.presentAlert("Ops! Tente novamente!");
     }
@@ -58,8 +58,8 @@ export class ExerciseOnePage implements OnInit {
     return await alertPresent.present();
   }
 
-  public async getLevelContent(){
-    console.log(' entrou ')
+  public async getLevelContent() {
+    console.log(' entrou ');
     const obj = {
         mainImage: {
           id: 1,
@@ -73,9 +73,7 @@ export class ExerciseOnePage implements OnInit {
           {id: 4, name: 'Cavalo', imagePath: '../../../../../assets/images/horse.jpg', match: false}
         ]
     };
-    console.log(obj)
-    console.log(obj.mainImage);
-    console.log(obj.comparable);
+    console.log(obj);
 
     this.levelOneMainImage = {
       imagePath: obj.mainImage.imagePath,
@@ -85,9 +83,7 @@ export class ExerciseOnePage implements OnInit {
     this.levelOne.forEach( (item, index) => {
       item.object = obj.comparable[index].name;
       item.image = obj.comparable[index].imagePath;
-      item.answer = obj.comparable[index].match;
-      console.log('item', item);
-      console.log('index', index);
+      item.match = obj.comparable[index].match;
     });
     // await this.authService.getToken().then(res => {
     //   token = res;
@@ -102,5 +98,9 @@ export class ExerciseOnePage implements OnInit {
     // }).subscribe((res) => {
     //   console.log(' resposta', res );
     // });
+  }
+
+  public async updateProgress(){
+    
   }
 }
