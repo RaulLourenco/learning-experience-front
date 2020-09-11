@@ -17,12 +17,12 @@ export class ExerciseLevelComponent implements OnInit {
   ngOnInit() {}
 
   public Level: Level[] = [
-    {name: 'Módulo 1', text: 'ROLA', src: '/exercise-one'},
-    {name: 'Módulo 2', text: 'DEDO', src: ''},
-    {name: 'Módulo 3', text: 'TETA', src: ''},
-    {name: 'Módulo 4', text: 'EITA', src: ''},
-    {name: 'Módulo 5', text: 'HAHA', src: ''},
-    {name: 'Módulo 6', text: 'HEHE', src: ''},
+    {name: 'Módulo 1', text: 'Estímulos idênticos 3D.', src: '/exercise-one'},
+    {name: 'Módulo 2', text: 'Estímulos idênticos 2D.', src: ''},
+    {name: 'Módulo 3', text: 'Estímulos semelhantes.', src: ''},
+    {name: 'Módulo 4', text: 'Estímulos associados.', src: ''},
+    {name: 'Módulo 5', text: '4 Estímulos idênticos 2D-3D.', src: ''},
+    {name: 'Módulo 6', text: '5 Estímulos idênticos 2D-3D.', src: ''},
   ];
 
   public toExercisePage(page: string){

@@ -1,5 +1,6 @@
 $black-color: #000000;
 $white-color: #ffffff;
+$orange-color: #f26f39;
 
 .home-greetings-col {
     padding: 24px 16px 0 16px;
@@ -25,8 +26,8 @@ $white-color: #ffffff;
     justify-content: center;
     & .exercise-card {
         border-radius: 4px;
-        background-color: #f26f39;
-        width: 50%;
+        background-color: $orange-color;
+        width: 100%;
         color: $white-color;
         & .icon-book {
             color: $black-color;
@@ -35,5 +36,10 @@ $white-color: #ffffff;
         & .title-label {
             color: $black-color;
         }
+    }
+
+    & ion-card-content{
+        font-weight: 600;
+        color: $black-color;
     }
 }
