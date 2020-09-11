@@ -12,5 +12,6 @@ export const urls = {
     URL_GETPATIENTBYID: `${urlAPI}/Patient/GetPatientById`,
     URL_UPDATEADVISOR: `${urlAPI}/Advisor/UpdateAdvisor`,
     URL_UPDATEPATIENT: `${urlAPI}/Patient/UpdatePatient`,
-    URL_REGISTERUSER: `${urlAPI}/Auth/RegisterLogin`
+    URL_REGISTERUSER: `${urlAPI}/Auth/RegisterLogin`,
+    URL_GENERATELEVEL: `${urlAPI}/GameLevel/GerenateLevel`
 };

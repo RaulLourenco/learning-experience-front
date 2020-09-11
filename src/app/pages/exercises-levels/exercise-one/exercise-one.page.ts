@@ -2,6 +2,9 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Exercises } from 'src/app/model/exercises';
 import { AlertController } from '@ionic/angular';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { urls } from '../../../util/urlConfig';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-exercise-one',
@@ -16,17 +19,25 @@ export class ExerciseOnePage implements OnInit {
     private router: Router,
     private zone: NgZone,
     private alertController: AlertController,
+    private http: HttpClient,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.getLevelContent();
   }
 
   public levelOne: Exercises[] = [
-    { object: 'Flor', image: '../../../../../assets/images/flower.jpg', answer: false },
-    { object: 'Maçãs', image: '../../../../../assets/images/apples.jpg', answer: false },
-    { object: 'Carro', image: '../../../../../assets/images/car.jpg', answer: true },
-    { object: 'Cavalo', image: '../../../../../assets/images/horse.jpg', answer: false },
+    { object: '', image: '', answer: false },
+    { object: '', image: '', answer: false },
+    { object: '', image: '', answer: false },
+    { object: '', image: '', answer: false },
   ];
+
+  public levelOneMainImage = {
+    name: '',
+    imagePath: ''
+  };
 
   public verifyAnswer = (i: number) => {
       if (this.levelOne[i].answer === true) {
@@ -47,4 +58,49 @@ export class ExerciseOnePage implements OnInit {
     return await alertPresent.present();
   }
 
+  public async getLevelContent(){
+    console.log(' entrou ')
+    const obj = {
+        mainImage: {
+          id: 1,
+          name: 'Flor',
+          imagePath: '../../../../../assets/images/flower.jpg',
+        },
+        comparable: [
+          {id: 1, name: 'Flor', imagePath: '../../../../../assets/images/flower.jpg', match: true},
+          {id: 2, name: 'Maçãs', imagePath: '../../../../../assets/images/apples.jpg', match: false},
+          {id: 3, name: 'Carro', imagePath: '../../../../../assets/images/car.jpg', match: false},
+          {id: 4, name: 'Cavalo', imagePath: '../../../../../assets/images/horse.jpg', match: false}
+        ]
+    };
+    console.log(obj)
+    console.log(obj.mainImage);
+    console.log(obj.comparable);
+
+    this.levelOneMainImage = {
+      imagePath: obj.mainImage.imagePath,
+      name: obj.mainImage.name
+    };
+
+    this.levelOne.forEach( (item, index) => {
+      item.object = obj.comparable[index].name;
+      item.image = obj.comparable[index].imagePath;
+      item.answer = obj.comparable[index].match;
+      console.log('item', item);
+      console.log('index', index);
+    });
+    // await this.authService.getToken().then(res => {
+    //   token = res;
+    // });
+    // await this.http.post(urls.URL_GENERATELEVEL, {
+    //   gameLevelType: 1
+    // }, 
+    // {
+    //   headers: { 
+    //     Authorization: 'Bearer ' + token
+    //   }
+    // }).subscribe((res) => {
+    //   console.log(' resposta', res );
+    // });
+  }
 }

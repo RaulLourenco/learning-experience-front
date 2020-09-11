@@ -47,21 +47,6 @@ const routes: Routes = [
     path: 'exercise-one',
     loadChildren: () => import('./pages/exercises-levels/exercise-one/exercise-one.module').then( m => m.ExerciseOnePageModule)
   },
-  {
-    path: 'exercise-two',
-    loadChildren: () => import('./pages/exercises-levels/exercise-two/exercise-two.module').then( m => m.ExerciseTwoPageModule)
-  },
-  {
-    path: 'exercise-three',
-    loadChildren: () => import('./pages/exercises-levels/exercise-three/exercise-three.module').then( m => m.ExerciseThreePageModule)
-  },
-  {
-    path: 'exercise-four',
-    loadChildren: () => import('./pages/exercises-levels/exercise-four/exercise-four.module').then( m => m.ExerciseFourPageModule)
-  }
-
-
-
 ];
 @NgModule({
   imports: [
