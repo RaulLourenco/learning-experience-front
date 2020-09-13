@@ -1,6 +1,7 @@
 $black-color: #000000;
 $white-color: #ffffff;
 $orange-color: #f26f39;
+$main-color:  #1c5a83;
 
 .home-greetings-col {
     padding: 24px 16px 0 16px;
@@ -26,7 +27,7 @@ $orange-color: #f26f39;
     justify-content: center;
     & .exercise-card {
         border-radius: 4px;
-        background-color: $orange-color;
+        background-color: $main-color;
         width: 100%;
         color: $white-color;
         & .icon-book {

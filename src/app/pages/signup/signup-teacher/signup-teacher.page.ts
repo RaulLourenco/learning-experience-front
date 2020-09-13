@@ -15,6 +15,7 @@ import { SignupResponse } from 'src/app/model/signup-response';
 export class SignupTeacherPage implements OnInit {
 
   public advisorForm: FormGroup;
+  public token: string;
 
   constructor(
     private router: Router,
@@ -38,13 +39,10 @@ export class SignupTeacherPage implements OnInit {
       comment
     };
     this.advisorForm.reset();
-    let token;
-    await this.authService.getToken().then(res => {
-      token = res;
-    });
+
     await this.http.post(urls.URL_SIGNUPADVISOR, advisor, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       }
     }).subscribe( (res: SignupResponse) => {
       console.log('res: ', res);
@@ -79,6 +77,13 @@ export class SignupTeacherPage implements OnInit {
 
   closeTeacherSignup() {
     this.router.navigateByUrl('home/profile');
+  }
+
+  public async getToken() {
+    await this.authService.getToken().then(res => {
+      this.token = res;
+    });
+    return this.token;
   }
 
   initializeForm() {

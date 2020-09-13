@@ -11,7 +11,7 @@
     </ion-col>
   </ion-row>
 
-  <div class="container-cards" *ngFor="let level of Level; let i = index">
+  <div class="container-cards" *ngFor="let level of Level; let i = index" [ngStyle]="{'opacity': updateCard(i) ? '50%' : '100%'}">
     <ion-card class="exercise-card" (click)="toExercisePage(level.src)">
       <ion-item>
         <ion-icon class="icon-book" name="book-outline" slot="start"></ion-icon>

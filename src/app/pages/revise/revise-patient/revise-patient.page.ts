@@ -44,7 +44,7 @@ export class RevisePatientPage implements OnInit {
     colorsIssue: false,
     observation: '',
   };
-
+  public token: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -75,13 +75,9 @@ export class RevisePatientPage implements OnInit {
       colorsIssue,
       observation
     };
-    let token;
-    await this.authService.getToken().then(res => {
-      token = res;
-    });
     await this.http.post(urls.URL_UPDATEPATIENT, this.patient, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       }
     }).subscribe((res: ReviseResponse) => {
       console.log('res do atualizar: ', res);
@@ -113,17 +109,13 @@ export class RevisePatientPage implements OnInit {
   }
 
   private async getPatientById() {
-    let token;
     await this.route.params.subscribe(params => {
       this.patientId = params.id;
-    });
-    await this.authService.getToken().then(res => {
-      token = res;
     });
     console.log('this.patient', this.patient);
     await this.http.get(urls.URL_GETPATIENTBYID, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       },
       params: new HttpParams().set('patientId', this.patientId)
     }).subscribe((res: Patient) => {
@@ -150,6 +142,17 @@ export class RevisePatientPage implements OnInit {
     return this.patient;
   }
 
+  closeRevisePatient() {
+    this.router.navigate(['/patient-list']);
+  }
+
+  public async getToken() {
+    await this.authService.getToken().then(res => {
+      this.token = res;
+    });
+    return this.token;
+  }
+
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'Aguarde....'
@@ -166,10 +169,6 @@ export class RevisePatientPage implements OnInit {
       message
     });
     return await alertPresent.present();
-  }
-
-  closeRevisePatient() {
-    this.router.navigate(['/patient-list']);
   }
 
   initializeForm() {

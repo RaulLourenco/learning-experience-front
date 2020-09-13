@@ -109,7 +109,7 @@ export class ExerciseOnePage implements OnInit {
   public async updateProgress() {
 
     await this.http.post(urls.URL_UPDATEUSERPROGRESS, {
-      id: this.getUserId(),
+      id: await this.getUserId(),
       progress: this.progress
     },
     {

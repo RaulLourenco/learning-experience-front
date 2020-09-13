@@ -15,6 +15,7 @@ import { VirtualTimeScheduler } from 'rxjs';
 })
 export class ReviseTeacherPage implements OnInit {
 
+
   public advisorForm: FormGroup;
   public advisorId: string;
   public advisor: Advisor = {
@@ -24,7 +25,8 @@ export class ReviseTeacherPage implements OnInit {
     specialization: '',
     comment: ''
   };
-
+  public token: string;
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -55,14 +57,10 @@ export class ReviseTeacherPage implements OnInit {
     };
     
     this.advisorForm.reset();
-    let token;
 
-    await this.authService.getToken().then(res => {
-      token = res;
-    });
     await this.http.post(urls.URL_UPDATEADVISOR, advisor, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       }
     }).subscribe((res: ReviseResponse) => {
       console.log('res do atualizar: ', res);
@@ -78,16 +76,12 @@ export class ReviseTeacherPage implements OnInit {
   }
 
   private async getAdvisorById() {
-    let token;
     await this.route.params.subscribe(params => {
       this.advisorId = params.id;
     });
-    await this.authService.getToken().then(res => {
-      token = res;
-    });
     await this.http.get(urls.URL_GETADVISORBYID, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       },
       params: new HttpParams().set('advisorId', this.advisorId)
     }).subscribe((res: Advisor) => {
@@ -123,6 +117,13 @@ export class ReviseTeacherPage implements OnInit {
 
   closeReviseTeacher() {
     this.router.navigateByUrl('/teacher-list');
+  }
+
+  public async getToken() {
+    await this.authService.getToken().then(res => {
+      this.token = res;
+    });
+    return this.token;
   }
 
   initializeForm() {

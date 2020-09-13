@@ -37,13 +37,10 @@ export class PatientListPage implements OnInit {
   }
 
   public async getAllPatient() {
-    let token;
-    await this.authService.getToken().then(res => {
-      token = res;
-    });
+
     await this.http.get(urls.URL_GETALLPATIENT, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       }
     }).subscribe(res => {
       console.log(res);
@@ -60,5 +57,12 @@ export class PatientListPage implements OnInit {
 
   signupPatient() {
     this.router.navigateByUrl('/signup-patient');
+  }
+
+  public async getToken() {
+    await this.authService.getToken().then(res => {
+      this.token = res;
+    });
+    return this.token;
   }
 }

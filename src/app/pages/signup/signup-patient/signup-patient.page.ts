@@ -33,6 +33,8 @@ export class SignupPatientPage implements OnInit {
   public diseaseLevelValue: number;
   public colorsIssueValue: boolean;
 
+  public token: string;
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -69,13 +71,10 @@ export class SignupPatientPage implements OnInit {
     };
 
     this.patientForm.reset();
-    let token;
-    await this.authService.getToken().then(res => {
-      token = res;
-    });
+
     await this.http.post(urls.URL_SIGNUPPATIENT, patient, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       }
     }).subscribe( (res: SignupResponse) => {
       console.log('res: ', res);
@@ -110,6 +109,13 @@ export class SignupPatientPage implements OnInit {
 
   closePatientSignup() {
     this.router.navigateByUrl('home/profile');
+  }
+
+  public async getToken() {
+    await this.authService.getToken().then(res => {
+      this.token = res;
+    });
+    return this.token;
   }
 
   initializeForm() {

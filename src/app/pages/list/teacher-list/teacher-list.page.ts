@@ -43,13 +43,10 @@ export class TeacherListPage implements OnInit {
   }
 
   public async getAllAdvisor() {
-    let token;
-    await this.authService.getToken().then(res => {
-      token = res;
-    });
+
     await this.http.get(urls.URL_GETALLADVISOR, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + await this.getToken()
       }
     }).subscribe(res => {
       console.log('este eh o res: ', res);
@@ -80,6 +77,13 @@ export class TeacherListPage implements OnInit {
       message
     });
     return await alertPresent.present();
+  }
+
+  public async getToken() {
+    await this.authService.getToken().then(res => {
+      this.token = res;
+    });
+    return this.token;
   }
 
   signupTeacher() {
