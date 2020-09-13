@@ -2,6 +2,7 @@ $white-color: #ffffff;
 $black-color: #000000;
 $main-color: #1c5a83;
 $green-color: #228b22;
+$orange-color: #f26f39;
 
 .header-page {
 	padding: 16px 0;
@@ -15,20 +16,11 @@ $green-color: #228b22;
 }
 
 .progress-bar-col {
-	padding-top: 12px;
-	padding-right: 16px;
+	margin-right: 16px;
+
 	& .progress-bar {
-		--progress: 100;
-		height: 20px;
-		padding: 5px;
-		background-color: $white-color;
-		display: flex;
-		border-radius: 4px;
-	}
-	& .progress-bar::before {
-		content: "";
-		width: calc(var(--progress) * 1%);
-		background-color: $main-color;
+		height: 10px;
+		margin-top: 10px;
 	}
 }
 
@@ -78,5 +70,10 @@ $green-color: #228b22;
 			text-align: center;
 		}
 	}
+}
+
+ion-progress-bar{
+	--buffer-background: #a0a399;
+	--progress-background: #f26f39;
 }
 

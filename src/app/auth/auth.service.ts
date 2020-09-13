@@ -68,6 +68,7 @@ export class AuthService {
         if (res) {
           await this.storage.set('ACCESS_TOKEN', res.token);
           await this.storage.set('EXPIRES_IN', res.tokenExpiresIn);
+          await this.storage.set('USER_ID', res.id);
           this.authSubject.next(true);
         }
       })
@@ -92,6 +93,16 @@ export class AuthService {
       return e;
     });
     return token;
+  }
+
+  async getUserId() {
+    let userId;
+    await this.storage.get('USER_ID').then(res => {
+      userId = res;
+    }).catch(e => {
+      return e;
+    });
+    return userId;
   }
 
 }

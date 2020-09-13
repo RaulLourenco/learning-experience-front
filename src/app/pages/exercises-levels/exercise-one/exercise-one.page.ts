@@ -5,6 +5,8 @@ import { AlertController } from '@ionic/angular';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { urls } from '../../../util/urlConfig';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ExerciseModule } from '../../../model/exerciseModule';
+
 
 @Component({
   selector: 'app-exercise-one',
@@ -25,6 +27,7 @@ export class ExerciseOnePage implements OnInit {
 
   ngOnInit() {
     this.getLevelContent();
+    this.getProgress();
   }
 
   public levelOne: Exercises[] = [
@@ -39,11 +42,20 @@ export class ExerciseOnePage implements OnInit {
     imagePath: ''
   };
 
+  public progress = 0.0;
+  public token: string;
+  public userId: string;
+
   public verifyAnswer = (i: number) => {
-      if (this.levelOne[i].match === true) {
-        this.getLevelContent();
-      } else {
-        this.presentAlert("Ops! Tente novamente!");
+    if (this.levelOne[i].match === true) {
+      this.progress += 0.1;
+      this.progress = Math.round(this.progress * 100) / 100;
+      if (this.progress === 0.5 || this.progress === 1) {
+        this.updateProgress();
+      }
+      this.getLevelContent();
+    } else {
+      this.presentAlert("Ops! Tente novamente!");
     }
   }
 
@@ -59,48 +71,68 @@ export class ExerciseOnePage implements OnInit {
   }
 
   public async getLevelContent() {
-    console.log(' entrou ');
-    const obj = {
-        mainImage: {
-          id: 1,
-          name: 'Flor',
-          imagePath: '../../../../../assets/images/flower.jpg',
-        },
-        comparable: [
-          {id: 1, name: 'Flor', imagePath: '../../../../../assets/images/flower.jpg', match: true},
-          {id: 2, name: 'Maçãs', imagePath: '../../../../../assets/images/apples.jpg', match: false},
-          {id: 3, name: 'Carro', imagePath: '../../../../../assets/images/car.jpg', match: false},
-          {id: 4, name: 'Cavalo', imagePath: '../../../../../assets/images/horse.jpg', match: false}
-        ]
-    };
-    console.log(obj);
 
-    this.levelOneMainImage = {
-      imagePath: obj.mainImage.imagePath,
-      name: obj.mainImage.name
-    };
+    await this.http.post(urls.URL_GENERATELEVEL, {
+      gameLevelType: 1
+    },
+      {
+        headers: {
+          Authorization: 'Bearer ' + await this.getToken()
+        }
+      }).subscribe((res: ExerciseModule) => {
+        this.levelOneMainImage = {
+          imagePath: res.mainImage.path,
+          name: res.mainImage.name
+        };
 
-    this.levelOne.forEach( (item, index) => {
-      item.object = obj.comparable[index].name;
-      item.image = obj.comparable[index].imagePath;
-      item.match = obj.comparable[index].match;
-    });
-    // await this.authService.getToken().then(res => {
-    //   token = res;
-    // });
-    // await this.http.post(urls.URL_GENERATELEVEL, {
-    //   gameLevelType: 1
-    // }, 
-    // {
-    //   headers: { 
-    //     Authorization: 'Bearer ' + token
-    //   }
-    // }).subscribe((res) => {
-    //   console.log(' resposta', res );
-    // });
+        this.levelOne.forEach((item, index) => {
+          item.object = res.comparable[index].name;
+          item.image = res.comparable[index].path;
+          item.match = res.comparable[index].match;
+        });
+      });
   }
 
-  public async updateProgress(){
-    
+  public async getProgress() {
+
+    await this.http.get(urls.URL_GETUSERPROGRESS,
+      {
+        headers: {
+          Authorization: 'Bearer ' + await this.getToken()
+        },
+        params: new HttpParams().set('userId', await this.getUserId()).set('module', '1')
+      }).subscribe((res) => {
+        this.progress = Number(res);
+      });
+  }
+
+  public async updateProgress() {
+
+    await this.http.post(urls.URL_UPDATEUSERPROGRESS, {
+      id: this.getUserId(),
+      progress: this.progress
+    },
+    {
+      headers: {
+        Authorization: 'Bearer ' + await this.getToken()
+      },
+    }).subscribe((res) => {
+        console.log('ATUALIZADO COM SUCESSO', res);
+    });
+  }
+
+
+  public async getToken() {
+    await this.authService.getToken().then(res => {
+      this.token = res;
+    });
+    return this.token;
+  }
+
+  public async getUserId() {
+    await this.authService.getUserId().then(res => {
+      this.userId = res;
+    });
+    return this.userId;
   }
 }
