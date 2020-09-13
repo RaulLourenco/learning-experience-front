@@ -48,12 +48,12 @@ export class SignupPatientPage implements OnInit {
     this.initializeForm();
   }
 
-  checkboxColorsIssue(event) {
-    this.colorsIssueValue = event.value;
-  }
-
   radioDiseaseLevel(event) {
     this.diseaseLevelValue = event.value;
+  }
+
+  radioboxColorsIssue(event) {
+    this.colorsIssueValue = event.value;
   }
 
   private async onSignup(name, age, diseaseLevel, colorsIssue, observation) {
