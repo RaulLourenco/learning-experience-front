@@ -1,50 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject, from } from 'rxjs';
+import { Observable, BehaviorSubject,  } from 'rxjs';
 
 import { Storage } from '@ionic/storage';
-import { AuthResponse } from './auth-response';
-import { urls } from '..//util/urlConfig';
-import { HTTP, HTTPResponse } from '@ionic-native/http/ngx';
-import { UserSignup } from '../model/user-signup';
-import { User } from '../model/user';
+import { AuthResponse } from '../../model/auth-response';
+import { UserSignup } from '../../model/user-signup';
+import { User } from '../../model/user';
+import { ApiService } from './api.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class ApiAuthService extends ApiService {
 
-  authSubject = new BehaviorSubject(false);
+  // authSubject = new BehaviorSubject(false);
 
-  constructor(private httpClient: HttpClient, private storage: Storage, private _http: HTTP) { }
+  constructor(
+    http: HttpClient
+  ) {
+    super(http);
+  }
 
   register(user: UserSignup) {
-    // this._http.setDataSerializer('json');
-    // const observable = from(this._http.post(`${urls.URL_REGISTERUSER}`, user, {
-    //   'Content-Type': 'application/json'
-    // }))
-    //   .pipe(
-    //     tap(async (res) => {
-    //       if (res) {
-    //         const response = JSON.parse(res.data);
-    //         console.log('response: ', response);
-    //         this.authSubject.next(true);
-    //       }
-    //     }));
-    // return observable;
-    return this.httpClient.post(`${urls.URL_REGISTERUSER}`, user, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).pipe(
-      tap(async (res) => {
-        if (res) {
-          this.authSubject.next(true);
-        }
-      })
-    );
-  }
+    const params = {
+      user
+    }
+    return this.http.post(`${environment.urlApi}/Auth/RegisterLogin`, params, this.httpOptions)
+}
+
 
   login(user: User) {
     // this._http.setDataSerializer('json');
@@ -63,7 +48,7 @@ export class AuthService {
     //       }
     //     }));
     // return observable;
-    return this.httpClient.post(`${urls.URL_LOGINUSER}`, user).pipe(
+    return this.http.post(`${urls.URL_LOGINUSER}`, user).pipe(
       tap(async (res: AuthResponse) => {
         if (res) {
           await this.storage.set('ACCESS_TOKEN', res.token);

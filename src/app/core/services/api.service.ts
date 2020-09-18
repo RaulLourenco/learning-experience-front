@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Advisor } from 'src/app/model/advisor';
 import { Patient } from 'src/app/model/patient';
 import { User } from 'src/app/model/user';
+import { Storage } from '@ionic/storage';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+    authSubject = new BehaviorSubject(false);
+
   protected httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })
   };
 
-  constructor(protected http: HttpClient) { }
+  constructor(
+    protected http: HttpClient,
+    protected storage: Storage
+    ) { }
 
   GetAllAdvisor(): Observable<Advisor>{
     return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAll`)
@@ -77,11 +84,24 @@ export class ApiService {
     return this.http.get<User>(`${environment.urlApi}/Patient/GetProgressByUser`)
   }
 
-  public async getToken() {
-    await this.authService.getToken().then(res => {
-      this.token = res;
+  async getToken() {
+    let token;
+    await this.storage.get('ACCESS_TOKEN').then(res => {
+      token = res;
+    }).catch(e => {
+      return e;
     });
-    return this.token;
+    return token;
   }
 
+  async getUserId() {
+    let userId;
+    await this.storage.get('USER_ID').then(res => {
+      userId = res;
+    }).catch(e => {
+      return e;
+    });
+    return userId;
+  }
+  
 }
