@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angular';
-import { urls } from '../../../util/urlConfig';
-import { HttpClient } from '@angular/common/http';
 import { SignupResponse } from 'src/app/model/signup-response';
 import { Patient } from 'src/app/model/patient';
+import { ApiService } from 'src/app/core/services/api.service';
 @Component({
   selector: 'app-signup-patient',
   templateUrl: './signup-patient.page.html',
@@ -40,8 +38,7 @@ export class SignupPatientPage implements OnInit {
     private formBuilder: FormBuilder,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private authService: AuthService,
-    private http: HttpClient
+    private apiService: ApiService
     ) { }
 
   ngOnInit() {
@@ -72,11 +69,8 @@ export class SignupPatientPage implements OnInit {
 
     this.patientForm.reset();
 
-    await this.http.post(urls.URL_SIGNUPPATIENT, patient, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      }
-    }).subscribe( (res: SignupResponse) => {
+    this.apiService.registerPatient(patient)
+    .subscribe( (res: SignupResponse) => {
       console.log('res: ', res);
       if (res.statusCode === 200) {
         this.dismissLoading();
@@ -111,11 +105,8 @@ export class SignupPatientPage implements OnInit {
     this.router.navigateByUrl('home/profile');
   }
 
-  public async getToken() {
-    await this.authService.getToken().then(res => {
-      this.token = res;
-    });
-    return this.token;
+  public async checkToken() {
+    await this.apiService.getToken();
   }
 
   initializeForm() {

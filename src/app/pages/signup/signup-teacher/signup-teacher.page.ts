@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Advisor } from '../../../model/advisor';
-import { urls } from '../../../util/urlConfig';
 import { HttpClient } from '@angular/common/http';
 import { SignupResponse } from 'src/app/model/signup-response';
+import { ApiService } from 'src/app/core/services/api.service';
 @Component({
   selector: 'app-signup-teacher',
   templateUrl: './signup-teacher.page.html',
@@ -22,8 +21,8 @@ export class SignupTeacherPage implements OnInit {
     private formBuilder: FormBuilder,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private authService: AuthService,
-    private http: HttpClient) { }
+    private apiService: ApiService
+    ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -40,11 +39,8 @@ export class SignupTeacherPage implements OnInit {
     };
     this.advisorForm.reset();
 
-    await this.http.post(urls.URL_SIGNUPADVISOR, advisor, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      }
-    }).subscribe( (res: SignupResponse) => {
+    this.apiService.registerAdvisor(advisor)
+    .subscribe( (res: SignupResponse) => {
       console.log('res: ', res);
       if (res.statusCode == 200) {
         this.dismissLoading();

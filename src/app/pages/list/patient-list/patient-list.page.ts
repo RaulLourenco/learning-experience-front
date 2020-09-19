@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from 'src/app/auth/auth.service';
-import { urls } from '../../../util/urlConfig';
+import { HttpClient } from '@angular/common/http'; import { urls } from '../../../util/urlConfig';
 import { Patient } from '../../../model/patient';
-import { DiseaseLevel } from '../../../enum/diseaseLevel';
+import { ApiService } from 'src/app/core/services/api.service';
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.page.html',
@@ -12,7 +10,10 @@ import { DiseaseLevel } from '../../../enum/diseaseLevel';
 })
 export class PatientListPage implements OnInit {
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private apiService: ApiService
+  ) { }
 
   public token: string;
   public patientList = [];
@@ -36,33 +37,15 @@ export class PatientListPage implements OnInit {
     this.router.navigate(['/revise-patient', patient.id]);
   }
 
-  public async getAllPatient() {
-
-    await this.http.get(urls.URL_GETALLPATIENT, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      }
-    }).subscribe(res => {
-      console.log(res);
-      this.patientList.push(res);
-      this.patientList = this.patientList[0];
-      this.patientList.forEach(element => {
-        this.patient.name = element.name;
-        this.patient.age = element.age;
-        this.patient.diseaseLevel = element.diseaseLevel;
-        this.patient.colorsIssue = element.colorsIssue;
-      });
-    });
+  getPatients = async () => {
+    await this.apiService.getAllPatient().toPromise();
   }
 
   signupPatient() {
     this.router.navigateByUrl('/signup-patient');
   }
 
-  public async getToken() {
-    await this.authService.getToken().then(res => {
-      this.token = res;
-    });
-    return this.token;
+  public async checkToken() {
+    await this.apiService.getToken();
   }
 }

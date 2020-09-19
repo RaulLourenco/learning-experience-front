@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 })
 export class ApiService {
 
-    authSubject = new BehaviorSubject(false);
+  authSubject = new BehaviorSubject(false);
 
   protected httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })
@@ -22,66 +22,95 @@ export class ApiService {
   constructor(
     protected http: HttpClient,
     protected storage: Storage
-    ) { }
+  ) { }
 
-  GetAllAdvisor(): Observable<Advisor>{
-    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAll`)
+  getAllAdvisor(): Observable<Advisor> {
+    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAll`);
   }
-  
-  RemoveAdvisor(): Observable<Advisor>{
+
+  registerAdvisor(advisor: Advisor) {
+    const params = {
+      advisor
+    }
+    return this.http.post(`${environment.urlApi}/Advisor/RegisterAdvisor`, params, this.httpOptions);
+  }
+
+  removeAdvisor(): Observable<Advisor> {
     return this.http.get<Advisor>(`${environment.urlApi}/Advisor/RemoveAdvisor`)
   }
 
-  UpdateAdvisor(): Observable<Advisor>{
-    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/UpdateAdvisor`)
+  updateAdvisor(advisor: Advisor) {
+    const params = {
+      advisor
+    }
+    return this.http.post(`${environment.urlApi}/Advisor/UpdateAdvisor`, params, this.httpOptions);
   }
 
-  GetAdvisorById(): Observable<Advisor>{
+  getAdvisorById(): Observable<Advisor> {
     return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAdvisorById`)
   }
 
-  RegisterPatient(): Observable<Patient>{
+  getAllPatient(): Observable<Patient> {
     return this.http.get<Patient>(`${environment.urlApi}/Patient/GetAll`)
   }
 
-  RemovePatient(): Observable<Patient>{
+  removePatient(): Observable<Patient> {
     return this.http.get<Patient>(`${environment.urlApi}/Patient/RemovePatient`)
   }
 
-  UpdatePatient(): Observable<Patient>{
-    return this.http.get<Patient>(`${environment.urlApi}/Patient/UpdatePatient`)
+  updatePatient(patient: Patient) {
+    const params = {
+      patient
+    }
+    return this.http.post(`${environment.urlApi}/Patient/UpdatePatient`, params, this.httpOptions)
   }
 
-  GetPatientById(): Observable<User>{
+  getPatientById(): Observable<User> {
     return this.http.get<User>(`${environment.urlApi}/Patient/GetPatientById`)
   }
 
-  RegisterUser(): Observable<User>{
-    return this.http.get<User>(`${environment.urlApi}/Patient/RegisterUser`)
+  registerUser(user: User) {
+    const params = {
+      user
+    }
+    return this.http.post(`${environment.urlApi}/Patient/RegisterUser`, params, this.httpOptions)
   }
 
-  GetAllUsers(): Observable<User>{
+  getAllUsers(): Observable<User> {
     return this.http.get<User>(`${environment.urlApi}/Patient/GetAll`)
   }
 
-  RemoveUser(): Observable<User>{
+  removeUser(): Observable<User> {
     return this.http.get<User>(`${environment.urlApi}/Patient/RemoveUser`)
   }
 
-  UpdateUser(): Observable<User>{
-    return this.http.get<User>(`${environment.urlApi}/Patient/UpdateUser`)
+  updateUser(user: User) {
+    const params = {
+      user
+    }
+    return this.http.post(`${environment.urlApi}/Patient/UpdateUser`, params, this.httpOptions)
   }
 
-  GetUserProgress(): Observable<User>{
+  getUserProgress(): Observable<User> {
     return this.http.get<User>(`${environment.urlApi}/Patient/GetUserProgress`)
   }
 
-  UpdateUserProgress(): Observable<User>{
-    return this.http.get<User>(`${environment.urlApi}/Patient/UpdateUserProgress`)
+  updateUserProgress(user: User) {
+    const params = {
+      user
+    }
+    return this.http.post(`${environment.urlApi}/Patient/UpdateUserProgress`, params, this.httpOptions)
   }
 
-  GetProgressByUser(): Observable<User>{
+  getProgressByUser(): Observable<User> {
     return this.http.get<User>(`${environment.urlApi}/Patient/GetProgressByUser`)
+  }
+
+  registerPatient(patient: Patient) {
+    const params = {
+      patient
+    }
+    return this.http.post(`${environment.urlApi}/Patient/RegisterPatient`, params, this.httpOptions)
   }
 
   async getToken() {
@@ -103,5 +132,5 @@ export class ApiService {
     });
     return userId;
   }
-  
+
 }

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
 import { User } from '../../../model/user';
-import { ApiService } from 'src/app/core/services/api.service';
+import { ApiAuthService } from 'src/app/core/services/api-auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -20,7 +19,7 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private formBuilder: FormBuilder,
     private router: Router,
-    private apiService: ApiService) { }
+    private apiAuthService: ApiAuthService) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -32,7 +31,7 @@ export class LoginPage implements OnInit {
       password
     };
     this.presentLoading();
-    this.apiService.login(user).subscribe((res) => {
+    this.apiAuthService.login(user).subscribe((res) => {
       if (res.status === 200) {
         this.dismissLoading();
         this.router.navigateByUrl('home/exercises-levels');

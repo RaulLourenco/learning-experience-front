@@ -3,9 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
+import { ApiService } from './api.service';
+import { ApiAuthService } from './api-auth.service';
+import { ApiLevelService } from './api-level.service';
 
 const SERVICES = [
-
+  ApiService,
+  ApiAuthService,
+  ApiLevelService
 ];
 
 @NgModule({
@@ -19,7 +24,6 @@ const SERVICES = [
     ...SERVICES,
     {
       provide: APP_INITIALIZER,
-      // useFactory: appInitializerFactory,
       deps: [
         Injector
       ],

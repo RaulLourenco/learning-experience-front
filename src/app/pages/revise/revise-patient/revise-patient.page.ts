@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angular';
-import { urls } from '../../../util/urlConfig';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Patient } from 'src/app/model/patient';
 import { ReviseResponse } from 'src/app/model/revise-response';
+import { ApiService } from 'src/app/core/services/api.service';
 @Component({
   selector: 'app-revise-patient',
   templateUrl: './revise-patient.page.html',
@@ -46,13 +45,14 @@ export class RevisePatientPage implements OnInit {
   };
   public token: string;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private alertController: AlertController,
-              private loadingController: LoadingController,
-              private authService: AuthService,
-              private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private apiService: ApiService,
+  ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -75,11 +75,8 @@ export class RevisePatientPage implements OnInit {
       colorsIssue,
       observation
     };
-    await this.http.post(urls.URL_UPDATEPATIENT, this.patient, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      }
-    }).subscribe((res: ReviseResponse) => {
+    await this.apiService.updatePatient(this.patient)
+    .subscribe((res: ReviseResponse) => {
       console.log('res do atualizar: ', res);
       if (res.statusCode === 200) {
         this.dismissLoading();
@@ -146,11 +143,8 @@ export class RevisePatientPage implements OnInit {
     this.router.navigate(['/patient-list']);
   }
 
-  public async getToken() {
-    await this.authService.getToken().then(res => {
-      this.token = res;
-    });
-    return this.token;
+  public async checkToken() {
+    await this.apiService.getToken();
   }
 
   async presentLoading() {

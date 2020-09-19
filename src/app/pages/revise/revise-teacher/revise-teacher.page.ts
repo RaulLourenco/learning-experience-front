@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../../auth/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Advisor } from '../../../model/advisor';
-import { urls } from '../../../util/urlConfig';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ReviseResponse } from 'src/app/model/revise-response';
-import { VirtualTimeScheduler } from 'rxjs';
+import { ApiService } from 'src/app/core/services/api.service';
 @Component({
   selector: 'app-revise-teacher',
   templateUrl: './revise-teacher.page.html',
@@ -26,14 +24,15 @@ export class ReviseTeacherPage implements OnInit {
     comment: ''
   };
   public token: string;
-  
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private alertController: AlertController,
-              private loadingController: LoadingController,
-              private authService: AuthService,
-              private http: HttpClient) { }
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -41,7 +40,7 @@ export class ReviseTeacherPage implements OnInit {
   }
 
 
-  private async onChange( name, profession, education, specialization, comment) {
+  private async onChange(name, profession, education, specialization, comment) {
     this.presentLoading();
     await this.route.params.subscribe(params => {
       this.advisorId = params.id;
@@ -55,14 +54,11 @@ export class ReviseTeacherPage implements OnInit {
       specialization,
       comment
     };
-    
+
     this.advisorForm.reset();
 
-    await this.http.post(urls.URL_UPDATEADVISOR, advisor, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      }
-    }).subscribe((res: ReviseResponse) => {
+    await this.apiService.updateAdvisor(advisor)
+      .subscribe((res: ReviseResponse) => {
       console.log('res do atualizar: ', res);
       if (res.statusCode == 200) {
         this.dismissLoading();
@@ -79,12 +75,8 @@ export class ReviseTeacherPage implements OnInit {
     await this.route.params.subscribe(params => {
       this.advisorId = params.id;
     });
-    await this.http.get(urls.URL_GETADVISORBYID, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      },
-      params: new HttpParams().set('advisorId', this.advisorId)
-    }).subscribe((res: Advisor) => {
+    await this.apiService.getAdvisorById()
+    .subscribe((res: Advisor) => {
       console.log('reviseResponse: ', res);
       this.advisor.name = res.name;
       this.advisor.profession = res.profession;
@@ -119,11 +111,8 @@ export class ReviseTeacherPage implements OnInit {
     this.router.navigateByUrl('/teacher-list');
   }
 
-  public async getToken() {
-    await this.authService.getToken().then(res => {
-      this.token = res;
-    });
-    return this.token;
+  public async checkToken() {
+    await this.apiService.getToken();
   }
 
   initializeForm() {

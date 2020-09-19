@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../auth/auth.service';
 import { SignupResponse } from 'src/app/model/signup-response';
 import { UserSignup } from 'src/app/model/user-signup';
+import { ApiService } from 'src/app/core/services/api.service';
+import { ApiAuthService } from 'src/app/core/services/api-auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,11 +22,14 @@ export class SignupPage implements OnInit {
     repeatPassword: ''
   };
 
-  constructor(private alertController: AlertController,
-              private loadingController: LoadingController,
-              private formBuilder: FormBuilder,
-              private router: Router,
-              private authService: AuthService) { }
+  constructor(
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private apiService: ApiService,
+    private apiAuthService: ApiAuthService
+    ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -39,7 +43,8 @@ export class SignupPage implements OnInit {
       password,
       repeatPassword
     };
-    this.authService.register(this.user).subscribe( (res: SignupResponse) => {
+    this.apiAuthService.register(this.user)
+    .subscribe((res: SignupResponse) => {
       if (res.statusCode === 200) {
         this.dismissLoading();
         this.router.navigate(['/onboarding']);

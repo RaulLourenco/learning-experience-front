@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { urls } from '../../../util/urlConfig';
-import { AuthService } from '../../../auth/auth.service';
 import { Advisor } from 'src/app/model/advisor';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
   selector: 'app-teacher-list',
@@ -23,11 +22,12 @@ export class TeacherListPage implements OnInit {
     comment: ''
   };
 
-  constructor(private router: Router,
-              private http: HttpClient,
-              private authService: AuthService,
-              private alertController: AlertController,
-              private loadingController: LoadingController) { }
+  constructor(
+    private router: Router,
+    private apiService: ApiService,
+    private alertController: AlertController,
+    private loadingController: LoadingController
+  ) { }
 
   ngOnInit() {
     this.getAllAdvisor();
@@ -42,23 +42,20 @@ export class TeacherListPage implements OnInit {
 
   }
 
-  public async getAllAdvisor() {
+  public async getAdvisors() {
 
-    await this.http.get(urls.URL_GETALLADVISOR, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      }
-    }).subscribe(res => {
-      console.log('este eh o res: ', res);
-      this.advisorList.push(res);
-      this.advisorList = this.advisorList[0];
-      this.advisorList.forEach(element => {
-        this.advisor.name = element.name;
-        this.advisor.profession = element.profession;
-        this.advisor.education = element.education;
-        this.advisor.specialization = element.specialization;
-      });
-    });
+    await this.apiService.getAllAdvisor().toPromise();
+    //   .subscribe(res => {
+    //   console.log('este eh o res: ', res);
+    //   this.advisorList.push(res);
+    //   this.advisorList = this.advisorList[0];
+    //   this.advisorList.forEach(element => {
+    //     this.advisor.name = element.name;
+    //     this.advisor.profession = element.profession;
+    //     this.advisor.education = element.education;
+    //     this.advisor.specialization = element.specialization;
+    //   });
+    // });
   }
 
   async presentLoading() {
@@ -79,11 +76,8 @@ export class TeacherListPage implements OnInit {
     return await alertPresent.present();
   }
 
-  public async getToken() {
-    await this.authService.getToken().then(res => {
-      this.token = res;
-    });
-    return this.token;
+  public async checkToken() {
+    await this.apiService.getToken();
   }
 
   signupTeacher() {
