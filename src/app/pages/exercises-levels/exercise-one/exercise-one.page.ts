@@ -53,6 +53,11 @@ export class ExerciseOnePage implements OnInit {
       if (this.progress === 0.5 || this.progress === 1) {
         this.updateProgress();
       }
+      if(this.progress === 1) {
+        this.presentAlert("Você terminou esse módulo!");
+        this.closeExercise();
+      }
+
       this.getLevelContent();
     } else {
       this.presentAlert("Ops! Tente novamente!");
@@ -102,14 +107,25 @@ export class ExerciseOnePage implements OnInit {
         },
         params: new HttpParams().set('userId', await this.getUserId()).set('module', '1')
       }).subscribe((res) => {
+        if(this.progress = 1) {
+          this.progress = 0;
+        }
+        else {
         this.progress = Number(res);
+      }
       });
+
+      if(this.progress = 1) {
+        this.progress = 0;
+        console.log("vou te zerei", this.progress);
+      }
   }
 
   public async updateProgress() {
 
     await this.http.post(urls.URL_UPDATEUSERPROGRESS, {
       id: await this.getUserId(),
+      module: 1,
       progress: this.progress
     },
     {

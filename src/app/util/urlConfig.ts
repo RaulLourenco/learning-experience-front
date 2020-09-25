@@ -1,5 +1,5 @@
-const urlAPI = 'http://localhost:5000/api/v1';
-// const urlAPI = 'https://learningexperieceapi.azurewebsites.net/api/v1';
+//const urlAPI = 'http://localhost:5000/api/v1';
+const urlAPI = 'http://165.227.62.217:5001/api/v1';
 export const urls = {
     URL_API: `${urlAPI}`,
     URL_LOGINUSER: `${urlAPI}/Auth`,
@@ -15,5 +15,6 @@ export const urls = {
     URL_REGISTERUSER: `${urlAPI}/Auth/RegisterLogin`,
     URL_GENERATELEVEL: `${urlAPI}/GameLevel/GerenateLevel`,
     URL_GETUSERPROGRESS: `${urlAPI}/User/GetUserProgress`,
-    URL_UPDATEUSERPROGRESS: `${urlAPI}/User/UpdateUserProgress`
-};
+    URL_UPDATEUSERPROGRESS: `${urlAPI}/User/UpdateUserProgress`,
+    URL_GETPROGRESSBYUSER: `${urlAPI}/User/GetProgressByUser`
+}; 
