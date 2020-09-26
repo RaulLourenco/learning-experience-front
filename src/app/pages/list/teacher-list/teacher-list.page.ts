@@ -30,7 +30,7 @@ export class TeacherListPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAllAdvisor();
+    this.apiService.getAllAdvisor();
   }
 
   closeTeacherList() {

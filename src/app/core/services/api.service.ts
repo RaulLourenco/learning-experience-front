@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Advisor } from 'src/app/model/advisor';
@@ -65,8 +65,17 @@ export class ApiService {
     return this.http.post(`${environment.urlApi}/Patient/UpdatePatient`, params, this.httpOptions)
   }
 
-  getPatientById(): Observable<User> {
-    return this.http.get<User>(`${environment.urlApi}/Patient/GetPatientById`)
+    getPatientById(): Observable<Patient> {
+      var userId;
+        this.getUserId().then(res => {
+        userId = res;
+      })
+    return this.http.get<Patient>(`${environment.urlApi}/Patient/GetPatientById`, {
+      headers: {
+        Authorization: 'Bearer ' + this.getToken()
+      },
+      params: new HttpParams().set('patientId',  userId)
+    });
   }
 
   registerUser(user: User) {
@@ -95,9 +104,9 @@ export class ApiService {
     return this.http.get<User>(`${environment.urlApi}/Patient/GetUserProgress`)
   }
 
-  updateUserProgress(user: User) {
+  updateUserProgress(userId: string) {
     const params = {
-      user
+      userId
     }
     return this.http.post(`${environment.urlApi}/Patient/UpdateUserProgress`, params, this.httpOptions)
   }
@@ -123,7 +132,7 @@ export class ApiService {
     return token;
   }
 
-  async getUserId() {
+   async getUserId() {
     let userId;
     await this.storage.get('USER_ID').then(res => {
       userId = res;

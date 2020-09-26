@@ -110,12 +110,7 @@ export class RevisePatientPage implements OnInit {
       this.patientId = params.id;
     });
     console.log('this.patient', this.patient);
-    await this.http.get(urls.URL_GETPATIENTBYID, {
-      headers: {
-        Authorization: 'Bearer ' + await this.getToken()
-      },
-      params: new HttpParams().set('patientId', this.patientId)
-    }).subscribe((res: Patient) => {
+    this.apiService.getPatientById().subscribe((res: Patient) => {
       console.log('reviseResponse: ', res);
       this.patient.name = res.name;
       this.patient.age = res.age;

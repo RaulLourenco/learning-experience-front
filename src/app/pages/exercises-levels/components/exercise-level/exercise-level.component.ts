@@ -3,7 +3,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Level } from 'src/app/model/levels';
 import { AlertController } from '@ionic/angular';
-import { ApiService } from 'src/app/core/services/api.service';
+import { ApiLevelService } from 'src/app/core/services/api-level.service';
 @Component({
   selector: 'app-exercise-level',
   templateUrl: './exercise-level.component.html',
@@ -15,12 +15,12 @@ export class ExerciseLevelComponent implements OnInit {
     private router: Router,
     private zone: NgZone,
     private http: HttpClient,
-    private apiService: ApiService,
+    private apiService: ApiLevelService,
     private alertController: AlertController,
   ) { }
 
   ngOnInit() {
-    this.getProgress();
+    this.apiService.getProgress();
   }
 
   public progress = 0.0;
@@ -44,19 +44,6 @@ export class ExerciseLevelComponent implements OnInit {
     } else {
       this.zone.run(() => this.router.navigate([page]));
     }
-  }
-
-  public async getProgress() {
-
-    await this.http.get(urls.URL_GETPROGRESSBYUSER,
-      {
-        headers: {
-          Authorization: 'Bearer ' + await this.getToken()
-        },
-        params: new HttpParams().set('userId', await this.getUserId())
-      }).subscribe((res) => {
-        this.progress = Number(res);
-      });
   }
 
   async presentAlert(message: string, page: string) {

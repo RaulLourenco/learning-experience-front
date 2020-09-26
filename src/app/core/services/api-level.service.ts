@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 import { AuthResponse } from '../../model/auth-response';
@@ -24,5 +24,16 @@ export class ApiLevelService extends ApiService {
       storage
     );
   }
+
+  public async getProgress() {
+    return this.http.get(`${environment.urlApi}/Patient/GetProgress`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + await this.getToken()
+        },
+        params: new HttpParams().set('userId', await this.getUserId())
+      });
+  }
+
 
 }

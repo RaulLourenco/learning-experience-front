@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http'; import { urls } from '../../../util/urlConfig';
 import { Patient } from '../../../model/patient';
 import { ApiService } from 'src/app/core/services/api.service';
 @Component({
@@ -26,7 +25,7 @@ export class PatientListPage implements OnInit {
   };
 
   ngOnInit() {
-    this.getAllPatient();
+    this.apiService.getAllPatient();
   }
 
   closePatientList() {

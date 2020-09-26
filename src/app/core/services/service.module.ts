@@ -20,15 +20,9 @@ const SERVICES = [
     FormsModule,
     IonicStorageModule.forRoot()
   ],
+  declarations: [],
   providers: [
-    ...SERVICES,
-    {
-      provide: APP_INITIALIZER,
-      deps: [
-        Injector
-      ],
-      multi: true
-    },
+    ...SERVICES
   ],
 })
 export class ServiceModule {

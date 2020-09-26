@@ -6,6 +6,7 @@ import { Advisor } from '../../../model/advisor';
 import { HttpClient } from '@angular/common/http';
 import { SignupResponse } from 'src/app/model/signup-response';
 import { ApiService } from 'src/app/core/services/api.service';
+import { ApiAuthService } from 'src/app/core/services/api-auth.service';
 @Component({
   selector: 'app-signup-teacher',
   templateUrl: './signup-teacher.page.html',
@@ -76,7 +77,7 @@ export class SignupTeacherPage implements OnInit {
   }
 
   public async getToken() {
-    await this.authService.getToken().then(res => {
+    await this.apiService.getToken().then(res => {
       this.token = res;
     });
     return this.token;
