@@ -52,6 +52,11 @@ export class ExerciseOnePage implements OnInit {
       if (this.progress === 0.5 || this.progress === 1) {
         this.updateProgress();
       }
+      if(this.progress === 1) {
+        this.presentAlert("Você terminou esse módulo!");
+        this.closeExercise();
+      }
+
       this.getLevelContent();
     } else {
       this.presentAlert("Ops! Tente novamente!");
@@ -71,25 +76,25 @@ export class ExerciseOnePage implements OnInit {
 
   public async getLevelContent() {
 
-    await this.http.post(urls.URL_GENERATELEVEL, {
-      gameLevelType: 1
-    },
-      {
-        headers: {
-          Authorization: 'Bearer ' + await this.checkToken()
-        }
-      }).subscribe((res: ExerciseModule) => {
-        this.levelOneMainImage = {
-          imagePath: res.mainImage.path,
-          name: res.mainImage.name
-        };
+    // await this.http.post(urls.URL_GENERATELEVEL, {
+    //   gameLevelType: 1
+    // },
+    //   {
+    //     headers: {
+    //       Authorization: 'Bearer ' + await this.checkToken()
+    //     }
+    //   }).subscribe((res: ExerciseModule) => {
+    //     this.levelOneMainImage = {
+    //       imagePath: res.mainImage.path,
+    //       name: res.mainImage.name
+    //     };
 
-        this.levelOne.forEach((item, index) => {
-          item.object = res.comparable[index].name;
-          item.image = res.comparable[index].path;
-          item.match = res.comparable[index].match;
-        });
-      });
+    //     this.levelOne.forEach((item, index) => {
+    //       item.object = res.comparable[index].name;
+    //       item.image = res.comparable[index].path;
+    //       item.match = res.comparable[index].match;
+    //     });
+    //   });
   }
 
   public async getProgress() {
