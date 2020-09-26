@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Advisor } from 'src/app/core/models/advisor';
 import { User } from 'src/app/core/models/user';
+import { Progress } from 'src/app/core/models/Progress';
 import { Storage } from '@ionic/storage';
 import { Patient } from '../models/patient';
 
@@ -100,8 +101,17 @@ export class ApiService {
     return this.http.post(`${environment.urlApi}/Patient/UpdateUser`, params, this.httpOptions)
   }
 
-  getUserProgress(): Observable<User> {
-    return this.http.get<User>(`${environment.urlApi}/Patient/GetUserProgress`)
+  async getUserProgress(): Promise<number> {
+
+   let userId = await this.getUserId();
+   let token = await this.getToken();
+    return this.http.get<number>(`${environment.urlApi}/User/GetUserProgress`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      },
+      params: new HttpParams().set('userId', userId)
+    }).toPromise();
+    
   }
 
   updateUserProgress(userId: string) {
@@ -123,20 +133,15 @@ export class ApiService {
   }
 
   async getToken() {
-    let token;
-    await this.storage.get('ACCESS_TOKEN').then(res => {
-      token = res;
-    }).catch(e => {
+    let token = await this.storage.get('ACCESS_TOKEN').catch(e => {
       return e;
     });
+    console.log("esse e o token" + token);
     return token;
   }
 
    async getUserId() {
-    let userId;
-    await this.storage.get('USER_ID').then(res => {
-      userId = res;
-    }).catch(e => {
+    let userId = await this.storage.get('USER_ID').catch(e => {
       return e;
     });
     return userId;

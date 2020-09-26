@@ -4,6 +4,7 @@ import { Exercises } from 'src/app/core/models/exercises';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/core/services/api.service';
+import { from } from 'rxjs';
 
 
 @Component({
@@ -98,10 +99,8 @@ export class ExerciseOnePage implements OnInit {
 
   public async getProgress() {
 
-    await this.apiService.getUserProgress().toPromise()
-    // .subscribe((res) => {
-    //     this.progress = Number(res);
-    //   });
+    let result = await this.apiService.getUserProgress()
+        this.progress = result;
   }
 
   public async updateProgress() {

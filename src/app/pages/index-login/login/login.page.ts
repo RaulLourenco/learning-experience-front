@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
   private async onSign(email, password) {
     const user: User = {
       email,
-      password
+      password,
     };
     this.presentLoading();
     this.apiAuthService.login(user).subscribe((res) => {
