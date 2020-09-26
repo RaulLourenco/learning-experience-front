@@ -43,10 +43,7 @@ export class ApiAuthService extends ApiService {
 
 
   login(user: User) {
-    const params = {
-      user
-    }
-    return this.http.post(`${environment.urlApi}/Auth`, params, this.httpOptions)
+    return this.http.post(`${environment.urlApi}/Auth`, user, this.httpOptions)
       .pipe(
         tap(async (res: AuthResponse) => {
           if (res) {
