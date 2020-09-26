@@ -27,6 +27,7 @@ export class ExerciseLevelComponent implements OnInit {
   public progress = 0.0;
   public token: string;
   public userId: string;
+  public module = 0;
   public completed = false;
 
   public Level: Level[] = [
@@ -48,12 +49,12 @@ export class ExerciseLevelComponent implements OnInit {
 
   public async getProgress() {
 
-    await this.http.get(urls.URL_GETUSERPROGRESS,
+    await this.http.get(urls.URL_GETPROGRESSBYUSER,
       {
         headers: {
           Authorization: 'Bearer ' + await this.getToken()
         },
-        params: new HttpParams().set('userId', await this.getUserId()).set('module', '1')
+        params: new HttpParams().set('userId', await this.getUserId())
       }).subscribe((res) => {
         this.progress = Number(res);
       });
@@ -75,7 +76,6 @@ export class ExerciseLevelComponent implements OnInit {
           handler: () => {
             console.log('Confirm Okay');
             this.zone.run(() => this.router.navigate([page]));
-            this.progress = 0;
           }
         }
       ]
@@ -84,7 +84,7 @@ export class ExerciseLevelComponent implements OnInit {
   }
 
   public updateCard(index) {
-    if(index === 0) {
+    if(this.progress = 1 && this.module) {
       return this.completed = true;
     }
   }
