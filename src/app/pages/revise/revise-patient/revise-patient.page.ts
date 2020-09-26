@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angular';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Patient } from 'src/app/model/patient';
-import { ReviseResponse } from 'src/app/model/revise-response';
 import { ApiService } from 'src/app/core/services/api.service';
+import { Patient } from 'src/app/core/models/patient';
+import { ReviseResponse } from 'src/app/core/models/revise-response';
+
 @Component({
   selector: 'app-revise-patient',
   templateUrl: './revise-patient.page.html',
@@ -75,18 +75,19 @@ export class RevisePatientPage implements OnInit {
       colorsIssue,
       observation
     };
-    await this.apiService.updatePatient(this.patient)
-    .subscribe((res: ReviseResponse) => {
-      console.log('res do atualizar: ', res);
-      if (res.statusCode === 200) {
-        this.dismissLoading();
-        this.presentAlert('Atualizado com sucesso!');
-        this.router.navigate(['/home/profile']);
-      } else {
-        this.dismissLoading();
-        this.presentAlert('Erro ao atualizar. Tente novamente!');
-      }
-    });
+    this.apiService.updatePatient(this.patient)
+      .subscribe((res: ReviseResponse) => {
+        console.log('res do atualizar: ', res);
+        if (res.statusCode === 200) {
+          this.dismissLoading();
+          this.presentAlert('Atualizado com sucesso!');
+          this.router.navigate(['/home/profile']);
+        }
+        else {
+          this.dismissLoading();
+          this.presentAlert('Erro ao atualizar. Tente novamente!');
+        }
+      });
   }
 
   radioColorsCheck(event) {

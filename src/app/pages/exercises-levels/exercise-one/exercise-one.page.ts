@@ -1,9 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { Exercises } from 'src/app/model/exercises';
+import { Exercises } from 'src/app/core/models/exercises';
 import { AlertController } from '@ionic/angular';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { ExerciseModule } from '../../../model/exerciseModule';
+import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/core/services/api.service';
 
 

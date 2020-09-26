@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { Advisor } from '../../../model/advisor';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { ReviseResponse } from 'src/app/model/revise-response';
+import { Advisor } from '../../../core/models/advisor';
 import { ApiService } from 'src/app/core/services/api.service';
+import { ReviseResponse } from 'src/app/core/models/revise-response';
+
 @Component({
   selector: 'app-revise-teacher',
   templateUrl: './revise-teacher.page.html',

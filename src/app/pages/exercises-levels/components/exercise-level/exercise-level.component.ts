@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { Level } from 'src/app/model/levels';
+import { Level } from 'src/app/core/models/levels';
 import { AlertController } from '@ionic/angular';
 import { ApiLevelService } from 'src/app/core/services/api-level.service';
+
 @Component({
   selector: 'app-exercise-level',
   templateUrl: './exercise-level.component.html',

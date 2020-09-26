@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Advisor } from 'src/app/model/advisor';
+import { Advisor } from 'src/app/core/models/advisor';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ApiService } from 'src/app/core/services/api.service';
 

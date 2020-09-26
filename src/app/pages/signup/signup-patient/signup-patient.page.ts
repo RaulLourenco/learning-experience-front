@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AlertController, LoadingController, IonRadioGroup } from '@ionic/angular';
-import { SignupResponse } from 'src/app/model/signup-response';
-import { Patient } from 'src/app/model/patient';
+import { SignupResponse } from 'src/app/components/signup-response';
 import { ApiService } from 'src/app/core/services/api.service';
+import { Patient } from 'src/app/core/models/patient';
+
 @Component({
   selector: 'app-signup-patient',
   templateUrl: './signup-patient.page.html',

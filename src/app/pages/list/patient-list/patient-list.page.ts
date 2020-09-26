@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Patient } from '../../../model/patient';
 import { ApiService } from 'src/app/core/services/api.service';
+import { Patient } from 'src/app/core/models/patient';
+
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.page.html',

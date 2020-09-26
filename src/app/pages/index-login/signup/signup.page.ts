@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SignupResponse } from 'src/app/model/signup-response';
-import { UserSignup } from 'src/app/model/user-signup';
+import { SignupResponse } from 'src/app/components/signup-response';
+import { UserSignup } from 'src/app/core/models/user-signup';
 import { ApiService } from 'src/app/core/services/api.service';
 import { ApiAuthService } from 'src/app/core/services/api-auth.service';
 

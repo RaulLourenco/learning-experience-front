@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../../../model/user';
+import { User } from '../../../core/models/user';
 import { ApiAuthService } from 'src/app/core/services/api-auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

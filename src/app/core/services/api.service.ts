@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Advisor } from 'src/app/model/advisor';
-import { Patient } from 'src/app/model/patient';
-import { User } from 'src/app/model/user';
+import { Advisor } from 'src/app/core/models/advisor';
+import { User } from 'src/app/core/models/user';
 import { Storage } from '@ionic/storage';
+import { Patient } from '../models/patient';
 
 
 @Injectable({

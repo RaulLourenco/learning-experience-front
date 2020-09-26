@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
-import { AuthResponse } from '../../model/auth-response';
+import { AuthResponse } from '../models/auth-response';
 import { Storage } from '@ionic/storage';
-import { UserSignup } from '../../model/user-signup';
-import { User } from '../../model/user';
+import { UserSignup } from '../models/user-signup';
+import { User } from '../models/user';
 import { ApiService } from './api.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
