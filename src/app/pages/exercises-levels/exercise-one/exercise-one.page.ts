@@ -4,7 +4,7 @@ import { Exercises } from 'src/app/core/models/exercises';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/core/services/api.service';
-import { from } from 'rxjs';
+import { ApiLevelService } from 'src/app/core/services/api-level.service';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class ExerciseOnePage implements OnInit {
     private zone: NgZone,
     private alertController: AlertController,
     private http: HttpClient,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private apiLevelService: ApiLevelService
   ) { }
 
   ngOnInit() {
@@ -76,39 +77,31 @@ export class ExerciseOnePage implements OnInit {
 
   public async getLevelContent() {
 
-    // await this.http.post(urls.URL_GENERATELEVEL, {
-    //   gameLevelType: 1
-    // },
-    //   {
-    //     headers: {
-    //       Authorization: 'Bearer ' + await this.checkToken()
-    //     }
-    //   }).subscribe((res: ExerciseModule) => {
-    //     this.levelOneMainImage = {
-    //       imagePath: res.mainImage.path,
-    //       name: res.mainImage.name
-    //     };
+    let exercises = await this.apiLevelService.gerenateLevel();
+    console.log(exercises);
+   
+        this.levelOneMainImage = {
+          imagePath: exercises.mainImage.path,
+          name: exercises.mainImage.name
+        };
 
-    //     this.levelOne.forEach((item, index) => {
-    //       item.object = res.comparable[index].name;
-    //       item.image = res.comparable[index].path;
-    //       item.match = res.comparable[index].match;
-    //     });
-    //   });
+        this.levelOne.forEach((item, index) => {
+          item.object = exercises.comparable[index].name;
+          item.image = exercises.comparable[index].path;
+          item.match = exercises.comparable[index].match;
+        });
   }
 
   public async getProgress() {
 
-    let result = await this.apiService.getUserProgress()
+    let result = await this.apiLevelService.getUserProgress("1");
         this.progress = result;
   }
 
   public async updateProgress() {
 
-    await this.apiService.updateUserProgress(this.userId)
-    .subscribe((res) => {
-        console.log('ATUALIZADO COM SUCESSO', res);
-    });
+    await this.apiLevelService.updateUserProgress(this.progress, 1)
+        console.log('ATUALIZADO COM SUCESSO');
   }
 
 
