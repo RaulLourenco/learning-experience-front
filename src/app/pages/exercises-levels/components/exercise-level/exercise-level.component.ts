@@ -47,12 +47,6 @@ export class ExerciseLevelComponent implements OnInit {
   }
 
   public async getProgress() {
-<<<<<<< HEAD
-    await this.apiService.getUserProgress().toPromise()
-      // .subscribe((res) => {
-      //   this.progress = Number(res);
-      // });
-=======
 
     await this.http.get(urls.URL_GETPROGRESSBYUSER,
       {
@@ -63,7 +57,6 @@ export class ExerciseLevelComponent implements OnInit {
       }).subscribe((res) => {
         this.progress = Number(res);
       });
->>>>>>> 73935888bc9af11f1c36c890a8a66101adb117e3
   }
 
   async presentAlert(message: string, page: string) {
@@ -90,11 +83,7 @@ export class ExerciseLevelComponent implements OnInit {
   }
 
   public updateCard(index) {
-<<<<<<< HEAD
-    if (index === 0) {
-=======
     if(this.progress = 1 && this.module) {
->>>>>>> 73935888bc9af11f1c36c890a8a66101adb117e3
       return this.completed = true;
     }
   }
