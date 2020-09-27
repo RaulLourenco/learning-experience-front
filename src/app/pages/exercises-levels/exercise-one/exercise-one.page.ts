@@ -16,20 +16,6 @@ import { ApiLevelService } from 'src/app/core/services/api-level.service';
 
 export class ExerciseOnePage implements OnInit {
 
-  constructor(
-    private router: Router,
-    private zone: NgZone,
-    private alertController: AlertController,
-    private http: HttpClient,
-    private apiService: ApiService,
-    private apiLevelService: ApiLevelService
-  ) { }
-
-  ngOnInit() {
-    this.getLevelContent();
-    this.getProgress();
-  }
-
   public levelOne: Exercises[] = [
     { object: '', image: '', match: false },
     { object: '', image: '', match: false },
@@ -46,6 +32,20 @@ export class ExerciseOnePage implements OnInit {
   public token: string;
   public userId: string;
 
+  constructor(
+    private router: Router,
+    private zone: NgZone,
+    private alertController: AlertController,
+    private http: HttpClient,
+    private apiService: ApiService,
+    private apiLevelService: ApiLevelService
+  ) { }
+
+  ngOnInit() {
+    this.getLevelContent();
+    this.getUserProgressById();
+  }
+
   public verifyAnswer = (i: number) => {
     if (this.levelOne[i].match === true) {
       this.progress += 0.1;
@@ -53,14 +53,14 @@ export class ExerciseOnePage implements OnInit {
       if (this.progress === 0.5 || this.progress === 1) {
         this.updateProgress();
       }
-      if(this.progress === 1) {
-        this.presentAlert("Você terminou esse módulo!");
+      if (this.progress === 1) {
+        this.presentAlert('Você terminou esse módulo!');
         this.closeExercise();
       }
 
       this.getLevelContent();
     } else {
-      this.presentAlert("Ops! Tente novamente!");
+      this.presentAlert('Ops! Tente novamente!');
     }
   }
 
@@ -77,31 +77,31 @@ export class ExerciseOnePage implements OnInit {
 
   public async getLevelContent() {
 
-    let exercises = await this.apiLevelService.gerenateLevel();
+    const exercises = await this.apiLevelService.gerenateLevel();
     console.log(exercises);
-   
-        this.levelOneMainImage = {
-          imagePath: exercises.mainImage.path,
-          name: exercises.mainImage.name
-        };
 
-        this.levelOne.forEach((item, index) => {
-          item.object = exercises.comparable[index].name;
-          item.image = exercises.comparable[index].path;
-          item.match = exercises.comparable[index].match;
-        });
+    this.levelOneMainImage = {
+      imagePath: exercises.mainImage.path,
+      name: exercises.mainImage.name
+    };
+
+    this.levelOne.forEach((item, index) => {
+      item.object = exercises.comparable[index].name;
+      item.image = exercises.comparable[index].path;
+      item.match = exercises.comparable[index].match;
+    });
   }
 
-  public async getProgress() {
+  public async getUserProgressById() {
 
-    let result = await this.apiLevelService.getUserProgress("1");
-        this.progress = result;
+    const result = await this.apiLevelService.getUserProgress('1');
+    this.progress = result;
   }
 
   public async updateProgress() {
 
-    await this.apiLevelService.updateUserProgress(this.progress, 1)
-        console.log('ATUALIZADO COM SUCESSO');
+    await this.apiLevelService.updateUserProgress(this.progress, 1);
+    console.log('ATUALIZADO COM SUCESSO');
   }
 
 
