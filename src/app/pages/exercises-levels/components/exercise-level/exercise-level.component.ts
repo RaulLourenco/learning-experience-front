@@ -2,8 +2,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Level } from 'src/app/core/models/levels';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { ApiService } from 'src/app/core/services/api.service';
+import { ApiLevelService } from 'src/app/core/services/api-level.service';
+import { UserProgress } from 'src/app/core/models/user-progress';
 
 @Component({
   selector: 'app-exercise-level',
@@ -29,22 +31,31 @@ export class ExerciseLevelComponent implements OnInit {
     private zone: NgZone,
     private http: HttpClient,
     private apiService: ApiService,
-    private alertController: AlertController,
+    private apiLevelService: ApiLevelService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
     this.updateCard();
   }
 
-  public toExercisePage(page: string, progress: number) {
+  public toExercisePage(page: string, progress: number, module: number) {
+    const handler = {
+      progress,
+      module
+    }
     if (progress === 1) {
-      this.presentAlert('Ops! Você já terminou este módulo. Gostaria de recomeçar?', page);
+      this.presentAlert('Ops! Você já terminou este módulo. Gostaria de recomeçar?', page, handler);
     } else {
       this.zone.run(() => this.router.navigate([page]));
     }
   }
 
-  async presentAlert(message: string, page: string) {
+  ionViewWillLeave(){
+    this.zone.run(() => this.router.navigate(['/home/exercises-levels']));
+  }
+
+  async presentAlert(message: string, page: string, handlerObject: UserProgress) {
     const alertPresent = await this.alertController.create({
       message,
       header: 'Aviso',
@@ -58,7 +69,8 @@ export class ExerciseLevelComponent implements OnInit {
         }, {
           text: 'Confirmar',
           handler: () => {
-            console.log('Confirm Okay');
+            handlerObject.progress = 0;
+            this.updateUserProgress(handlerObject.progress, handlerObject.module);
             this.zone.run(() => this.router.navigate([page]));
           }
         }
@@ -73,6 +85,10 @@ export class ExerciseLevelComponent implements OnInit {
       item.module = result[index].module;
       item.progress = result[index].progress;
     });
+  }
+
+  public async updateUserProgress(progress: number, levelModule: number) {
+    await this.apiLevelService.updateUserProgress(progress, levelModule);
   }
 
   public async checkToken() {
