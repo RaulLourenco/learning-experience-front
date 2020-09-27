@@ -26,7 +26,7 @@ export class PatientListPage implements OnInit {
   };
 
   ngOnInit() {
-    this.apiService.getAllPatient();
+    this.getPatients();
   }
 
   closePatientList() {
@@ -37,8 +37,18 @@ export class PatientListPage implements OnInit {
     this.router.navigate(['/revise-patient', patient.id]);
   }
 
-  getPatients = async () => {
-    await this.apiService.getAllPatient().toPromise();
+  async getPatients() {
+    const patients = await this.apiService.getAllPatient();
+
+    this.patientList.push(patients);
+    this.patientList = this.patientList[0];
+
+    this.patientList.forEach( item => {
+      this.patient.name = item.name,
+      this.patient.age = item.age,
+      this.patient.diseaseLevel = item.diseaseLevel,
+      this.patient.colorsIssue = item.colorIssue;
+    });
   }
 
   signupPatient() {

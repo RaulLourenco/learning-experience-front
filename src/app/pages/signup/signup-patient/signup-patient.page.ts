@@ -70,9 +70,8 @@ export class SignupPatientPage implements OnInit {
 
     this.patientForm.reset();
 
-    this.apiService.registerPatient(patient)
-    .subscribe( (res: SignupResponse) => {
-      console.log('res: ', res);
+    await this.apiService.registerPatient(patient)
+    .then( (res: SignupResponse) => {
       if (res.statusCode === 200) {
         this.dismissLoading();
         this.presentAlert('Cadastrado com sucesso!');

@@ -29,7 +29,7 @@ export class TeacherListPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiService.getAllAdvisor();
+    this.getAdvisors();
   }
 
   closeTeacherList() {
@@ -43,18 +43,17 @@ export class TeacherListPage implements OnInit {
 
   public async getAdvisors() {
 
-    await this.apiService.getAllAdvisor().toPromise();
-    //   .subscribe(res => {
-    //   console.log('este eh o res: ', res);
-    //   this.advisorList.push(res);
-    //   this.advisorList = this.advisorList[0];
-    //   this.advisorList.forEach(element => {
-    //     this.advisor.name = element.name;
-    //     this.advisor.profession = element.profession;
-    //     this.advisor.education = element.education;
-    //     this.advisor.specialization = element.specialization;
-    //   });
-    // });
+    const advisors = await this.apiService.getAllAdvisor();
+
+    this.advisorList.push(advisors);
+    this.advisorList = this.advisorList[0];
+
+    this.advisorList.forEach( (item, index) => {
+      this.advisor.name = item.name,
+      this.advisor.profession = item.profession,
+      this.advisor.education = item.education,
+      this.advisor.specialization = item.specialization;
+    });
   }
 
   async presentLoading() {

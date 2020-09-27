@@ -16,24 +16,25 @@ export class ApiService {
 
   authSubject = new BehaviorSubject(false);
 
-  protected httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })
-  };
-
   constructor(
     protected http: HttpClient,
     protected storage: Storage
   ) {}
 
-  getAllAdvisor(): Observable<Advisor> {
-    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAll`);
+  async getAllAdvisor(): Promise<Advisor> {
+    const token = await this.getToken();
+    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAll`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
   }
 
   registerAdvisor(advisor: Advisor) {
     const params = {
       advisor
     };
-    return this.http.post(`${environment.urlApi}/Advisor/RegisterAdvisor`, params, this.httpOptions);
+    // return this.http.post(`${environment.urlApi}/Advisor/RegisterAdvisor`, params, this.httpOptions);
   }
 
   removeAdvisor(): Observable<Advisor> {
@@ -44,15 +45,20 @@ export class ApiService {
     const params = {
       advisor
     }
-    return this.http.post(`${environment.urlApi}/Advisor/UpdateAdvisor`, params, this.httpOptions);
+    // return this.http.post(`${environment.urlApi}/Advisor/UpdateAdvisor`, params, this.httpOptions);
   }
 
   getAdvisorById(): Observable<Advisor> {
     return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAdvisorById`);
   }
 
-  getAllPatient(): Observable<Patient> {
-    return this.http.get<Patient>(`${environment.urlApi}/Patient/GetAll`);
+  async getAllPatient(): Promise<Patient> {
+    const token = await this.getToken();
+    return this.http.get<Patient>(`${environment.urlApi}/Patient/GetAll`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
   }
 
   removePatient(): Observable<Patient> {
@@ -63,7 +69,7 @@ export class ApiService {
     const params = {
       patient
     };
-    return this.http.post(`${environment.urlApi}/Patient/UpdatePatient`, params, this.httpOptions)
+    // return this.http.post(`${environment.urlApi}/Patient/UpdatePatient`, params, this.httpOptions)
   }
 
   getPatientById(): Observable<Patient> {
@@ -83,11 +89,7 @@ export class ApiService {
     const params = {
       user
     };
-    return this.http.post(`${environment.urlApi}/Patient/RegisterUser`, params, this.httpOptions);
-  }
-
-  getAllUsers(): Observable<User> {
-    return this.http.get<User>(`${environment.urlApi}/Patient/GetAll`);
+    // return this.http.post(`${environment.urlApi}/Patient/RegisterUser`, params, this.httpOptions);
   }
 
   removeUser(): Observable<User> {
@@ -98,10 +100,10 @@ export class ApiService {
     const params = {
       user
     };
-    return this.http.post(`${environment.urlApi}/Patient/UpdateUser`, params, this.httpOptions);
+    // return this.http.post(`${environment.urlApi}/Patient/UpdateUser`, params, this.httpOptions);
   }
 
-   async getProgressByUser() : Promise<UserProgress> {
+   async getProgressByUser(): Promise<UserProgress> {
     const token = await this.getToken();
     const userId = await this.getUserId();
     return this.http.get<UserProgress>(`${environment.urlApi}/User/GetProgressByUser`, {
@@ -112,11 +114,13 @@ export class ApiService {
     }).toPromise();
   }
 
-  registerPatient(patient: Patient) {
-    const params = {
-      patient
-    };
-    return this.http.post(`${environment.urlApi}/Patient/RegisterPatient`, params, this.httpOptions);
+  async registerPatient(patient: Patient) {
+    const token = await this.getToken();
+    return this.http.post(`${environment.urlApi}/Patient/RegisterPatient`, patient, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
   }
 
   async getToken() {
