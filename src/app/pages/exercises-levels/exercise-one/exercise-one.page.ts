@@ -43,7 +43,7 @@ export class ExerciseOnePage implements OnInit {
 
   ngOnInit() {
     this.getLevelContent();
-    this.getUserProgressById();
+    this.GetProgressByModule(1);  
   }
 
   ionViewWillLeave() {
@@ -95,9 +95,9 @@ export class ExerciseOnePage implements OnInit {
     });
   }
 
-  public async getUserProgressById() {
+  public async GetProgressByModule(module: number) {
 
-    const result = await this.apiLevelService.getUserProgress('1');
+    const result = await this.apiLevelService.GetProgressByModule(module);
     this.progress = result;
   }
 

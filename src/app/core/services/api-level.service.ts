@@ -20,16 +20,16 @@ export class ApiLevelService extends ApiService {
     );
   }
 
-  async getUserProgress(module: string): Promise<number> {
+  async GetProgressByModule(module: number): Promise<number> {
 
     const userId = await this.getUserId();
     const token = await this.getToken();
 
-    return this.http.get<number>(`${environment.urlApi}/User/GetUserProgress`, {
+    return this.http.get<number>(`${environment.urlApi}/User/GetProgressByModule`, {
       headers: {
         Authorization: 'Bearer ' + token
       },
-      params: new HttpParams().set('userId', userId).set('module', module)
+      params: new HttpParams().set('userId', userId).set('module', module.toString())
     }).toPromise();
 
   }

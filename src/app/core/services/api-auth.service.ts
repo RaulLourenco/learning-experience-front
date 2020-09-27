@@ -28,10 +28,7 @@ export class ApiAuthService extends ApiService {
   }
 
   register(user: UserSignup) {
-    const params = {
-      user
-    }
-    return this.http.post(`${environment.urlApi}/Auth/RegisterLogin`, params, this.httpOptions)
+    return this.http.post(`${environment.urlApi}/Auth/RegisterLogin`, user, this.httpOptions)
       .pipe(
         tap(async (res) => {
           if (res) {
