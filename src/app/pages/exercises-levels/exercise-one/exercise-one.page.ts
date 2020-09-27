@@ -50,6 +50,12 @@ export class ExerciseOnePage implements OnInit {
     this.zone.run(() => this.router.navigate(['/home/exercises-levels']));
   }
 
+  ionViewWillEnter() {
+    if (this.progress === 1) {
+      return this.progress = 0;
+    }
+  }
+
   public verifyAnswer = (i: number) => {
     if (this.levelOne[i].match === true) {
       this.progress += 0.1;
@@ -82,10 +88,8 @@ export class ExerciseOnePage implements OnInit {
   public async getLevelContent() {
 
     const levelModule = await this.getLevelModule();
-    console.log(levelModule);
 
     const exercises = await this.apiLevelService.gerenateLevel(levelModule);
-    console.log(exercises);
 
     this.levelOneMainImage = {
       imagePath: exercises.mainImage.path,
@@ -103,7 +107,7 @@ export class ExerciseOnePage implements OnInit {
 
     const levelModule = await this.getLevelModule();
     const result = await this.apiLevelService.GetProgressByModule(levelModule);
-    this.progress = result;
+    return this.progress = result;
   }
 
   public async updateProgress() {
