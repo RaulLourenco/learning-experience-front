@@ -28,7 +28,7 @@ export class ApiAuthService extends ApiService {
   }
 
   register(user: UserSignup) {
-    return this.http.post(`${environment.urlApi}/Auth/RegisterLogin`, user, this.httpOptions)
+    return this.http.post(`${environment.urlApi}/Auth/RegisterLogin`, user)
       .pipe(
         tap(async (res) => {
           if (res) {
@@ -40,7 +40,7 @@ export class ApiAuthService extends ApiService {
 
 
   login(user: User) {
-    return this.http.post(`${environment.urlApi}/Auth`, user, this.httpOptions)
+    return this.http.post(`${environment.urlApi}/Auth`, user)
       .pipe(
         tap(async (res: AuthResponse) => {
           if (res) {
