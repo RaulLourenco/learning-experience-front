@@ -61,7 +61,7 @@ export class RevisePatientPage implements OnInit {
 
   private async onChange(name, age, diseaseLevel, colorsIssue, observation) {
     this.presentLoading();
-    await this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.patientId = params.id;
     });
     const id = this.patientId;
@@ -76,14 +76,13 @@ export class RevisePatientPage implements OnInit {
       observation
     };
     this.apiService.updatePatient(this.patient)
-      .subscribe((res: ReviseResponse) => {
+      .then((res: ReviseResponse) => {
         console.log('res do atualizar: ', res);
         if (res.statusCode === 200) {
           this.dismissLoading();
           this.presentAlert('Atualizado com sucesso!');
           this.router.navigate(['/home/profile']);
-        }
-        else {
+        } else {
           this.dismissLoading();
           this.presentAlert('Erro ao atualizar. Tente novamente!');
         }
@@ -107,12 +106,10 @@ export class RevisePatientPage implements OnInit {
   }
 
   private async getPatientById() {
-    await this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.patientId = params.id;
     });
-    console.log('this.patient', this.patient);
-    this.apiService.getPatientById().subscribe((res: Patient) => {
-      console.log('reviseResponse: ', res);
+    this.apiService.getPatientById(this.patientId).then((res: Patient) => {
       this.patient.name = res.name;
       this.patient.age = res.age;
       this.patient.diseaseLevel = res.diseaseLevel;
@@ -131,7 +128,6 @@ export class RevisePatientPage implements OnInit {
         }
       });
     });
-    console.log('this.papatientId embaixo do get:', this.patient);
     return this.patient;
   }
 

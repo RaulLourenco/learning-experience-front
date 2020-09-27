@@ -37,10 +37,11 @@ export class SignupTeacherPage implements OnInit {
       specialization,
       comment
     };
+
     this.advisorForm.reset();
 
-    this.apiService.registerAdvisor(advisor)
-    .subscribe( (res: SignupResponse) => {
+    await this.apiService.registerAdvisor(advisor)
+    .then( (res: SignupResponse) => {
       console.log('res: ', res);
       if (res.statusCode == 200) {
         this.dismissLoading();
