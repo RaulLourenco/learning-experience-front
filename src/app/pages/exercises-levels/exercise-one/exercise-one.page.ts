@@ -58,6 +58,7 @@ export class ExerciseOnePage implements OnInit {
         this.updateProgress();
       }
       if (this.progress === 1) {
+        this.zone.run(() => this.router.navigate(['/home/exercises-levels']));
         this.presentAlert('Você terminou esse módulo!');
       }
 
