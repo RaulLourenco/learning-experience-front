@@ -5,8 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/core/services/api.service';
 import { ApiLevelService } from 'src/app/core/services/api-level.service';
-
-
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-exercise-one',
   templateUrl: './exercise-one.page.html',
@@ -39,11 +38,12 @@ export class ExerciseOnePage implements OnInit {
     private http: HttpClient,
     private apiService: ApiService,
     private apiLevelService: ApiLevelService,
+    private storage: Storage
   ) { }
 
   ngOnInit() {
     this.getLevelContent();
-    this.GetProgressByModule(1);  
+    this.GetProgressByModule();
   }
 
   ionViewWillLeave() {
@@ -81,7 +81,10 @@ export class ExerciseOnePage implements OnInit {
 
   public async getLevelContent() {
 
-    const exercises = await this.apiLevelService.gerenateLevel();
+    const levelModule = await this.getLevelModule();
+    console.log(levelModule);
+
+    const exercises = await this.apiLevelService.gerenateLevel(levelModule);
     console.log(exercises);
 
     this.levelOneMainImage = {
@@ -96,9 +99,10 @@ export class ExerciseOnePage implements OnInit {
     });
   }
 
-  public async GetProgressByModule(module: number) {
+  public async GetProgressByModule() {
 
-    const result = await this.apiLevelService.GetProgressByModule(module);
+    const levelModule = await this.getLevelModule();
+    const result = await this.apiLevelService.GetProgressByModule(levelModule);
     this.progress = result;
   }
 
@@ -108,9 +112,8 @@ export class ExerciseOnePage implements OnInit {
     console.log('ATUALIZADO COM SUCESSO');
   }
 
-
-  public async checkToken() {
-    await this.apiService.getToken();
+  async getLevelModule() {
+    return await this.storage.get('LEVEL_MODULE');
   }
 
   public async getUserId() {

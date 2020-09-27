@@ -6,7 +6,7 @@ import { AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/core/services/api.service';
 import { ApiLevelService } from 'src/app/core/services/api-level.service';
 import { UserProgress } from 'src/app/core/models/user-progress';
-
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-exercise-level',
   templateUrl: './exercise-level.component.html',
@@ -20,11 +20,11 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
 
   public modules: Level[] = [
     { name: 'Módulo 1', text: 'Estímulos idênticos 3D.', src: '/exercise-one', module: 1, progress: 0 },
-    { name: 'Módulo 2', text: 'Estímulos idênticos 2D.', src: '', module: 2, progress: 0 },
-    { name: 'Módulo 3', text: 'Estímulos semelhantes.', src: '', module: 3, progress: 0 },
-    { name: 'Módulo 4', text: 'Estímulos associados.', src: '', module: 4, progress: 0 },
-    { name: 'Módulo 5', text: '4 Estímulos idênticos 2D-3D.', src: '', module: 5, progress: 0 },
-    { name: 'Módulo 6', text: '5 Estímulos idênticos 2D-3D.', src: '', module: 6, progress: 0 },
+    { name: 'Módulo 2', text: 'Estímulos idênticos 2D.', src: '/exercise-one', module: 2, progress: 0 },
+    { name: 'Módulo 3', text: 'Estímulos semelhantes.', src: '/exercise-one', module: 3, progress: 0 },
+    { name: 'Módulo 4', text: 'Estímulos associados.', src: '/exercise-one', module: 4, progress: 0 },
+    { name: 'Módulo 5', text: '4 Estímulos idênticos 2D-3D.', src: '/exercise-one', module: 5, progress: 0 },
+    { name: 'Módulo 6', text: '5 Estímulos idênticos 2D-3D.', src: '/exercise-one', module: 6, progress: 0 },
   ];
 
   constructor(
@@ -34,6 +34,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
     private apiService: ApiService,
     private apiLevelService: ApiLevelService,
     private alertController: AlertController,
+    private storage: Storage
   ) { }
 
   ngOnInit() {
@@ -46,7 +47,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
     this.getUserName();
   }
 
-  public toExercisePage(page: string, progress: number, module: number) {
+  public async toExercisePage(page: string, progress: number, module: number) {
     const handler = {
       progress,
       module
@@ -54,6 +55,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
     if (progress === 1) {
       this.presentAlert('Ops! Você já terminou este módulo. Gostaria de recomeçar?', page, handler);
     } else {
+      await this.storage.set('LEVEL_MODULE', handler.module);
       this.zone.run(() => this.router.navigate([page]));
     }
   }
@@ -71,9 +73,10 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
           }
         }, {
           text: 'Confirmar',
-          handler: () => {
+          handler: async () => {
             handlerObject.progress = 0;
             this.updateUserProgress(handlerObject.progress, handlerObject.module);
+            await this.storage.set('LEVEL_MODULE', handlerObject.module);
             this.ngOnDestroy();
             this.zone.run(() => this.router.navigate([page]));
           }

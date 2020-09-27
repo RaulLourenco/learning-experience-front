@@ -34,11 +34,11 @@ export class ApiLevelService extends ApiService {
 
   }
 
-  async gerenateLevel(): Promise<ExerciseModule> {
+  async gerenateLevel(levelModule): Promise<ExerciseModule> {
 
     const token = await this.getToken();
     return this.http.post<ExerciseModule>(`${environment.urlApi}/GameLevel/GerenateLevel`, {
-      gameLevelType: 1
+      gameLevelType: levelModule
     },
       {
         headers: {
