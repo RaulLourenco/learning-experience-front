@@ -30,26 +30,36 @@ export class ApiService {
     }).toPromise();
   }
 
-  registerAdvisor(advisor: Advisor) {
-    const params = {
-      advisor
-    };
-    // return this.http.post(`${environment.urlApi}/Advisor/RegisterAdvisor`, params, this.httpOptions);
+  async registerAdvisor(advisor: Advisor) {
+    const token = await this.getToken();
+    return this.http.post(`${environment.urlApi}/Advisor/RegisterAdvisor`, advisor, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
   }
 
-  removeAdvisor(): Observable<Advisor> {
-    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/RemoveAdvisor`);
+  // removeAdvisor(): Observable<Advisor> {
+  //   return this.http.get<Advisor>(`${environment.urlApi}/Advisor/RemoveAdvisor`);
+  // }
+
+  async updateAdvisor(advisor: Advisor) {
+    const token = await this.getToken();
+    return this.http.post(`${environment.urlApi}/Advisor/UpdateAdvisor`, advisor, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
   }
 
-  updateAdvisor(advisor: Advisor) {
-    const params = {
-      advisor
-    }
-    // return this.http.post(`${environment.urlApi}/Advisor/UpdateAdvisor`, params, this.httpOptions);
-  }
-
-  getAdvisorById(): Observable<Advisor> {
-    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAdvisorById`);
+  async getAdvisorById(advisorId): Promise<Advisor> {
+    const token = await this.getToken();
+    return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAdvisorById`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      },
+      params: new HttpParams().set('advisorId', advisorId)
+    }).toPromise();
   }
 
   async getAllPatient(): Promise<Patient> {
@@ -61,46 +71,27 @@ export class ApiService {
     }).toPromise();
   }
 
-  removePatient(): Observable<Patient> {
-    return this.http.get<Patient>(`${environment.urlApi}/Patient/RemovePatient`);
+  // removePatient(): Observable<Patient> {
+  //   return this.http.get<Patient>(`${environment.urlApi}/Patient/RemovePatient`);
+  // }
+
+   async updatePatient(patient: Patient) {
+    const token = await this.getToken();
+    return this.http.post(`${environment.urlApi}/Patient/UpdatePatient`, patient, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
   }
 
-  updatePatient(patient: Patient) {
-    const params = {
-      patient
-    };
-    // return this.http.post(`${environment.urlApi}/Patient/UpdatePatient`, params, this.httpOptions)
-  }
-
-  getPatientById(): Observable<Patient> {
-    let userId;
-    this.getUserId().then(res => {
-      userId = res;
-    });
+  async getPatientById(patientId): Promise<Patient> {
+    const token = await this.getToken();
     return this.http.get<Patient>(`${environment.urlApi}/Patient/GetPatientById`, {
       headers: {
-        Authorization: 'Bearer ' + this.getToken()
+        Authorization: 'Bearer ' + token
       },
-      params: new HttpParams().set('patientId', userId)
-    });
-  }
-
-  registerUser(user: User) {
-    const params = {
-      user
-    };
-    // return this.http.post(`${environment.urlApi}/Patient/RegisterUser`, params, this.httpOptions);
-  }
-
-  removeUser(): Observable<User> {
-    return this.http.get<User>(`${environment.urlApi}/Patient/RemoveUser`);
-  }
-
-  updateUser(user: User) {
-    const params = {
-      user
-    };
-    // return this.http.post(`${environment.urlApi}/Patient/UpdateUser`, params, this.httpOptions);
+      params: new HttpParams().set('patientId', patientId)
+    }).toPromise();
   }
 
    async getProgressByUser(): Promise<UserProgress> {

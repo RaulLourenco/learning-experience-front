@@ -42,7 +42,7 @@ export class ReviseTeacherPage implements OnInit {
 
   private async onChange(name, profession, education, specialization, comment) {
     this.presentLoading();
-    await this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.advisorId = params.id;
     });
     const id = this.advisorId;
@@ -57,35 +57,31 @@ export class ReviseTeacherPage implements OnInit {
 
     this.advisorForm.reset();
 
-    // await this.apiService.updateAdvisor(advisor)
-    //   .subscribe((res: ReviseResponse) => {
-    //   console.log('res do atualizar: ', res);
-    //   if (res.statusCode == 200) {
-    //     this.dismissLoading();
-    //     this.presentAlert('Atualizado com sucesso!');
-    //     this.router.navigateByUrl('/home/profile');
-    //   } else {
-    //     this.dismissLoading();
-    //     this.presentAlert('Erro ao atualizar. Tente novamente!');
-    //   }
-    // });
+    this.apiService.updateAdvisor(advisor)
+      .then((res: ReviseResponse) => {
+      if (res.statusCode === 200) {
+        this.dismissLoading();
+        this.presentAlert('Atualizado com sucesso!');
+        this.router.navigateByUrl('/home/profile');
+      } else {
+        this.dismissLoading();
+        this.presentAlert('Erro ao atualizar. Tente novamente!');
+      }
+    });
   }
 
-  private async getAdvisorById() {
-    await this.route.params.subscribe(params => {
+  private getAdvisorById() {
+    this.route.params.subscribe(params => {
       this.advisorId = params.id;
     });
-    await this.apiService.getAdvisorById()
-    .subscribe((res: Advisor) => {
-      console.log('reviseResponse: ', res);
+    this.apiService.getAdvisorById(this.advisorId)
+    .then((res: Advisor) => {
       this.advisor.name = res.name;
       this.advisor.profession = res.profession;
       this.advisor.education = res.education;
       this.advisor.specialization = res.specialization;
       this.advisor.comment = res.comment;
     });
-    console.log('this.advisor', this.advisor);
-    console.log('this.advisorId embaixo do get:', this.advisorId);
     return this.advisor;
   }
 
