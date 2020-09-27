@@ -38,12 +38,16 @@ export class ExerciseOnePage implements OnInit {
     private alertController: AlertController,
     private http: HttpClient,
     private apiService: ApiService,
-    private apiLevelService: ApiLevelService
+    private apiLevelService: ApiLevelService,
   ) { }
 
   ngOnInit() {
     this.getLevelContent();
     this.getUserProgressById();
+  }
+
+  ionViewWillLeave() {
+    this.zone.run(() => this.router.navigate(['/home/exercises-levels']));
   }
 
   public verifyAnswer = (i: number) => {
@@ -55,7 +59,6 @@ export class ExerciseOnePage implements OnInit {
       }
       if (this.progress === 1) {
         this.presentAlert('Você terminou esse módulo!');
-        this.closeExercise();
       }
 
       this.getLevelContent();
@@ -65,7 +68,7 @@ export class ExerciseOnePage implements OnInit {
   }
 
   public closeExercise() {
-    this.router.navigateByUrl('/home/exercises-levels');
+    this.zone.run(() => this.router.navigate(['/home/exercises-levels']));
   }
 
   async presentAlert(message: string) {

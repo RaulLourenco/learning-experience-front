@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Level } from 'src/app/core/models/levels';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/core/services/api.service';
 import { ApiLevelService } from 'src/app/core/services/api-level.service';
 import { UserProgress } from 'src/app/core/models/user-progress';
@@ -12,7 +12,7 @@ import { UserProgress } from 'src/app/core/models/user-progress';
   templateUrl: './exercise-level.component.html',
   styleUrls: ['./exercise-level.component.scss'],
 })
-export class ExerciseLevelComponent implements OnInit {
+export class ExerciseLevelComponent implements OnInit, OnDestroy {
 
   public token: string;
   public userId: string;
@@ -32,10 +32,14 @@ export class ExerciseLevelComponent implements OnInit {
     private http: HttpClient,
     private apiService: ApiService,
     private apiLevelService: ApiLevelService,
-    private alertController: AlertController
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {
+    this.updateCard(); 
+  }
+
+  ngOnDestroy() {
     this.updateCard();
   }
 
@@ -43,16 +47,12 @@ export class ExerciseLevelComponent implements OnInit {
     const handler = {
       progress,
       module
-    }
+    };
     if (progress === 1) {
       this.presentAlert('Ops! Você já terminou este módulo. Gostaria de recomeçar?', page, handler);
     } else {
       this.zone.run(() => this.router.navigate([page]));
     }
-  }
-
-  ionViewWillLeave(){
-    this.zone.run(() => this.router.navigate(['/home/exercises-levels']));
   }
 
   async presentAlert(message: string, page: string, handlerObject: UserProgress) {
@@ -71,6 +71,7 @@ export class ExerciseLevelComponent implements OnInit {
           handler: () => {
             handlerObject.progress = 0;
             this.updateUserProgress(handlerObject.progress, handlerObject.module);
+            this.ngOnDestroy();
             this.zone.run(() => this.router.navigate([page]));
           }
         }
