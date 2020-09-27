@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../../core/services/api.service';
 @Component({
   selector: 'app-profiles',
   templateUrl: './profiles.component.html',
@@ -7,9 +8,18 @@ import { Router } from '@angular/router';
 })
 export class ProfilesComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private apiService: ApiService
+    ) { 
+  }
 
-  ngOnInit() {}
+  userName: string;
+
+  ngOnInit() {
+    this.getUserName();
+    
+  }
 
   moveToTeacherList() {
     this.router.navigateByUrl('/teacher-list');
@@ -25,6 +35,11 @@ export class ProfilesComponent implements OnInit {
 
   moveToSignupTeacher() {
     this.router.navigateByUrl('/signup-teacher');
+  }
+
+  async getUserName() {
+    this.userName = await this.apiService.GetUserName();
+    console.log(this.userName);
   }
 
 }

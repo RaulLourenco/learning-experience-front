@@ -47,6 +47,7 @@ export class ApiAuthService extends ApiService {
             await this.storage.set('ACCESS_TOKEN', res.token);
             await this.storage.set('EXPIRES_IN', res.tokenExpiresIn);
             await this.storage.set('USER_ID', res.id);
+            await this.storage.set('USER_NAME', res.userName);
             this.authSubject.next(true);
           }
         }));

@@ -75,19 +75,19 @@ export class RevisePatientPage implements OnInit {
       colorsIssue,
       observation
     };
-    this.apiService.updatePatient(this.patient)
-      .subscribe((res: ReviseResponse) => {
-        console.log('res do atualizar: ', res);
-        if (res.statusCode === 200) {
-          this.dismissLoading();
-          this.presentAlert('Atualizado com sucesso!');
-          this.router.navigate(['/home/profile']);
-        }
-        else {
-          this.dismissLoading();
-          this.presentAlert('Erro ao atualizar. Tente novamente!');
-        }
-      });
+    // this.apiService.updatePatient(this.patient)
+    //   .subscribe((res: ReviseResponse) => {
+    //     console.log('res do atualizar: ', res);
+    //     if (res.statusCode === 200) {
+    //       this.dismissLoading();
+    //       this.presentAlert('Atualizado com sucesso!');
+    //       this.router.navigate(['/home/profile']);
+    //     }
+    //     else {
+    //       this.dismissLoading();
+    //       this.presentAlert('Erro ao atualizar. Tente novamente!');
+    //     }
+    //   });
   }
 
   radioColorsCheck(event) {

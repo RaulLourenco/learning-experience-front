@@ -16,6 +16,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
 
   public token: string;
   public userId: string;
+  public userName: string;
 
   public modules: Level[] = [
     { name: 'Módulo 1', text: 'Estímulos idênticos 3D.', src: '/exercise-one', module: 1, progress: 0 },
@@ -37,10 +38,12 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.updateCard(); 
+    this.getUserName();
   }
 
   ngOnDestroy() {
     this.updateCard();
+    this.getUserName();
   }
 
   public toExercisePage(page: string, progress: number, module: number) {
@@ -102,6 +105,10 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
       this.userId = res;
     });
     return this.userId;
+  }
+  
+  public async getUserName() {
+    this.userName = await this.apiService.GetUserName();
   }
 
 }

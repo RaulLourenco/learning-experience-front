@@ -39,18 +39,18 @@ export class SignupTeacherPage implements OnInit {
     };
     this.advisorForm.reset();
 
-    this.apiService.registerAdvisor(advisor)
-    .subscribe( (res: SignupResponse) => {
-      console.log('res: ', res);
-      if (res.statusCode == 200) {
-        this.dismissLoading();
-        this.presentAlert('Cadastrado com sucesso!');
-        this.router.navigate(['home/profile']);
-      } else {
-        this.dismissLoading();
-        this.presentAlert('Erro ao cadastrar. Tente novamente!');
-      }
-    });
+    // this.apiService.registerAdvisor(advisor)
+    // .subscribe( (res: SignupResponse) => {
+    //   console.log('res: ', res);
+    //   if (res.statusCode == 200) {
+    //     this.dismissLoading();
+    //     this.presentAlert('Cadastrado com sucesso!');
+    //     this.router.navigate(['home/profile']);
+    //   } else {
+    //     this.dismissLoading();
+    //     this.presentAlert('Erro ao cadastrar. Tente novamente!');
+    //   }
+    // });
   }
 
   async presentLoading() {

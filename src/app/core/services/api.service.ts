@@ -137,4 +137,11 @@ export class ApiService {
     return userId;
   }
 
+  async GetUserName() {
+    const userName = await this.storage.get('USER_NAME').catch(e => {
+      return e;
+    });
+    return userName;
+  }
+
 }

@@ -57,18 +57,18 @@ export class ReviseTeacherPage implements OnInit {
 
     this.advisorForm.reset();
 
-    await this.apiService.updateAdvisor(advisor)
-      .subscribe((res: ReviseResponse) => {
-      console.log('res do atualizar: ', res);
-      if (res.statusCode == 200) {
-        this.dismissLoading();
-        this.presentAlert('Atualizado com sucesso!');
-        this.router.navigateByUrl('/home/profile');
-      } else {
-        this.dismissLoading();
-        this.presentAlert('Erro ao atualizar. Tente novamente!');
-      }
-    });
+    // await this.apiService.updateAdvisor(advisor)
+    //   .subscribe((res: ReviseResponse) => {
+    //   console.log('res do atualizar: ', res);
+    //   if (res.statusCode == 200) {
+    //     this.dismissLoading();
+    //     this.presentAlert('Atualizado com sucesso!');
+    //     this.router.navigateByUrl('/home/profile');
+    //   } else {
+    //     this.dismissLoading();
+    //     this.presentAlert('Erro ao atualizar. Tente novamente!');
+    //   }
+    // });
   }
 
   private async getAdvisorById() {
