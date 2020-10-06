@@ -111,8 +111,8 @@ export class ExerciseOnePage implements OnInit {
   }
 
   public async updateProgress() {
-
-    await this.apiLevelService.updateUserProgress(this.progress, 1);
+    const levelModule = await this.getLevelModule();
+    await this.apiLevelService.updateUserProgress(this.progress, levelModule);
     console.log('ATUALIZADO COM SUCESSO');
   }
 
