@@ -25,19 +25,6 @@
       </ion-col>
     </ion-row>
 
-    <ion-item class="bluetooth-item">
-      HC-06
-    </ion-item>
-    <ion-item class="bluetooth-item">
-      AirPods de Raul
-    </ion-item>
-    <ion-item class="bluetooth-item">
-      EDIFIER
-    </ion-item>
-    <ion-item class="bluetooth-item">
-      Bluetooth Teste
-    </ion-item>
-
     <ion-item class="bluetooth-item" *ngFor="let device of pairedDevices">
       {{device.name}}
     </ion-item>
@@ -52,19 +39,6 @@
         </ion-button>
       </ion-col>
     </ion-row>
-
-    <ion-item class="bluetooth-item">
-      HC-06
-    </ion-item>
-    <ion-item class="bluetooth-item">
-      AirPods de Raul
-    </ion-item>
-    <ion-item class="bluetooth-item">
-      EDIFIER
-    </ion-item>
-    <ion-item class="bluetooth-item">
-      Bluetooth Teste
-    </ion-item>
 
     <ion-spinner name="crescent" class="spinner-loading" *ngIf="gettingDevices"></ion-spinner>
 
