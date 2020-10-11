@@ -1,0 +1,88 @@
+<ion-content>
+
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" (click)="closeHardwareConfig()" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <p class="title">Configuração do Hardware</p>
+
+  <p class="introduction">Abaixo você encontrará as configurações para se conectar ao dispotivo Bluetooth.</p>
+
+  <ion-list padding>
+
+    <ion-row>
+      <ion-col>
+        <p class="subtitle">Meus aparelhos</p>
+      </ion-col>
+      <ion-col>
+        <ion-button class="button-hardware" (click)="disconnect()">
+          <ion-icon name="bluetooth"></ion-icon>&nbsp;Desconectar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-item class="bluetooth-item">
+      HC-06
+    </ion-item>
+    <ion-item class="bluetooth-item">
+      AirPods de Raul
+    </ion-item>
+    <ion-item class="bluetooth-item">
+      EDIFIER
+    </ion-item>
+    <ion-item class="bluetooth-item">
+      Bluetooth Teste
+    </ion-item>
+
+    <ion-item class="bluetooth-item" *ngFor="let device of pairedDevices">
+      {{device.name}}
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <p class="subtitle-section">Outros aparelhos</p>
+      </ion-col>
+      <ion-col>
+        <ion-button class="button-hardware" (click)="startScanning()">
+          <ion-icon name="search"></ion-icon>&nbsp;Escanear
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-item class="bluetooth-item">
+      HC-06
+    </ion-item>
+    <ion-item class="bluetooth-item">
+      AirPods de Raul
+    </ion-item>
+    <ion-item class="bluetooth-item">
+      EDIFIER
+    </ion-item>
+    <ion-item class="bluetooth-item">
+      Bluetooth Teste
+    </ion-item>
+
+    <ion-spinner name="crescent" class="spinner-loading" *ngIf="gettingDevices"></ion-spinner>
+
+    <ion-item class="bluetooth-item" *ngFor='let device of unpairedDevices'>
+      <span (click)="selectDevice(device.id)">
+        {{device.name || device.address}}
+      </span>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label position="floating">Escreva os dados que deseja mandar:</ion-label>
+      <ion-input type="text" name="dataSend" [(ngModel)]="dataSend"></ion-input>
+    </ion-item>
+    <ion-button class="button-hardware" (click)="sendData()">
+      <ion-icon name="send"></ion-icon>
+      &nbsp;Enviar dados
+    </ion-button> -->
+
+
+  </ion-list>
+</ion-content>
