@@ -28,7 +28,13 @@ $grey-color:#999999;
 
 .button-hardware{
     width: 150px;
-    margin: 16px 16px;
+    height: 50px;
+    margin: 20px 16px;
+    
+    span {
+        font-size: 12px;
+    }
+    
 }
 
 .subtitle{
