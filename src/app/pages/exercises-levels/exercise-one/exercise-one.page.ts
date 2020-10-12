@@ -58,17 +58,31 @@ export class ExerciseOnePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.audioService.start('entre_4_clique_igual', true);
     if (this.progress === 1) {
       return this.progress = 0;
     }
   }
 
-  public verifyAnswer = (i: number) => {
+  public verifyAnswer = async (i: number) => {
+    const levelModule = await this.getLevelModule();
     if (this.levelOne[i].match === true) {
       this.progress += 0.1;
       this.progress = Math.round(this.progress * 100) / 100;
-      this.audioService.start('voce_acertou_parabens', false);
+      if( (this.progress * 10) % 2 === 0) {
+        this.audioService.start('voce_acertou_parabens', false);
+      } else {
+        (levelModule === 1 || levelModule === 2)
+              ? this.audioService.start('clique_no_igual', false)
+              : this.audioService.start('clique_no_parecido', false);
+      }
       if (this.progress === 0.5 || this.progress === 1) {
+        if(this.progress === 0.5) {
+          this.audioService.start('eba_completou_50', false);
+        }
+        if(this.progress === 1) {
+          this.audioService.start('ae_completou_modulo', false);
+        }
         this.updateProgress();
       }
       if (this.progress === 1) {
