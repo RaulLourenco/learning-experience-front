@@ -68,6 +68,7 @@ export class ExerciseOnePage implements OnInit {
     const levelModule = await this.getLevelModule();
     if (this.levelOne[i].match === true) {
       this.progress += 0.1;
+      await this.apiLevelService.createASyncXRay(0);
       this.progress = Math.round(this.progress * 100) / 100;
       if( (this.progress * 10) % 2 === 0) {
         this.audioService.start('voce_acertou_parabens', false);
@@ -83,6 +84,7 @@ export class ExerciseOnePage implements OnInit {
         if(this.progress === 1) {
           this.audioService.start('ae_completou_modulo', false);
         }
+        await this.apiLevelService.createASyncXRay(2);
         this.updateProgress();
       }
       if (this.progress === 1) {
@@ -92,6 +94,7 @@ export class ExerciseOnePage implements OnInit {
 
       this.getLevelContent();
     } else {
+      await this.apiLevelService.createASyncXRay(1);
       this.presentAlert('Ops! Tente novamente!');
       this.audioService.start('ops_tente_novamente', false);
     }

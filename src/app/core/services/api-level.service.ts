@@ -50,10 +50,7 @@ export class ApiLevelService extends ApiService {
   async updateUserProgress(progress: number, module: number): Promise<object> {
     const token = await this.getToken();
     const id = await this.getUserId();
-    const user = {
 
-    }
-    console.log(user);
     return this.http.post(`${environment.urlApi}/User/UpdateUserProgress`, {
       id,
       progress,
@@ -64,5 +61,21 @@ export class ApiLevelService extends ApiService {
           Authorization: 'Bearer ' + token
         }
       }).toPromise();
+  }
+
+  async createASyncXRay(action) {
+
+    const token = await this.getToken();
+    const id = await this.getUserId();
+
+    return this.http.post(`${environment.urlApi}/GameLevel/CreateAsyncXRay`, {
+      id,
+      action
+    },
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
   }
 }
