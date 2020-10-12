@@ -28,12 +28,12 @@ export class ExerciseColorPage implements OnInit {
   public userId: string;
 
   constructor(private router: Router,
-    private zone: NgZone,
-    private alertController: AlertController,
-    private http: HttpClient,
-    private apiService: ApiService,
-    private apiLevelService: ApiLevelService,
-    private storage: Storage) { }
+              private zone: NgZone,
+              private alertController: AlertController,
+              private http: HttpClient,
+              private apiService: ApiService,
+              private apiLevelService: ApiLevelService,
+              private storage: Storage) { }
 
   ngOnInit() {
     this.getLevelContent();

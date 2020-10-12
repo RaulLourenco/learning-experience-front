@@ -39,7 +39,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.updateCard(); 
+    this.updateCard();
     this.getUserName();
   }
 
@@ -110,7 +110,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
     });
     return this.userId;
   }
-  
+
   public async getUserName() {
     this.userName = await this.apiService.GetUserName();
   }
