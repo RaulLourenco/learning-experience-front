@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP } from '@ionic-native/http/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+
 
 import 'chartjs-plugin-zoom';
 @NgModule({
@@ -27,6 +29,7 @@ import 'chartjs-plugin-zoom';
   providers: [
     StatusBar,
     SplashScreen,
+    BluetoothSerial,
     HTTP
   ],
   bootstrap: [AppComponent]

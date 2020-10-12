@@ -1,4 +1,9 @@
+$white-color: #ffffff;
 $black-color: #000000;
+$main-color: #1C5A83;
+$green-color: #228B22;
+$card-content-color: #0079BE;
+$grey-color:#999999;
 
 .margin-row {
 	margin-bottom: 32px;
@@ -16,13 +21,14 @@ ion-avatar {
 .profile-options {
 	margin: 30px 40px 0 16px;
 	& .name {
-		font-weight: bold;
+		font-weight: 500;
 		font-size: 16px;
 		color: $black-color;
 	}
 	& .edit-profile {
 		margin-top: 30px;
 		font-size: 14px;
+		font-weight: 300;
 		color: $black-color;
 	}
 }
@@ -45,14 +51,14 @@ ion-avatar {
 }
 
 .item-title {
-	font-weight: bold;
+	font-weight: 500;
 	font-size: 16px;
 	margin-bottom: -16px;
 	color: $black-color;
 }
 
 .item-subtitle {
-	font-weight: normal;
+	font-weight: 300;
 	font-size: 14px;
 	color: $black-color;
 }
@@ -64,7 +70,7 @@ ion-avatar {
 .icon-items {
 	font-size: 20px;
 	padding: 0;
-	color: $black-color;
+	color: $main-color;
 }
 
 .icon-forward-items {

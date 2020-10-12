@@ -6,8 +6,8 @@ $black-color: #000000;
 }
 
 .home-greetings{
-    font-weight: bold;
-    font-size: 24px;
+    font-weight: 500;
+    font-size: 20px;
     color: $black-color;
 }
 
@@ -17,6 +17,7 @@ $black-color: #000000;
 }
 
 .home-intro{
-    font-size: 18px;
+    font-size: 16px;
     color: $black-color;
+    font-weight: 300;
 }

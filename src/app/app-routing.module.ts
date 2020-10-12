@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'exercise-one',
     loadChildren: () => import('./pages/exercises-levels/exercise-one/exercise-one.module').then( m => m.ExerciseOnePageModule)
   },
+  {
+    path: 'bluetooth-config',
+    loadChildren: () => import('./pages/bluetooth-config/bluetooth-config.module').then( m => m.BluetoothConfigPageModule)
+  }
 ];
 @NgModule({
   imports: [

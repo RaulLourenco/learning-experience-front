@@ -1,10 +1,12 @@
 .icon {
-  color: #ffffff;
+  color: #1C5A83;
 }
 
 .tab-bar-color{
-  --background: #1C5A83;
-  border: none;
+  --background: #ffffff;
+  border-top: 1px solid #1C5A83;
+  border-radius: 16px;
+  padding: 8px;
 }
 
 .label{

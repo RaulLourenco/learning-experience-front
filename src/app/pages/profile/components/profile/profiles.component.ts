@@ -37,6 +37,10 @@ export class ProfilesComponent implements OnInit {
     this.router.navigateByUrl('/signup-teacher');
   }
 
+  moveToHardwareConfig(){
+    this.router.navigateByUrl('bluetooth-config');
+  }
+
   async getUserName() {
     this.userName = await this.apiService.GetUserName();
     console.log(this.userName);

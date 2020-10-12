@@ -2,7 +2,7 @@ $white-color: #ffffff;
 $black-color: #000000;
 $main-color: #1C5A83;
 $green-color: #228B22;
-$card-content-color: #0079BE;
+$grey-color:#999999;
 
 .header-page{
     padding: 16px 0;
@@ -21,7 +21,7 @@ $card-content-color: #0079BE;
     padding: 0 18px;
     font-size: 22px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 500;
     color: $black-color;
 }
 
@@ -61,7 +61,7 @@ $card-content-color: #0079BE;
 }
 
 .card-content{
-    background-color: $card-content-color;
+    background-color: $main-color;
     border: 1px solid black;
 }
 
@@ -72,7 +72,7 @@ $card-content-color: #0079BE;
 
 .p-subtitle-card-content{
     color: $white-color;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .card-footer{
@@ -86,7 +86,7 @@ $card-content-color: #0079BE;
 }
 
 .fab-button-add{
-    --background:#1C5A83;
+    --background:#999999;
 }
 
 .icon-add{

@@ -50,6 +50,9 @@ $orange-color: #f26f39;
 
 .comparison-card {
 	border-radius: 6px;
+	height: 150px;
+	width: 150px;
+	margin: 16px 16px;
 	& .button-answer {
 		background: none;
 		width: 100%;
