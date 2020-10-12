@@ -30,7 +30,11 @@ const routes: Routes = [
     path: '',
     redirectTo: './exercises-levels',
     pathMatch: 'full'
+  },  {
+    path: 'edit-user',
+    loadChildren: () => import('./edit-user/edit-user.module').then( m => m.EditUserPageModule)
   }
+
 ];
 
 @NgModule({
