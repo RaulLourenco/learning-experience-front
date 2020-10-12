@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { ApiLevelService } from 'src/app/core/services/api-level.service';
 import { AudioService } from 'src/app/core/services/audio.service';
 import { Storage } from '@ionic/storage';
+import { MediaService } from 'src/app/core/services/media.service';
 @Component({
   selector: 'app-exercise-one',
   templateUrl: './exercise-one.page.html',
@@ -45,6 +46,7 @@ export class ExerciseOnePage implements OnInit {
     private apiService: ApiService,
     private apiLevelService: ApiLevelService,
     private audioService: AudioService,
+    private mediaService: MediaService,
     private storage: Storage
   ) { }
 
@@ -80,6 +82,7 @@ export class ExerciseOnePage implements OnInit {
       if (this.progress === 0.5 || this.progress === 1) {
         if(this.progress === 0.5) {
           this.audioService.start('eba_completou_50', false);
+          this.mediaService.playVideo('https://www.youtube.com/watch?v=IdlGgwKdwHY');
         }
         if(this.progress === 1) {
           this.audioService.start('ae_completou_modulo', false);
