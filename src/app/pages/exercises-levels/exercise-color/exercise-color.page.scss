@@ -24,36 +24,20 @@ $orange-color: #f26f39;
 	}
 }
 
-.example-card {
-	border-radius: 6px;
-	padding: 8px;
-	margin: 24px 50px;
-	& .example-image {
-		height: 90px;
-		display: block;
-		margin: 0 auto;
-	}
-	& .example-text {
-		font-size: 24px;
-		color: $black-color;
-		text-align: center;
-		padding: 0;
-	}
-}
-
 .exercise-label {
 	padding: 20px 0 10px 16px;
-	font-size: 20px;
+    font-size: 20px;
+    font-weight: 500;
 	color: $black-color;
 	text-align: center;
-	font-weight: 500;
 }
 
 .comparison-card {
 	border-radius: 6px;
 	height: 150px;
 	width: 150px;
-	margin: 16px 16px;
+    margin: 16px 16px;
+    background: red;
 	& .button-answer {
 		background: none;
 		width: 100%;
@@ -66,13 +50,6 @@ $orange-color: #f26f39;
 			display: block;
 			margin: 0 auto;
 			margin-top: 16px;
-		}
-		& .comparison-text {
-			padding-top: 20px;
-			padding-bottom: 10px;
-			font-size: 18px;
-			color: $black-color;
-			text-align: center;
 		}
 	}
 }

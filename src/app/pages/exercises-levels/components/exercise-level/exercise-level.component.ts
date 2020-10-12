@@ -25,6 +25,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
     { name: 'Módulo 4', text: 'Estímulos associados.', src: '/exercise-one', module: 4, progress: 0 },
     { name: 'Módulo 5', text: '4 Estímulos idênticos 2D-3D.', src: '/exercise-one', module: 5, progress: 0 },
     { name: 'Módulo 6', text: '5 Estímulos idênticos 2D-3D.', src: '/exercise-one', module: 6, progress: 0 },
+    { name: 'Módulo 7', text: 'Estímulos de cores.', src: '/exercise-color', module: 7, progress: 0 },
   ];
 
   constructor(

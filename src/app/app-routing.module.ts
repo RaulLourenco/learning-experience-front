@@ -48,6 +48,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/exercises-levels/exercise-one/exercise-one.module').then( m => m.ExerciseOnePageModule)
   },
   {
+    path: 'exercise-color',
+    loadChildren: () => import('./pages/exercises-levels/exercise-color/exercise-color.module').then( m => m.ExerciseColorPageModule)
+  },
+  {
     path: 'bluetooth-config',
     loadChildren: () => import('./pages/bluetooth-config/bluetooth-config.module').then( m => m.BluetoothConfigPageModule)
   }
