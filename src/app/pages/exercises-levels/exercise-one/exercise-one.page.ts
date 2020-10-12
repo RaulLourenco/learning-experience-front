@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/core/services/api.service';
 import { ApiLevelService } from 'src/app/core/services/api-level.service';
+import { AudioService } from 'src/app/core/services/audio.service';
 import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-exercise-one',
@@ -31,6 +32,11 @@ export class ExerciseOnePage implements OnInit {
   public token: string;
   public userId: string;
 
+  public audio = {
+    name: '',
+    path: ''
+  };
+
   constructor(
     private router: Router,
     private zone: NgZone,
@@ -38,6 +44,7 @@ export class ExerciseOnePage implements OnInit {
     private http: HttpClient,
     private apiService: ApiService,
     private apiLevelService: ApiLevelService,
+    private audioService: AudioService,
     private storage: Storage
   ) { }
 
@@ -60,6 +67,7 @@ export class ExerciseOnePage implements OnInit {
     if (this.levelOne[i].match === true) {
       this.progress += 0.1;
       this.progress = Math.round(this.progress * 100) / 100;
+      this.audioService.start('voce_acertou_parabens', false);
       if (this.progress === 0.5 || this.progress === 1) {
         this.updateProgress();
       }
@@ -71,6 +79,7 @@ export class ExerciseOnePage implements OnInit {
       this.getLevelContent();
     } else {
       this.presentAlert('Ops! Tente novamente!');
+      this.audioService.start('ops_tente_novamente', false);
     }
   }
 

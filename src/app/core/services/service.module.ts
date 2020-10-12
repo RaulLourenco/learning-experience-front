@@ -6,11 +6,13 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ApiService } from './api.service';
 import { ApiAuthService } from './api-auth.service';
 import { ApiLevelService } from './api-level.service';
+import { AudioService } from './audio.service';
 
 const SERVICES = [
   ApiService,
   ApiAuthService,
-  ApiLevelService
+  ApiLevelService,
+  AudioService
 ];
 
 @NgModule({
