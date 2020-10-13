@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'bluetooth-config',
     loadChildren: () => import('./pages/bluetooth-config/bluetooth-config.module').then( m => m.BluetoothConfigPageModule)
+  },
+  {
+    path: 'edit-user',
+    loadChildren: () => import('./pages/edit-user/edit-user.module').then( m => m.EditUserPageModule)
   }
 ];
 @NgModule({

@@ -1,9 +1,61 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>edit-user</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12" class="avatar-col">
+      <ion-avatar class="avatar-icon">
+        <img src="../../../../../assets/images/avatar.png" />
+      </ion-avatar>
+    </ion-col>
+  </ion-row>
+
+  <form class="form" [formGroup]="userEditForm" (ngSubmit)="onSignup(userEditForm.value.name, 
+    userEditForm.value.password,
+    userEditForm.value.passwordConfirmation)">
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Nome
+      </ion-label>
+      <ion-input formControlName="name" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Senha
+      </ion-label>
+      <ion-input formControlName="password" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="item-text-form">
+      <ion-label class="label-form" position="floating">
+        Confirmar senha
+      </ion-label>
+      <ion-input formControlName="passwordConfirm" type="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- <ion-row>
+      <ion-col class="textarea-col">
+        <ion-item class="textarea-item">
+          <ion-label class="textarea-lbl" position="stacked">Comentário</ion-label>
+          <ion-textarea formControlName="comment" clearOnEdit="true" placeholder="Digite um comentário...">
+          </ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-button class="signup-button" type="submit" expand="block" fill="solid">Atualizar</ion-button>
+
+  </form>
 
 </ion-content>

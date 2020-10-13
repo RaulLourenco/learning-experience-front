@@ -38,7 +38,6 @@ export class TeacherListPage implements OnInit {
 
   updateTeacher(advisor) {
     this.router.navigate(['/revise-teacher', advisor.id]);
-
   }
 
   public async getAdvisors() {

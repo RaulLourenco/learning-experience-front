@@ -41,6 +41,11 @@ export class ProfilesComponent implements OnInit {
     this.router.navigateByUrl('bluetooth-config');
   }
 
+  moveToEditUser = () => {
+    this.router.navigateByUrl('/edit-user');
+  }
+
+
   async getUserName() {
     this.userName = await this.apiService.GetUserName();
     console.log(this.userName);
