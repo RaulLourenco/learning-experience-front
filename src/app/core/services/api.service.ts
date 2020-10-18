@@ -114,33 +114,33 @@ export class ApiService {
     }).toPromise();
   }
 
-  async getReportByModule(reportType) {
+  async getReportByModule() {
     const token = await this.getToken();
     const userId = await this.getUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
-      params: new HttpParams().set('userId', userId).set('reportType', reportType),
+      params: new HttpParams().set('userId', userId),
       headers: {
         Authorization: 'Bearer ' + token
       }
     }).toPromise();
   }
 
-  async getReportByMonth(reportType) {
+  async getReportByMonth() {
     const token = await this.getToken();
     const userId = await this.getUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
-      params: new HttpParams().set('userId', userId).set('reportType', reportType),
+      params: new HttpParams().set('userId', userId),
       headers: {
         Authorization: 'Bearer ' + token
       }
     }).toPromise();
   }
 
-  async getReportByMatches(reportType) {
+  async getReportByMatches() {
     const token = await this.getToken();
     const userId = await this.getUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
-      params: new HttpParams().set('userId', userId).set('reportType', reportType),
+      params: new HttpParams().set('userId', userId),
       headers: {
         Authorization: 'Bearer ' + token
       }

@@ -71,15 +71,15 @@ export class ChartsComponent implements OnInit {
   ngOnInit() { }
 
   public async getReportByModule() {
-    const byModule = await this.apiService.getReportByModule(1);
+    const byModule = await this.apiService.getReportByModule();
   }
 
   public async getReportByMatches() {
-    const byMatches = await this.apiService.getReportByModule(2);
+    const byMatches = await this.apiService.getReportByModule();
   }
 
   public async getReportByMonth() {
-    const byMonth = await this.apiService.getReportByModule(3);
+    const byMonth = await this.apiService.getReportByModule();
   }
 
 
