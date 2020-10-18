@@ -58,8 +58,9 @@ $orange-color: #f26f39;
 		background: none;
 		width: 100%;
 		border: none;
-		&:active {
-			border-style: outset;
+		&:active, &:focus {
+			border-style: none;
+			outline: none;
 		}
 		& .comparison-image {
 			height: 50px;
