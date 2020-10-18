@@ -10,11 +10,6 @@ import { Patient } from 'src/app/core/models/patient';
 })
 export class PatientListPage implements OnInit {
 
-  constructor(
-    private router: Router,
-    private apiService: ApiService
-  ) { }
-
   public token: string;
   public patientList = [];
   public patient: Patient = {
@@ -24,6 +19,13 @@ export class PatientListPage implements OnInit {
     colorsIssue: false,
     observation: ''
   };
+
+  public messageError: boolean = false;
+
+  constructor(
+    private router: Router,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit() {
     this.getPatients();
@@ -41,6 +43,9 @@ export class PatientListPage implements OnInit {
     const patients = await this.apiService.getAllPatient();
 
     this.patientList.push(patients);
+
+    this.messageError = (this.patientList.length > 0) ? false : true;
+  
     this.patientList = this.patientList[0];
 
     this.patientList.forEach( item => {
