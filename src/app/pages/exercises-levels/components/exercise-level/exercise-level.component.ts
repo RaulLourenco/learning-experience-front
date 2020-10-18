@@ -115,4 +115,11 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
     this.userName = await this.apiService.GetUserName();
   }
 
+  doRefresh(event) {
+    this.updateCard();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
+
 }
