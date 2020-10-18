@@ -1,25 +1,26 @@
 <ion-content>
 
   <ion-row>
-    <ion-col class="home-greetings-col">
-      <p class="home-greetings">Relatórios</p>
+    <ion-col class="report-title-col">
+      <ion-icon class="report-icon" name="document-text-outline"></ion-icon>
+      <p class="report-title">Relatórios</p>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col class="home-intro-col">
-      <p class="home-intro">Abaixo você encontrará os relatórios do seu desempenho na aplicação.</p>
+    <ion-col class="report-intro-col">
+      <p class="report-intro">Abaixo você encontrará os relatórios do seu desempenho na aplicação.</p>
     </ion-col>
   </ion-row>
 
   <!-- Bar -->
 
   <ion-row>
-    <ion-col class="home-greetings-col">
-      <p class="home-greetings">Desempenho</p>
+    <ion-col class="report-title-col">
+      <p class="report-subtitle">Desempenho por Módulos</p>
     </ion-col>
   </ion-row>
 
-  <canvas baseChart
+  <canvas class="bar-chart" baseChart
   [datasets]="barChartData"
   [labels]="barChartLabels"
   [options]="barChartOptions"
@@ -28,14 +29,11 @@
   [chartType]="barChartType">
 </canvas>
 
-  <br>
-  <br>
-
   <!-- Doughnut -->
 
   <ion-row>
-    <ion-col class="home-greetings-col">
-      <p class="home-greetings">Partidas</p>
+    <ion-col class="report-title-col">
+      <p class="report-subtitle">Partidas</p>
     </ion-col>
   </ion-row>
 
@@ -45,19 +43,27 @@
   [chartType]="doughnutChartType">
 </canvas>
 
-<!-- <br>
-<br> -->
+<!-- Pie -->
 
-<!-- Line -->
+<ion-row>
+  <ion-col class="report-title-col">
+    <p class="report-subtitle">Desempenho por Mês</p>
+  </ion-col>
+</ion-row>
 
-<!-- <canvas baseChart width="400" height="400"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [chartType]="lineChartType"
-                [plugins]="lineChartPlugins">
-</canvas> -->
+<div>
+  <div>
+    <div class="chart">
+      <canvas class="pie-chart" baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend">
+      </canvas>
+    </div>
+  </div>
+</div>
 
 </ion-content>

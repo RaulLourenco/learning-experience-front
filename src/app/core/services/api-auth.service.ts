@@ -36,32 +36,32 @@ export class ApiAuthService {
 
 
   login(user: User) {
-    this.httpIonic.setDataSerializer('json');
-    const observable = from(this.httpIonic.post(`${environment.urlApi}/Auth`, user, {
-      'Content-Type': 'application/json'
-    })).pipe(
-      tap(async (res) => {
-        if (res) {
-          const response = JSON.parse(res.data);
-          await this.storage.set('ACCESS_TOKEN', response.token);
-          await this.storage.set('EXPIRES_IN', response.tokenExpiresIn);
-          await this.storage.set('USER_ID', response.id);
-          await this.storage.set('USER_NAME', response.userName);
-          this.authSubject.next(true);
-        }
-      }));
-    return observable;
-    // return this.http.post(`${environment.urlApi}/Auth`, user)
-    //   .pipe(
-    //     tap(async (res: AuthResponse) => {
-    //       if (res) {
-    //         await this.storage.set('ACCESS_TOKEN', res.token);
-    //         await this.storage.set('EXPIRES_IN', res.tokenExpiresIn);
-    //         await this.storage.set('USER_ID', res.id);
-    //         await this.storage.set('USER_NAME', res.userName);
-    //         this.authSubject.next(true);
-    //       }
-    //     }));
+    // this.httpIonic.setDataSerializer('json');
+    // const observable = from(this.httpIonic.post(`${environment.urlApi}/Auth`, user, {
+    //   'Content-Type': 'application/json'
+    // })).pipe(
+    //   tap(async (res) => {
+    //     if (res) {
+    //       const response = JSON.parse(res.data);
+    //       await this.storage.set('ACCESS_TOKEN', response.token);
+    //       await this.storage.set('EXPIRES_IN', response.tokenExpiresIn);
+    //       await this.storage.set('USER_ID', response.id);
+    //       await this.storage.set('USER_NAME', response.userName);
+    //       this.authSubject.next(true);
+    //     }
+    //   }));
+    // return observable;
+    return this.http.post(`${environment.urlApi}/Auth`, user)
+      .pipe(
+        tap(async (res: AuthResponse) => {
+          if (res) {
+            await this.storage.set('ACCESS_TOKEN', res.token);
+            await this.storage.set('EXPIRES_IN', res.tokenExpiresIn);
+            await this.storage.set('USER_ID', res.id);
+            await this.storage.set('USER_NAME', res.userName);
+            this.authSubject.next(true);
+          }
+        }));
   }
 
   async logout() {
