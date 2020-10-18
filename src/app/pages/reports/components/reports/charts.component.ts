@@ -17,8 +17,6 @@ export class ChartsComponent implements OnInit {
 
   public doughnutChartData: MultiDataSet = [
     [350, 450, 100],
-    [50, 150, 120],
-    [250, 130, 70],
   ];
 
   public doughnutChartType: ChartType = 'doughnut';
@@ -59,7 +57,7 @@ export class ChartsComponent implements OnInit {
       },
     }
   };
-  public pieChartLabels: Label[] = ['Erros', 'Acertos', 'Partidas'];
+  public pieChartLabels: Label[] = ['Erros', 'Acertos', 'Reforçadores'];
   public pieChartData: number[] = [300, 500, 100];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
