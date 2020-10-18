@@ -63,15 +63,15 @@ export class ApiLevelService extends ApiService {
       }).toPromise();
   }
 
-  async createASyncXRay(action, levelModule) {
+  async createASyncXRay(action, gameLevelType) {
 
     const token = await this.getToken();
-    const id = await this.getUserId();
+    const userId = await this.getUserId();
 
     return this.http.post(`${environment.urlApi}/GameLevel/CreateAsyncXRay`, {
-      id,
+      userId,
       action,
-      levelModule
+      gameLevelType
     },
     {
       headers: {
