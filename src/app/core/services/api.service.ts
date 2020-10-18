@@ -114,7 +114,7 @@ export class ApiService {
     }).toPromise();
   }
 
-  async getReportByModule() {
+  async getReportByModule() : Promise<any> {
     const token = await this.getToken();
     const userId = await this.getUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
@@ -125,7 +125,7 @@ export class ApiService {
     }).toPromise();
   }
 
-  async getReportByMonth() {
+  async getReportByMonth() : Promise<any> {
     const token = await this.getToken();
     const userId = await this.getUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByMonth`, {

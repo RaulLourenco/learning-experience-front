@@ -1,5 +1,14 @@
 <ion-content>
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="circles"
+      refreshingText="Atualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-row>
     <ion-col class="report-title-col">
       <ion-icon class="report-icon" name="document-text-outline"></ion-icon>
@@ -13,21 +22,22 @@
   </ion-row>
 
   <!-- Bar -->
-
   <ion-row>
     <ion-col class="report-title-col">
       <p class="report-subtitle">Desempenho por Módulos</p>
     </ion-col>
   </ion-row>
 
-  <canvas class="bar-chart" baseChart
-  [datasets]="barChartData"
-  [labels]="barChartLabels"
-  [options]="barChartOptions"
-  [plugins]="barChartPlugins"
-  [legend]="barChartLegend"
-  [chartType]="barChartType">
-</canvas>
+  <div *ngIf="byModuleError">
+    <canvas class="bar-chart" baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+    </canvas>
+  </div>
 
   <!-- Doughnut -->
 
@@ -37,7 +47,7 @@
     </ion-col>
   </ion-row>
 
-  <div *ngIf="messageError">
+  <div *ngIf="byMatchesError">
     <canvas baseChart 
     [data]="doughnutChartData"
     [labels]="doughnutChartLabels"
@@ -55,14 +65,12 @@
 
 <div>
   <div>
-    <div class="chart">
+    <div class="chart" *ngIf="byMonthError">
       <canvas class="pie-chart" baseChart
         [data]="pieChartData"
         [labels]="pieChartLabels"
         [chartType]="pieChartType"
-        [options]="pieChartOptions"
-        [plugins]="pieChartPlugins"
-        [legend]="pieChartLegend">
+        [options]="pieChartOptions">
       </canvas>
     </div>
   </div>

@@ -27,38 +27,28 @@ export class ChartsComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['1', '2', '3', '4', '5', '6', '7'];
+  public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
 
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 70, 71, 56, 55, 40], label: 'Erros' },
-    { data: [28, 48, 40, 19, 70, 27, 75], label: 'Acertos' }
-  ];
+  public barChartData: ChartDataSets[] = [{ data: [], label: '' }, { data: [], label: '' }];
 
   // Pie
   public pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
       position: 'top',
-    },
-    plugins: {
-      datalabels: {
-        formatter: (value, ctx) => {
-          const label = ctx.chart.data.labels[ctx.dataIndex];
-          return label;
-        },
-      },
     }
   };
-  public pieChartLabels: Label[] = ['Erros', 'Acertos', 'Reforçadores'];
-  public pieChartData: number[] = [300, 500, 100];
+  
+  public pieChartLabels: Label[] = [];
+  public pieChartData: number[] = [0, 0, 0];
   public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
-  public pieChartPlugins = [pluginDataLabels];
 
-  public messageError: boolean = false;
+  public byMatchesError: boolean = false;
+  public byModuleError: boolean = false;
+  public byMonthError: boolean = false;
 
   constructor(private apiService: ApiService) {
   }
@@ -66,28 +56,53 @@ export class ChartsComponent implements OnInit {
   ngOnInit() { 
     this.getReportByMatches();
     this.getReportByModule();
+    this.getReportByMonth();
   }
 
   public async getReportByModule() {
     const byModule = await this.apiService.getReportByModule();
-    console.log(byModule);
+  
+    this.barChartLabels.length = byModule[0].data.length;
+    for(let i=0;i<this.barChartLabels.length;i++){
+      this.barChartLabels[i] = (i + 1).toString();
+    }
+
+    byModule.forEach( (module, i) => {
+      this.barChartData[i].data = module.data;
+      this.barChartData[i].label = module.label;
+    });
+
+    this.byModuleError = (this.barChartData[0].data.length >= 1) ? true : false;
   }
 
   public async getReportByMatches() {
     const byMatches = await this.apiService.getReportByMatches();
-    const aux: MultiDataSet = [];
-
-    byMatches.forEach( match => {
-      this.doughnutChartLabels.push(match.label);
-      aux.push(match.count);
+    
+    byMatches.forEach( (match, i) => {
+      this.doughnutChartLabels[i] = match.label;
+      this.doughnutChartData[0][i]= match.count;
     });  
 
-    this.doughnutChartData = aux;
-    this.messageError = (this.doughnutChartData.length === 1) ? false : true;
+    this.byMatchesError = (this.doughnutChartData.length >= 1) ? true : false;
   }
 
   public async getReportByMonth() {
-    const byMonth = await this.apiService.getReportByModule();
-    console.log(byMonth);
+    const byMonth = await this.apiService.getReportByMonth();
+
+    byMonth.forEach( (month, i) => {
+      this.pieChartData[i] = month.count;
+      this.pieChartLabels[i] = month.label;
+    });
+
+    this.byMonthError = (this.pieChartData.length >= 1) ? true : false;
+  }
+
+  doRefresh(event) {
+    this.getReportByMatches();
+    this.getReportByModule();
+    this.getReportByMonth();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 }
