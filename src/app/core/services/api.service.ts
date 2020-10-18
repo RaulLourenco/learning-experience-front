@@ -128,18 +128,18 @@ export class ApiService {
   async getReportByMonth() {
     const token = await this.getToken();
     const userId = await this.getUserId();
-    return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
+    return this.http.get(`${environment.urlApi}/Report/GetReportProgressByMonth`, {
       params: new HttpParams().set('userId', userId),
       headers: {
         Authorization: 'Bearer ' + token
       }
     }).toPromise();
   }
-
-  async getReportByMatches() {
+  
+  async getReportByMatches() : Promise<any> {
     const token = await this.getToken();
     const userId = await this.getUserId();
-    return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
+    return this.http.get(`${environment.urlApi}/Report/GetReportProgressByMatches`, {
       params: new HttpParams().set('userId', userId),
       headers: {
         Authorization: 'Bearer ' + token

@@ -12,15 +12,10 @@ import { ApiService } from 'src/app/core/services/api.service';
 export class ChartsComponent implements OnInit {
 
   //Doughnut
-
-  public doughnutChartLabels: Label[] = ['Erros', 'Acertos', 'Reforçadores'];
-
-  public doughnutChartData: MultiDataSet = [
-    [350, 450, 100],
-  ];
-
   public doughnutChartType: ChartType = 'doughnut';
-
+  public doughnutChartLabels: Label[] = [];
+  public doughnutChartData: MultiDataSet = [[0, 0, 0]];
+  
   // Bar
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -63,22 +58,36 @@ export class ChartsComponent implements OnInit {
   public pieChartLegend = true;
   public pieChartPlugins = [pluginDataLabels];
 
+  public messageError: boolean = false;
+
   constructor(private apiService: ApiService) {
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.getReportByMatches();
+    this.getReportByModule();
+  }
 
   public async getReportByModule() {
     const byModule = await this.apiService.getReportByModule();
+    console.log(byModule);
   }
 
   public async getReportByMatches() {
-    const byMatches = await this.apiService.getReportByModule();
+    const byMatches = await this.apiService.getReportByMatches();
+    const aux: MultiDataSet = [];
+
+    byMatches.forEach( match => {
+      this.doughnutChartLabels.push(match.label);
+      aux.push(match.count);
+    });  
+
+    this.doughnutChartData = aux;
+    this.messageError = (this.doughnutChartData.length === 1) ? false : true;
   }
 
   public async getReportByMonth() {
     const byMonth = await this.apiService.getReportByModule();
+    console.log(byMonth);
   }
-
-
 }

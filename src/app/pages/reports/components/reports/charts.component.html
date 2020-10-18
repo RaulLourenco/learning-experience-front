@@ -37,11 +37,13 @@
     </ion-col>
   </ion-row>
 
-  <canvas baseChart
-  [data]="doughnutChartData"
-  [labels]="doughnutChartLabels"
-  [chartType]="doughnutChartType">
-</canvas>
+  <div *ngIf="messageError">
+    <canvas baseChart 
+    [data]="doughnutChartData"
+    [labels]="doughnutChartLabels"
+    [chartType]="doughnutChartType">
+  </canvas>
+</div>
 
 <!-- Pie -->
 
