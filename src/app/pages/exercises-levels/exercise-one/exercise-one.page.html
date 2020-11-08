@@ -25,15 +25,19 @@
     <ion-col size="6" *ngFor="let level of levelOne; let i = index">
       <ion-card class="comparison-card">
         <button class="button-answer" (click)="verifyAnswer(i)">
-        <img class="comparison-image" src={{level.image}} />
-        <ion-card-content class="comparison-text">
-          {{level.object}}
-        </ion-card-content>
-      </button>
+          <img class="comparison-image" src={{level.image}} />
+          <ion-card-content class="comparison-text">
+            {{level.object}}
+          </ion-card-content>
+        </button>
       </ion-card>
     </ion-col>
   </ion-row>
 
-  <!-- <ion-button class="button-next" expand="block" fill="solid">Verificar</ion-button> -->
+  <ion-list>
+    <ion-item *ngFor="let track of songs" (click)="start(track)">
+      <ion-label>{{track.name}}</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

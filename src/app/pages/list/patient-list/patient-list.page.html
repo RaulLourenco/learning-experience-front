@@ -10,7 +10,7 @@
 
   <p class="patient-list-title">Lista de Pacientes</p>
 
-  <div *ngIf="patientList.length == 0">
+  <div *ngIf="messageError">
     <img class="no-patients-exclamation" src="../../../../../assets/images/exclamacao.png" />
     <p class="no-patients-text"><b>Ops!</b> Parece que você não possui nenhum paciente cadastrado. 
       Você pode adicionar a qualquer momento clicando no botão no final desta tela.

@@ -1,0 +1,26 @@
+<ion-content>
+
+  <ion-row class="header-page">
+    <ion-col size="2">
+      <button class="button-close" (click)="closeExercise()" icon-only>
+        <ion-icon class="icon-close" name="close-outline"></ion-icon>
+      </button>
+    </ion-col>
+
+    <ion-col class="progress-bar-col">
+      <ion-progress-bar class="progress-bar" value="{{progress}}"></ion-progress-bar>
+    </ion-col>
+  </ion-row>
+
+  <p class="exercise-label">Selecione a cor correta, de acordo com o protótipo:</p>
+
+  <ion-row>
+    <ion-col size="6" *ngFor="let level of levelColor; let i = index">
+      <ion-card class="comparison-card">
+        <button class="button-answer" (click)="verifyAnswer(i)">
+      </button>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

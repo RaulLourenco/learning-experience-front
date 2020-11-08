@@ -21,6 +21,8 @@ export class TeacherListPage implements OnInit {
     comment: ''
   };
 
+  public messageError: boolean = false;
+
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -45,6 +47,9 @@ export class TeacherListPage implements OnInit {
     const advisors = await this.apiService.getAllAdvisor();
 
     this.advisorList.push(advisors);
+
+    this.messageError = (this.advisorList.length > 0) ? false : true;
+
     this.advisorList = this.advisorList[0];
 
     this.advisorList.forEach( (item, index) => {

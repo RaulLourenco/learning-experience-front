@@ -1,0 +1,61 @@
+$white-color: #ffffff;
+$black-color: #000000;
+$main-color: #1c5a83;
+$green-color: #228b22;
+$orange-color: #f26f39;
+
+.header-page {
+	padding: 16px 0;
+	& .button-close {
+		background-color: $white-color;
+	}
+	& .icon-close {
+		padding-left: 10px;
+		font-size: 30px;
+	}
+}
+
+.progress-bar-col {
+	margin-right: 16px;
+
+	& .progress-bar {
+		height: 10px;
+		margin-top: 10px;
+	}
+}
+
+.exercise-label {
+	padding: 20px 0 10px 16px;
+    font-size: 20px;
+    font-weight: 500;
+	color: $black-color;
+	text-align: center;
+}
+
+.comparison-card {
+	border-radius: 6px;
+	height: 150px;
+	width: 150px;
+    margin: 16px 16px;
+    background: red;
+	& .button-answer {
+		background: none;
+		width: 100%;
+		border: none;
+		&:active {
+			border-style: outset;
+		}
+		& .comparison-image {
+			height: 50px;
+			display: block;
+			margin: 0 auto;
+			margin-top: 16px;
+		}
+	}
+}
+
+ion-progress-bar{
+	--buffer-background: #a0a399;
+	--progress-background: #1c5a83;
+}
+

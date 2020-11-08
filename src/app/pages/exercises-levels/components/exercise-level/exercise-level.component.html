@@ -1,5 +1,14 @@
 <ion-content>
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="circles"
+      refreshingText="Atualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-row>
     <ion-col class="home-greetings-col">
       <p class="home-greetings">Olá, {{userName}}!</p>

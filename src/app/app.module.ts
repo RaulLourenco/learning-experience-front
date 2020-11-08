@@ -13,6 +13,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 
 
 import 'chartjs-plugin-zoom';
@@ -30,6 +31,7 @@ import 'chartjs-plugin-zoom';
     StatusBar,
     SplashScreen,
     BluetoothSerial,
+    StreamingMedia,
     HTTP
   ],
   bootstrap: [AppComponent]

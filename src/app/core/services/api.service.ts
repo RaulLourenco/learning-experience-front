@@ -114,6 +114,39 @@ export class ApiService {
     }).toPromise();
   }
 
+  async getReportByModule() : Promise<any> {
+    const token = await this.getToken();
+    const userId = await this.getUserId();
+    return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
+      params: new HttpParams().set('userId', userId),
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
+  }
+
+  async getReportByMonth() : Promise<any> {
+    const token = await this.getToken();
+    const userId = await this.getUserId();
+    return this.http.get(`${environment.urlApi}/Report/GetReportProgressByMonth`, {
+      params: new HttpParams().set('userId', userId),
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
+  }
+  
+  async getReportByMatches() : Promise<any> {
+    const token = await this.getToken();
+    const userId = await this.getUserId();
+    return this.http.get(`${environment.urlApi}/Report/GetReportProgressByMatches`, {
+      params: new HttpParams().set('userId', userId),
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
+  }
+
   async getToken() {
     const token = await this.storage.get('ACCESS_TOKEN').catch(e => {
       return e;
