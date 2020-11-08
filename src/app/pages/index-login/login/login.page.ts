@@ -28,6 +28,7 @@ export class LoginPage implements OnInit {
 
   private async onSign(email, password) {
     const user: User = {
+      name,
       email,
       password,
     };

@@ -135,4 +135,12 @@ export class ApiService {
     return userName;
   }
 
+  async updateUser(user: User) {
+    const token = await this.getToken();
+    return this.http.post(`${environment.urlApi}/User/UpdateUser`, user, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }).toPromise();
+  }
 }
