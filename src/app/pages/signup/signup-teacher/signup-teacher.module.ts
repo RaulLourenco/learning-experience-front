@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SignupTeacherPageRoutingModule } from './signup-teacher-routing.module';
 
 import { SignupTeacherPage } from './signup-teacher.page';
+import { ButtonModule } from 'src/app/shared/buttons/button.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { SignupTeacherPage } from './signup-teacher.page';
     FormsModule,
     IonicModule,
     SignupTeacherPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonModule
   ],
   declarations: [SignupTeacherPage]
 })

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
+import { ButtonModule } from 'src/app/shared/buttons/button.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { LoginPage } from './login.page';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonModule
   ],
   declarations: [LoginPage]
 })

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -7,17 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { EditUserPageRoutingModule } from './edit-user-routing.module';
 
 import { EditUserPage } from './edit-user.page';
-import { BrowserModule } from '@angular/platform-browser';
+import { ButtonModule } from 'src/app/shared/buttons/button.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     EditUserPageRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    ButtonModule
   ],
-  declarations: [EditUserPage]
+  declarations: [EditUserPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class EditUserPageModule {}

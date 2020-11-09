@@ -1,0 +1,12 @@
+$white-color: #ffffff;
+
+.icon-close{
+  padding-left: 10px;
+  font-size: 30px;
+}
+
+.button-close, .settings-button{
+  background-color: $white-color;
+  border: none;
+  outline: none;
+}
