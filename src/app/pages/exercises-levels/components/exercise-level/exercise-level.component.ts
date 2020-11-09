@@ -100,11 +100,11 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
   }
 
   public async checkToken() {
-    await this.apiService.getToken();
+    await this.apiService.setToken();
   }
 
   public async getUserId() {
-    await this.apiService.getUserId().then(res => {
+    await this.apiService.setUserId().then(res => {
       console.log('userId', res);
       this.userId = res;
     });
@@ -112,7 +112,7 @@ export class ExerciseLevelComponent implements OnInit, OnDestroy {
   }
 
   public async getUserName() {
-    this.userName = await this.apiService.GetUserName();
+    this.userName = await this.apiService.setUserName();
   }
 
   doRefresh(event) {

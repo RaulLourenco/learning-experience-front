@@ -150,7 +150,7 @@ export class ExerciseOnePage implements OnInit {
   }
 
   public async getUserId() {
-    await this.apiService.getUserId().then(res => {
+    await this.apiService.setUserId().then(res => {
       this.userId = res;
     });
     return this.userId;

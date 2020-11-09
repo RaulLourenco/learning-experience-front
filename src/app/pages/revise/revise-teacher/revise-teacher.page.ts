@@ -108,7 +108,7 @@ export class ReviseTeacherPage implements OnInit {
   }
 
   public async checkToken() {
-    await this.apiService.getToken();
+    await this.apiService.setToken();
   }
 
   initializeForm() {

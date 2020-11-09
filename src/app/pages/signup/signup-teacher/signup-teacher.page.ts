@@ -77,7 +77,7 @@ export class SignupTeacherPage implements OnInit {
   }
 
   public async getToken() {
-    await this.apiService.getToken().then(res => {
+    await this.apiService.setToken().then(res => {
       this.token = res;
     });
     return this.token;

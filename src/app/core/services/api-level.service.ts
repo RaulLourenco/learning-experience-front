@@ -22,8 +22,8 @@ export class ApiLevelService extends ApiService {
 
   async GetProgressByModule(module: number): Promise<number> {
 
-    const userId = await this.getUserId();
-    const token = await this.getToken();
+    const userId = await this.setUserId();
+    const token = await this.setToken();
 
     return this.http.get<number>(`${environment.urlApi}/User/GetProgressByModule`, {
       headers: {
@@ -36,7 +36,7 @@ export class ApiLevelService extends ApiService {
 
   async gerenateLevel(levelModule): Promise<ExerciseModule> {
 
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.post<ExerciseModule>(`${environment.urlApi}/GameLevel/GerenateLevel`, {
       gameLevelType: levelModule
     },
@@ -48,8 +48,8 @@ export class ApiLevelService extends ApiService {
   }
 
   async updateUserProgress(progress: number, module: number): Promise<object> {
-    const token = await this.getToken();
-    const id = await this.getUserId();
+    const token = await this.setToken();
+    const id = await this.setUserId();
 
     return this.http.post(`${environment.urlApi}/User/UpdateUserProgress`, {
       id,
@@ -65,8 +65,8 @@ export class ApiLevelService extends ApiService {
 
   async createASyncXRay(action, gameLevelType) {
 
-    const token = await this.getToken();
-    const userId = await this.getUserId();
+    const token = await this.setToken();
+    const userId = await this.setUserId();
 
     return this.http.post(`${environment.urlApi}/GameLevel/CreateAsyncXRay`, {
       userId,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/core/models/user';
 import { ApiService } from '../../../../core/services/api.service';
 @Component({
   selector: 'app-profiles',
@@ -7,6 +8,8 @@ import { ApiService } from '../../../../core/services/api.service';
   styleUrls: ['./profiles.component.scss'],
 })
 export class ProfilesComponent implements OnInit {
+
+  public user: User;
 
   constructor(
     private router: Router,
@@ -16,9 +19,8 @@ export class ProfilesComponent implements OnInit {
 
   userName: string;
 
-  ngOnInit() {
-    this.getUserName();
-    
+  async ngOnInit() {
+    this.user = await this.apiService.getUserById();
   }
 
   moveToTeacherList() {
@@ -44,11 +46,4 @@ export class ProfilesComponent implements OnInit {
   moveToEditUser = () => {
     this.router.navigateByUrl('/edit-user');
   }
-
-
-  async getUserName() {
-    this.userName = await this.apiService.GetUserName();
-    console.log(this.userName);
-  }
-
 }

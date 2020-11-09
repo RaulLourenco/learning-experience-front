@@ -79,7 +79,7 @@ export class TeacherListPage implements OnInit {
   }
 
   public async checkToken() {
-    await this.apiService.getToken();
+    await this.apiService.setToken();
   }
 
   signupTeacher() {

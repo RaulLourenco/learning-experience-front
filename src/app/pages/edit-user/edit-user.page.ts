@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ApiService } from 'src/app/core/services/api.service';
 import { User } from 'src/app/core/models/user';
+import { ReviseResponse } from 'src/app/core/models/revise-response';
 
 
 @Component({
@@ -13,9 +14,12 @@ import { User } from 'src/app/core/models/user';
 })
 export class EditUserPage implements OnInit {
 
-  public advisorForm: FormGroup;
+  public userEditForm: FormGroup;
   public token: string;
-  userEditForm: any;
+  public user: User;
+  public name: string;
+  public email: string;
+  public id: string;
 
   constructor(
     private router: Router,
@@ -25,8 +29,34 @@ export class EditUserPage implements OnInit {
     private apiService: ApiService
     ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.initializeForm();
+    this.user = await this.apiService.getUserById();
+    this.id = await this.apiService.setUserId();
+  }
+
+  
+  private async onChange(name, email, password) {
+    this.presentLoading();
+    const id = this.id
+    this.user = {
+      id,
+      name,
+      email,
+      password,
+    };
+    this.apiService.updateUser(this.user)
+      .then((res: ReviseResponse) => {
+        console.log('res do atualizar: ', res);
+        if (res.statusCode === 200) {
+          this.dismissLoading();
+          this.presentAlert('Atualizado com sucesso!');
+          this.router.navigate(['/home/profile']);
+        } else {
+          this.dismissLoading();
+          this.presentAlert('Erro ao atualizar. Tente novamente!');
+        }
+      });
   }
 
   async presentLoading() {
@@ -52,7 +82,7 @@ export class EditUserPage implements OnInit {
   }
 
   public async getToken() {
-    await this.apiService.getToken().then(res => {
+    await this.apiService.setToken().then(res => {
       this.token = res;
     });
     return this.token;
@@ -61,11 +91,17 @@ export class EditUserPage implements OnInit {
   initializeForm() {
     this.userEditForm = this.formBuilder.group({
       name: [
-        '', 
-        Validators.required, 
-        Validators.minLength(10), 
+        null, [
+        Validators.required,
+        Validators.minLength(5), 
         Validators.maxLength(50)
-      ],
+      ]],
+      email: [
+        null,[
+        Validators.required,
+        Validators.minLength(15), 
+        Validators.maxLength(50)
+      ]],
       password: [
         '', 
         Validators.minLength(6)

@@ -22,7 +22,7 @@ export class ApiService {
   ) {}
 
   async getAllAdvisor(): Promise<Advisor> {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAll`, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -31,7 +31,7 @@ export class ApiService {
   }
 
   async registerAdvisor(advisor: Advisor) {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.post(`${environment.urlApi}/Advisor/RegisterAdvisor`, advisor, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -44,7 +44,7 @@ export class ApiService {
   // }
 
   async updateAdvisor(advisor: Advisor) {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.post(`${environment.urlApi}/Advisor/UpdateAdvisor`, advisor, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -53,7 +53,7 @@ export class ApiService {
   }
 
   async getAdvisorById(advisorId): Promise<Advisor> {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.get<Advisor>(`${environment.urlApi}/Advisor/GetAdvisorById`, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -63,7 +63,7 @@ export class ApiService {
   }
 
   async getAllPatient(): Promise<Patient> {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.get<Patient>(`${environment.urlApi}/Patient/GetAll`, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -76,7 +76,7 @@ export class ApiService {
   // }
 
    async updatePatient(patient: Patient) {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.post(`${environment.urlApi}/Patient/UpdatePatient`, patient, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -85,7 +85,7 @@ export class ApiService {
   }
 
   async getPatientById(patientId): Promise<Patient> {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.get<Patient>(`${environment.urlApi}/Patient/GetPatientById`, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -95,8 +95,8 @@ export class ApiService {
   }
 
    async getProgressByUser(): Promise<UserProgress> {
-    const token = await this.getToken();
-    const userId = await this.getUserId();
+    const token = await this.setToken();
+    const userId = await this.setUserId();
     return this.http.get<UserProgress>(`${environment.urlApi}/User/GetProgressByUser`, {
       params: new HttpParams().set('userId', userId),
       headers: {
@@ -106,7 +106,7 @@ export class ApiService {
   }
 
   async registerPatient(patient: Patient) {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.post(`${environment.urlApi}/Patient/RegisterPatient`, patient, {
       headers: {
         Authorization: 'Bearer ' + token
@@ -115,8 +115,8 @@ export class ApiService {
   }
 
   async getReportByModule() : Promise<any> {
-    const token = await this.getToken();
-    const userId = await this.getUserId();
+    const token = await this.setToken();
+    const userId = await this.setUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByModule`, {
       params: new HttpParams().set('userId', userId),
       headers: {
@@ -126,8 +126,8 @@ export class ApiService {
   }
 
   async getReportByMonth() : Promise<any> {
-    const token = await this.getToken();
-    const userId = await this.getUserId();
+    const token = await this.setToken();
+    const userId = await this.setUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByMonth`, {
       params: new HttpParams().set('userId', userId),
       headers: {
@@ -137,8 +137,8 @@ export class ApiService {
   }
   
   async getReportByMatches() : Promise<any> {
-    const token = await this.getToken();
-    const userId = await this.getUserId();
+    const token = await this.setToken();
+    const userId = await this.setUserId();
     return this.http.get(`${environment.urlApi}/Report/GetReportProgressByMatches`, {
       params: new HttpParams().set('userId', userId),
       headers: {
@@ -147,21 +147,21 @@ export class ApiService {
     }).toPromise();
   }
 
-  async getToken() {
+  async setToken() {
     const token = await this.storage.get('ACCESS_TOKEN').catch(e => {
       return e;
     });
     return token;
   }
 
-  async getUserId() {
+  async setUserId() {
     const userId = await this.storage.get('USER_ID').catch(e => {
       return e;
     });
     return userId;
   }
 
-  async GetUserName() {
+  async setUserName() {
     const userName = await this.storage.get('USER_NAME').catch(e => {
       return e;
     });
@@ -169,11 +169,22 @@ export class ApiService {
   }
 
   async updateUser(user: User) {
-    const token = await this.getToken();
+    const token = await this.setToken();
     return this.http.post(`${environment.urlApi}/User/UpdateUser`, user, {
       headers: {
         Authorization: 'Bearer ' + token
       }
     }).toPromise();
   }
+
+  async getUserById(): Promise<User> {
+    const token = await this.setToken();
+    const id = await this.setUserId();
+    return this.http.get<User>(`${environment.urlApi}/User/GetUserById?id=${id}`, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      },
+    }).toPromise();
+  }
+
 }

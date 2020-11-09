@@ -61,6 +61,6 @@ export class PatientListPage implements OnInit {
   }
 
   public async checkToken() {
-    await this.apiService.getToken();
+    await this.apiService.setToken();
   }
 }
