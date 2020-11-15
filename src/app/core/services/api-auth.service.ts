@@ -61,7 +61,7 @@ export class ApiAuthService {
             await this.storage.set('USER_NAME', res.userName);
             this.authSubject.next(true);
           }
-        }));
+        })).toPromise();
   }
 
   async logout() {

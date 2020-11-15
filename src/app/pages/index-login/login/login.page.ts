@@ -33,14 +33,18 @@ export class LoginPage implements OnInit {
       password,
     };
     this.presentLoading();
-    this.apiAuthService.login(user).subscribe((res) => {
-      if (res.status === 200) {
+    this.apiAuthService.login(user).then((res) => {
+      if (res.status === 200 && res.userName) {
         this.dismissLoading();
         this.router.navigateByUrl('home/exercises-levels');
       } else {
         this.dismissLoading();
-        this.presentAlert('Senha incorreta!');
+        this.presentAlert('Usuário ou Senha inválidos! Por favor, tente novamente.');
       }
+    }).catch( (e) => {
+      this.dismissLoading();
+      console.log('error', e);
+      this.presentAlert('Falha na autenticação! Por favor, tente novamente.');
     });
   }
 
