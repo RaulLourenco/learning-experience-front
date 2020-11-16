@@ -23,11 +23,12 @@ export class ApiAuthService {
   ) {
   }
 
-  register(user: UserSignup) {
+   register(user: UserSignup) {
     return this.http.post(`${environment.urlApi}/Auth/RegisterLogin`, user)
       .pipe(
         tap(async (res) => {
           if (res) {
+            await this.login(user);
             this.authSubject.next(true);
           }
         })
@@ -35,7 +36,7 @@ export class ApiAuthService {
   }
 
 
-  login(user: User) {
+   async login(user: User) {
     // this.httpIonic.setDataSerializer('json');
     // const observable = from(this.httpIonic.post(`${environment.urlApi}/Auth`, user, {
     //   'Content-Type': 'application/json'
@@ -67,6 +68,8 @@ export class ApiAuthService {
   async logout() {
     await this.storage.remove('ACCESS_TOKEN');
     await this.storage.remove('EXPIRES_IN');
+    await this.storage.remove('USER_ID');
+    await this.storage.remove('USER_NAME');
     this.authSubject.next(false);
   }
 

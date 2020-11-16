@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user';
 import { ApiService } from '../../../../core/services/api.service';
+import { ApiAuthService } from '../../../../core/services/api-auth.service';
+
 @Component({
   selector: 'app-profiles',
   templateUrl: './profiles.component.html',
@@ -13,7 +15,8 @@ export class ProfilesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private apiAuthService: ApiAuthService
     ) { 
   }
 
@@ -45,5 +48,11 @@ export class ProfilesComponent implements OnInit {
 
   moveToEditUser = () => {
     this.router.navigateByUrl('/edit-user');
+  }
+
+   logout = async ()  => {
+    await this.apiAuthService.logout();
+    this.ngOnInit();
+    this.router.navigateByUrl('/index-login');
   }
 }

@@ -43,8 +43,8 @@ export class SignupPage implements OnInit {
       password,
       repeatPassword
     };
-    this.apiAuthService.register(this.user)
-    .subscribe((res: SignupResponse) => {
+      this.apiAuthService.register(this.user)
+     .subscribe((res: SignupResponse) => {
       if (res.statusCode === 200) {
         this.dismissLoading();
         this.router.navigate(['/onboarding']);

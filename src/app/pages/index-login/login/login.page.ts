@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
       password,
     };
     this.presentLoading();
-    this.apiAuthService.login(user).then((res) => {
+    await this.apiAuthService.login(user).then((res) => {
       if (res.status === 200 && res.userName) {
         this.dismissLoading();
         this.router.navigateByUrl('home/exercises-levels');
