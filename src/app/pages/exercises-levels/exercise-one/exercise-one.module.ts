@@ -5,15 +5,13 @@ import { IonicModule } from '@ionic/angular';
 
 import { ExerciseOnePageRoutingModule, routedComponents } from './exercise-one-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ButtonModule } from 'src/app/shared/buttons/button.module';
 
 const MODULES =[
   CommonModule,
   FormsModule,
   IonicModule,
   ExerciseOnePageRoutingModule,
-  SharedModule,
-  ButtonModule
+  SharedModule
 ]
 
 @NgModule({

@@ -4,7 +4,9 @@
 
     <ion-row class="header-page">
       <ion-col size="2">
-        <app-close-button (click)="backToOnboarding()"></app-close-button>
+        <button class="button-close" (click)="backToOnboarding()" icon-only>
+          <ion-icon class="icon-close" name="chevron-back-outline"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
 

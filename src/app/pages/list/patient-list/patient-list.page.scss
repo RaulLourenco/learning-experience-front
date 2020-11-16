@@ -8,6 +8,15 @@ $grey-color:#999999;
     padding: 16px 0;
 }
 
+.icon-close{
+    padding-left: 10px;
+    font-size: 30px;
+}
+
+.button-close, .settings-button{
+    background-color: $white-color;
+}
+
 .patient-list-title{
     padding: 0 18px;
     font-size: 22px;

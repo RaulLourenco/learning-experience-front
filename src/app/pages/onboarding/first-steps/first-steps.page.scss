@@ -8,6 +8,15 @@ $main-color: #1C5A83;
     --background: #1C5A83;
 }
 
+.header-page{
+    padding: 0;
+}
+
+.icon-close{
+    font-size: 30px;
+    color: $white-color;
+}
+
 .button-close{
     background-color: $main-color;
 }

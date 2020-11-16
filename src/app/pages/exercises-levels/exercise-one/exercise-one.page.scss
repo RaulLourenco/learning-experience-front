@@ -6,6 +6,13 @@ $orange-color: #f26f39;
 
 .header-page {
 	padding: 16px 0;
+	& .button-close {
+		background-color: $white-color;
+	}
+	& .icon-close {
+		padding-left: 10px;
+		font-size: 30px;
+	}
 }
 
 .progress-bar-col {

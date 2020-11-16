@@ -7,15 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { ObservationPageRoutingModule } from './observation-routing.module';
 
 import { ObservationPage } from './observation.page';
-import { ButtonModule } from 'src/app/shared/buttons/button.module';
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ObservationPageRoutingModule,
-    ButtonModule
+    ObservationPageRoutingModule
   ],
   declarations: [ObservationPage]
 })

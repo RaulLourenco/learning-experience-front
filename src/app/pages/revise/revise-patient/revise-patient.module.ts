@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { RevisePatientPageRoutingModule } from './revise-patient-routing.module';
 
 import { RevisePatientPage } from './revise-patient.page';
-import { ButtonModule } from 'src/app/shared/buttons/button.module';
 
 @NgModule({
   imports: [
@@ -15,8 +14,7 @@ import { ButtonModule } from 'src/app/shared/buttons/button.module';
     FormsModule,
     IonicModule,
     RevisePatientPageRoutingModule,
-    ReactiveFormsModule,
-    ButtonModule
+    ReactiveFormsModule
   ],
   declarations: [RevisePatientPage]
 })

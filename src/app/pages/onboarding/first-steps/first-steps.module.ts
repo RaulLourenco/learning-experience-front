@@ -7,15 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { FirstStepsPageRoutingModule } from './first-steps-routing.module';
 
 import { FirstStepsPage } from './first-steps.page';
-import { ButtonModule } from 'src/app/shared/buttons/button.module';
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FirstStepsPageRoutingModule,
-    ButtonModule
+    FirstStepsPageRoutingModule
   ],
   declarations: [FirstStepsPage]
 })
