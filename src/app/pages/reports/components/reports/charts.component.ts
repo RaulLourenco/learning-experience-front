@@ -22,6 +22,8 @@ export class ChartsComponent implements OnInit {
     scales: { xAxes: [{}], yAxes: [{}] },
     plugins: {
       datalabels: {
+        backgroundColor: '#f0f0f0',
+        color: '#000',
         anchor: 'end',
         align: 'end',
       }
