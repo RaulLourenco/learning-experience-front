@@ -110,8 +110,11 @@
     </ion-item>
   </ion-row>
 
-  <ion-row class="menu-options" (click)="logout()">
+  <ion-row class="menu-options" (click)="logout()" style="margin: 6px 0">
     <ion-item class="menu-items">
+      <ion-col class="icon-items-col" size="1">
+        <ion-icon class="icon-items" name="exit-outline"></ion-icon>
+      </ion-col>
 
       <ion-col>
         <ion-label class="item-title">Sair</ion-label>
