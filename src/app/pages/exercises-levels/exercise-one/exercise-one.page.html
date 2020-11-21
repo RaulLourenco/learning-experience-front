@@ -22,7 +22,7 @@
   <p class="exercise-label">Selecione a imagem correta:</p>
 
   <ion-row>
-    <ion-col size="6" *ngFor="let level of levelOne; let i = index">
+    <ion-col size="6" *ngFor="let level of levelOne; let i = index" id="col-{{i}}">
       <ion-card class="comparison-card">
         <button class="button-answer" (click)="verifyAnswer(i)">
           <img class="comparison-image" src={{level.image}} />

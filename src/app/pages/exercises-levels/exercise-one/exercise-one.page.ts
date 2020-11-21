@@ -125,6 +125,15 @@ export class ExerciseOnePage implements OnInit {
       name: exercises.mainImage.name
     };
 
+    if(levelModule == 6) {
+      this.levelOne.length = 5;
+      this.levelOne[4] = {
+         object: '',
+         image: '',
+         match: false,
+      }
+    }
+
     this.levelOne.forEach((item, index) => {
       item.object = exercises.comparable[index].name;
       item.image = exercises.comparable[index].path;
