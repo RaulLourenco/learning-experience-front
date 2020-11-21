@@ -5,43 +5,40 @@ $white-color: #ffffff;
 
 .header-page{
     padding: 0;
-}
 
-.icon-close{
-    font-size: 30px;
-}
-
-.button-close{
-    background-color: $white-color;
-}
-
-.logo-image{
-    display: block;
-    margin: 0 auto;
+    .icon-close{
+        font-size: 30px;
+    }
+    
+    .button-close{
+        background-color: $white-color;
+    }
 }
 
 .home-icon{
     text-align: center;
     margin-top: 20px;
+
+    .logo-image{
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 .title-col{
     padding: 24px 0;
-}
 
-.title{
-    text-align: center;
-    font-size: 18px;
-    color: $main-color;
+    .title{
+        text-align: center;
+        font-size: 18px;
+        color: $main-color;
+    }
 }
 
 .item-text-form{
     --border-color: #999999;
     padding-right: 16px;
     margin-bottom: 24px;
-    max-width: 90% !important;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .label-form{
@@ -54,27 +51,26 @@ $white-color: #ffffff;
     padding-right: 14px;
 }
 
-ion-button{
-    --background:#1C5A83;
-}
-
 .checkbox-col{
     margin-left: 16px;
 }
 
 .label-pwd-col{
     margin-left: 16px;
-}
-.label-pwd{
-    color: $black-color;
-    margin-top: -5px;
-}
-.label-forgot-pwd-col{
-    padding: 16px 18px;
+    margin-top: 2px;
+
+    .label-pwd{
+        color: $black-color;
+        margin-top: -5px;
+    }
 }
 
-.label-forgot-pwd{
-    text-align: center;
+.label-forgot-pwd-col{
+    padding: 16px 18px;
+
+    .label-forgot-pwd{
+        text-align: center;
+    }
 }
 
 ion-checkbox{
@@ -82,7 +78,10 @@ ion-checkbox{
     border: 1px solid #000000;
 }
 
-
 ion-input{
     color: black;
+}
+
+ion-button{
+    --background:#1C5A83;
 }
