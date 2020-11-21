@@ -1,7 +1,8 @@
 export interface ExerciseModule {
   mainImage: {
     name: string,
-    path: string
+    path: string,
+    externalId: string
   },
   comparable: [{
       name: string,

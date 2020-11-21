@@ -13,7 +13,6 @@ export class BluetoothConfigPage implements OnInit {
   unpairedDevices: any;
   pairedDevices: any;
   gettingDevices: boolean;
-  dataSend: string;
 
   constructor(private bluetoothSerial: BluetoothSerial,
               private alertController: AlertController,
@@ -117,17 +116,6 @@ export class BluetoothConfigPage implements OnInit {
       ]
     });
     await alert.present();
-  }
-
-  sendData() {
-    this.dataSend += '\n';
-    this.showToast(this.dataSend);
-
-    this.bluetoothSerial.write(this.dataSend).then(success => {
-      this.showToast(success);
-    }, error => {
-      this.showError(error);
-    })
   }
 
   async showToast(msg) {
