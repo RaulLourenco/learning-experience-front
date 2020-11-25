@@ -82,7 +82,7 @@ export class ExerciseOnePage implements OnInit {
       if (this.progress === 0.5 || this.progress === 1) {
         if(this.progress === 0.5) {
           this.audioService.start('eba_completou_50', false);
-          this.mediaService.playVideo('https://www.youtube.com/watch?v=IdlGgwKdwHY');
+          this.mediaService.playVideo();
         }
         if(this.progress === 1) {
           this.audioService.start('ae_completou_modulo', false);
